@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 
-DJANGO_MODE = os.getenv('DJANGO_MODE', "Production").lower()
+DJANGO_MODE = os.getenv('DJANGO_MODE', "local").lower()
 USE_TZ=True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -86,9 +86,10 @@ WSGI_APPLICATION = 'mealhub.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 if DJANGO_MODE == 'local':
-	DATABASES = {'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+		    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 		 }
      }
 	
