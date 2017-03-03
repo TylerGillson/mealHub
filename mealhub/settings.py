@@ -86,12 +86,12 @@ WSGI_APPLICATION = 'mealhub.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 if DJANGO_MODE == 'local':
-	DATABASES = {
-		'default': {
-			'ENGINE': 'django.db.backends.sqlite3',
-			'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	DATABASES = {'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 		 }
-	}
+     }
+	
 elif DJANGO_MODE == 'production' or DJANGO_MODE == 'prod_debug':
 	import dj_database_url
 	
