@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 
-DJANGO_MODE = os.getenv('DJANGO_MODE', "local").lower()
+DJANGO_MODE = os.getenv('DJANGO_MODE', "Production").lower()
 USE_TZ=True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -95,9 +95,8 @@ if DJANGO_MODE == 'local':
 	
 elif DJANGO_MODE == 'production' or DJANGO_MODE == 'prod_debug':
 	import dj_database_url
-	
-	# Handles DATABASE_URL environment variable on Heroku
-	DATABASES = {'default': dj_database_url.config()}
+    # Handles DATABASE_URL environment variable on Heroku
+	DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
 
 	
 AUTH_PASSWORD_VALIDATORS = [
