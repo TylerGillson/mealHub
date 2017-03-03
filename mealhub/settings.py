@@ -12,19 +12,26 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 
+DJANGO_MODE = os.getenv('DJANGO_MODE', "local").lower()
+USE_TZ=True
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "!8%1z5^yu$%n(rluc$!3g6y%+*rg0gh$gf5gd9v3+423shea_e"
+#SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if DJANGO_MODE == 'local' or DJANGO_MODE == 'prod_debug':
+	DEBUG = True
+else:
+	DEBUG = False
+
 
 # Application definition
 
@@ -78,13 +85,21 @@ WSGI_APPLICATION = 'mealhub.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+if DJANGO_MODE == 'local':
+	DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+		    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		 }
+     }
+	
+elif DJANGO_MODE == 'production' or DJANGO_MODE == 'prod_debug':
+	import dj_database_url
+	
+	# Handles DATABASE_URL environment variable on Heroku
+	DATABASES = {'default': dj_database_url.config()}
 
+	
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -110,8 +125,8 @@ USE_L10N = True
 USE_TZ = True
 
 # Update database configuration with $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
