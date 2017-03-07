@@ -7,3 +7,10 @@ from django.utils import timezone
 # Create your views here.
 class  LoginView(generic.ListView):
     template_name = 'users/login.html'
+
+
+def ChefsView(request):
+    return render(request, 'users/chef.html')
+
+def MouthsView(request):
+    return render(request, 'users/mouth.html')

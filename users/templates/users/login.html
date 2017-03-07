@@ -44,13 +44,13 @@
 	text-align:left;
 }
 	
-#nap3{
+#login_btn{
 	left:364px;
 	top:384px;
 	z-index:2;
 }
 
-#nap3.napkee {
+#login_btn.napkee {
 	width:83px;
 	height:25px;
 	font-size: 16px;
@@ -176,7 +176,7 @@
 	
 <input id="nap2" type="text" value="" class="napkeeComponent napkeeTextinput" />
 	
-<button id="nap3" type="button" class="napkeeComponent napkeeButton btn">Login</button>
+<button id="login_btn"  type="button" class="napkeeComponent napkeeButton btn">Login</button>
 	
 <div id="nap4" class="napkeeComponent napkeeParagraph" cellspacing="0" cellpadding="0">Login to MealHub<br/></div>
 	
@@ -212,19 +212,21 @@
 		
 			
 $("#nap2").click(function(event){
+    
 	event.stopPropagation();
 	event.preventDefault();
 });
-	
-$("#nap3").click(function(event){
-	
+
+
+$("#login_btn").click(function(event){
+    alert("Login button pushed");
 	event.stopPropagation();
 	event.preventDefault();
-
+   
 });
 	
 $("#nap4").click(function(event){
-	
+    
 	event.stopPropagation();
 	event.preventDefault();
 
