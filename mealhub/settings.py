@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 import dj_database_url
 
-DJANGO_MODE = os.getenv('DJANGO_MODE', "Production").lower()
+DJANGO_MODE = os.getenv('DJANGO_MODE', "local").lower()
 USE_TZ=True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -36,6 +36,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
