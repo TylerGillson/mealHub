@@ -1,0 +1,8 @@
+<napkee version="1.0" nature="web" name="MealHub">
+  <mockups>
+    <file path="./testmock/Mouth UserHub.bmml"/>
+    <file path="./testmock/Register.bmml"/>
+    <file path="./testmock/Search.bmml"/>
+    <file path="./testmock/Chef UserHub.bmml"/>
+  </mockups>
+</napkee>
