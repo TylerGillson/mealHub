@@ -8,7 +8,6 @@ from django.utils import timezone
 class  LoginView(generic.ListView):
     template_name = 'users/login.html'
 
-
 def ChefsView(request):
     return render(request, 'users/chef.html')
 
