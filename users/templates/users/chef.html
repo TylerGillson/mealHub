@@ -1,9 +1,10 @@
+
 {% if mealrequests %}
 
 <ul>
 	{% for mealReq in mealrequests %}
 		<li>{{ mealReq.user.username }} wants {{ mealReq.servings_requested }} servings of {{ mealReq.mealRequestName }}</li>
-		
+
 	{% endfor %}
 </ul>
 

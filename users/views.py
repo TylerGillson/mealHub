@@ -12,7 +12,7 @@ class  LoginView(generic.ListView):
     template_name = 'users/login.html'
 
 def ChefsView(request):
-    mealrequest = MealRequest.objects.all().order_by('-date_requested')
+    mealrequest = MealRequest.objects.order_by('-date_requested')
     context = {'mealrequests': mealrequest,}
     return render(request, 'users/chef.html', context)
 
