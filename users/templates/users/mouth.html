@@ -14,8 +14,8 @@
 	<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.3.custom.min.css">
 	<link rel="stylesheet" href="css/jquery.orgchart.css">
 	<link rel="stylesheet" href="css/jquery.treeview.css">
-	
-	
+
+
 	<style type="text/css">
 	#napkeeCanvas {
 		position:absolute;
@@ -30,8 +30,8 @@
 		position:absolute;
 		white-space: nowrap;
 	}
-	
-	
+
+
 #nap0c{
 	position:absolute;
 	left:382px;
@@ -56,7 +56,7 @@
 	text-decoration:none;
 	text-align:left;
 }
-	
+
 #nap7{
 	left:289px;
 	top:246px;
@@ -70,7 +70,7 @@
 	-moz-border-radius:0px;
 	-webkit-border-radius:0px;
 }
-	
+
 #nap8{
 	left:689px;
 	top:246px;
@@ -84,7 +84,7 @@
 	-moz-border-radius:0px;
 	-webkit-border-radius:0px;
 }
-	
+
 #nap13{
 	left:957px;
 	top:89px;
@@ -108,7 +108,7 @@
 	border:0;
 	text-align:center;
 }
-	
+
 #nap15{
 	left:112px;
 	top:10px;
@@ -122,7 +122,7 @@
 	text-align:center;
 	color:#000000;
 }
-	
+
 #nap17container{
 	left:16px;
 	top:43px;
@@ -174,7 +174,7 @@
 	height:22px;
 }
 
-	
+
 #nap64{
 	left:1020px;
 	top:89px;
@@ -198,7 +198,7 @@
 	border:0;
 	text-align:center;
 }
-	
+
 #nap65{
 	left:645px;
 	top:153px;
@@ -222,7 +222,7 @@
 	border:0;
 	text-align:center;
 }
-	
+
 #nap68{
 	left:738px;
 	top:153px;
@@ -246,7 +246,7 @@
 	border:0;
 	text-align:center;
 }
-	
+
 #nap69{
 	left:115px;
 	top:10px;
@@ -260,9 +260,9 @@
 	text-align:center;
 	color:#000000;
 }
-	
+
 	</style>
-	
+
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/jquery.migration.js"></script>
@@ -277,14 +277,14 @@
     <script src="js/jquery.orgchart.min.js"></script>
     <script src="js/jquery.treeview.min.js"></script>
     <script src="js/jquery.tagcloud.min.js"></script>
-	
+
   </head>
   <body>
-  
-	
 
 
-	
+
+
+
 <div id="nap0c" class="napkeeComponent napkeeShape">
 <div id="nap0"></div>
 <table border="0" id="nap0table" class="napkeeComponent napkeeShapeTable" >
@@ -295,10 +295,10 @@
 	</tr>
 </table>
 </div>
-	
+
 <div id="nap7" class="napkeeComponent napkeeCanvas">
 <span id="nap15" class="napkeeRelativeComponent napkeeSubTitle">Recent Dishes</span>
-	
+
 <div id="nap17container" class="napkeeRelativeComponent napkeeDatagrid">
 	<table id="nap17" class="table">
 		<thead>
@@ -308,21 +308,31 @@
 		<th class="verticalLine">Servings</th>
 		<th>Availability <i class='icon-sort'></i></th>
 </tr></thead>
-		<tbody><tr><td class="odd verticalLine">chef1</td><td class="odd verticalLine">Chicken Enchiladas</td><td class="odd verticalLine">10</td><td class="odd">03/05/17</td></tr>
-<tr><td class="even verticalLine">chef2</td><td class="even verticalLine">Lamb Curry</td><td class="even verticalLine">20</td><td class="even">04/01/17</td></tr>
-<tr><td class="odd verticalLine">chef3</td><td class="odd verticalLine">Clams and Linguini</td><td class="odd verticalLine">4</td><td class="odd">03/08/17</td></tr>
-<tr><td class="even verticalLine">chef4</td><td class="even verticalLine">Lasagna</td><td class="even verticalLine">20</td><td class="even">03/15/17</td></tr>
+		<tbody>
+      {% if meal %}
+      {% for m in meal %}
+        <tr>
+          <td class="odd verticalLine">{{ m.user.username }}</td>
+          <td class="odd verticalLine">{{ m.mealname }}</td>
+          <td class="odd verticalLine">{{ m.servings_available }}</td>
+          <td class="odd">{{ m.date_available|date:"g:i a m/d/y" }}</td>
+        </tr>
+
+      {% endfor %}
+{% else %}
+<td class="odd verticalLine">No Current Meals Available</td><td class="odd verticalLine"></td><td class="odd verticalLine"></td><td class="odd"></td></tr>
+{% endif %}
 <tr><td class="odd verticalLine"></td><td class="odd verticalLine"></td><td class="odd verticalLine"></td><td class="odd"></td></tr>
 <tr><td class="even filler verticalLine"></td><td class="even filler verticalLine"></td><td class="even filler verticalLine"></td><td class="even filler"></td></tr>
 </tbody>
 	</table>
 </div>
 	</div>
-	
+
 <div id="nap8" class="napkeeComponent napkeeCanvas">
 <span id="nap69" class="napkeeRelativeComponent napkeeSubTitle">Request A Dish</span>
 	</div>
-	
+
 <table id="nap13" class="napkeeComponent napkeeIconLabel">
 	<tr>
 		<td>
@@ -347,7 +357,7 @@
 		</td>
 	</tr>
 </table>
-	
+
 <table id="nap64" class="napkeeComponent napkeeIconLabel">
 	<tr>
 		<td>
@@ -372,7 +382,7 @@
 		</td>
 	</tr>
 </table>
-	
+
 <table id="nap65" class="napkeeComponent napkeeIconLabel">
 	<tr>
 		<td>
@@ -397,7 +407,7 @@
 		</td>
 	</tr>
 </table>
-	
+
 <table id="nap68" class="napkeeComponent napkeeIconLabel">
 	<tr>
 		<td>
@@ -422,8 +432,8 @@
 		</td>
 	</tr>
 </table>
-	
-	
+
+
     <script type="text/javascript" charset="utf-8">
 	    function showMockup(url,params){
 			var finalUrl = url + "?";
@@ -442,77 +452,77 @@
 			$(document).on("click", function(e){
 				$("[data-date]").datepicker('show');
 			});
-		
-			
+
+
 var flashvarsnap0 = {color:"0xFFFFFF", borderColor:"0x000000", rotation:"0"};
 var paramsnap0 = {wmode: "transparent"};
 var attributesnap0 = {};
 swfobject.embedSWF("swf/NapkeeCircle.swf", "nap0", "127", "73", "9.0.0", false, flashvarsnap0, paramsnap0, attributesnap0);
 $("#nap0table").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 $("#nap7").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 $("#nap8").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 $("#nap13").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 $("#nap15").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
 
-	
+
+
 $("#nap64").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 $("#nap65").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 $("#nap68").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 $("#nap69").click(function(event){
-	
+
 	event.stopPropagation();
 	event.preventDefault();
 
 });
-	
+
 		});
 	</script>
   </body>

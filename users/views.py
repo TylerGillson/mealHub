@@ -5,7 +5,7 @@ from django.views import generic
 from django.utils import timezone
 from django.template import loader
 
-from .models import MealRequest, User
+from .models import MealRequest, User, Meal
 
 # Create your views here.
 class  LoginView(generic.ListView):
@@ -16,12 +16,11 @@ def ChefsView(request):
     context = {'mealrequests': mealrequest,}
     return render(request, 'users/chef.html', context)
 
-#>>> for req in MealRequest.objects.all():
-#...     print("%s requests %d servings of %s" %(req.user.username, req.servings_requested, req.mealRequestName)).
-#tyler requests 4 servings of Butter Chicken
 
 def MouthsView(request):
-    return render(request, 'users/mouth.html')
+    meal = Meal.objects.order_by('-date_available')
+    context = {'meal': meal,}
+    return render(request, 'users/mouth.html', context)
 
 def RegisterView(request):
     return render(request, 'users/register.html')
