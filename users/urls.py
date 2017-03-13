@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^chefs/$', views.ChefsView, name ='chefs'),
     url(r'^mouths/$', views.MouthsView, name='mouths'),
+    url(r'^register/$', views.RegisterView, name = 'register'),
 ]
