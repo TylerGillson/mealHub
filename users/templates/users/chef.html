@@ -55,7 +55,7 @@
 	filter:alpha(opacity=100);
 }
 #nap0table{
-	width:127px;
+	width:200px;
 	height:73px;
 	z-index:1;
 	display:inline-table;
@@ -136,10 +136,10 @@
 }
 
 #nap17container{
-	left:16px;
+	left:10px;
 	top:43px;
 	z-index:6;
-	width:368px;
+	width:500px;
 	height:215px;
 	overflow:hidden;
 	border:none;
@@ -607,12 +607,16 @@
 	<tr>
 		<th class="verticalLine">UserName <i class='icon-sort'></i></th>
 		<th class="verticalLine">Dish</th>
+		<th class="verticalLine">Servings</th>
 		<th>Date <i class='icon-sort'></i></th>
 </tr></thead>
 		<tbody>
 			{% if mealrequests %}
 				{% for mealReq in mealrequests %}
-				<tr><td class="odd verticalLine">{{ mealReq.user.username }}</td><td class="odd verticalLine">{{ mealReq.mealRequestName }}</td><td class="odd">{{ mealReq.date_requested }}</td></tr>
+				<tr><td class="odd verticalLine">{{ mealReq.user.username }}</td>
+					<td class="odd verticalLine">{{ mealReq.mealRequestName }}</td>
+					<td class="odd verticalLine">{{ mealReq.servings_requested }}</td>
+					<td class="odd">{{ mealReq.date_requested|date:"g:i a m/d/y" }}</td></tr>
 
 				{% endfor %}
 
