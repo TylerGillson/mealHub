@@ -13,7 +13,8 @@ class  LoginView(generic.ListView):
 
 def ChefsView(request):
     mealrequest = MealRequest.objects.order_by('-date_requested')
-    context = {'mealrequests': mealrequest,}
+    meal = Meal.objects.order_by('meal_rating')
+    context = {'mealrequests': mealrequest, 'meal': meal,}
     return render(request, 'users/chef.html', context)
 
 

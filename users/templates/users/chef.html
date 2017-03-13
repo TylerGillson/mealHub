@@ -649,9 +649,25 @@
 		<th class="verticalLine"># Reviews <i class='icon-sort'></i></th>
 		<th>Avg. Rating <i class='icon-sort'></i></th>
 </tr></thead>
-		<tbody><tr><td class="odd verticalLine">meal1</td><td class="odd verticalLine">3</td><td class="odd"></td></tr>
-<tr><td class="even verticalLine">meal2</td><td class="even verticalLine">1</td><td class="even"></td></tr>
-<tr><td class="odd verticalLine">meal3</td><td class="odd verticalLine">5</td><td class="odd"></td></tr>
+		<tbody>
+			{% if meal %}
+			{% for m in meal %}
+	<tr><td class="odd verticalLine">{{ m.mealname }}</td>
+		<td class="odd verticalLine">
+		{% with ''|center:m.meal_rating as range %}
+		{% for _ in range %}
+    	{{ forloop.counter }} <!-- prints a number next to the name (1 2 3 4) #num of stars -->
+<!-- this isn't working, but trying to loop through number of stars for a meal -->
+		<img id="nap45" src="{% static 'users/icons/star.png' %}" class="napkeeRelativeComponent napkeeIcon rotate360" />
+		{% endfor %}
+		{% endwith %}
+		</td><td class="odd"></td>
+	</tr>
+	{% endfor %}
+
+	{% else %}
+<tr><td class="odd verticalLine">Get busy cooking meals!</td><td class="odd verticalLine">5</td><td class="odd"></td></tr>
+{% endif %}
 <tr><td class="even filler verticalLine"></td><td class="even filler verticalLine"></td><td class="even filler"></td></tr>
 </tbody>
 	</table>
