@@ -16,8 +16,8 @@ class User(models.Model):
     location = models.IntegerField(default = 00000)
 
 #    if self.user_type == 'C':
-#        user_rating == 0 #someFunction to average meal stars
-    
+#        user_rating = 0 #someFunction to average meal stars
+
     def __str__(self):
         return self.username
 
@@ -28,7 +28,7 @@ class Meal(models.Model):
         (2, "Two Stars"),
         (3, "Three Stars"),
         (4, "Four Stars"),
-        (5, "Five Starts"),
+        (5, "Five Stars"),
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mealname = models.CharField(max_length=50)
