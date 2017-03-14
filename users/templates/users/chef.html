@@ -19,14 +19,14 @@
     <title>Napkee export</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/datepicker.css">
-	<link rel="stylesheet" href="css/colorpicker.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.3.custom.min.css">
-	<link rel="stylesheet" href="css/jquery.orgchart.css">
-	<link rel="stylesheet" href="css/jquery.treeview.css">
+    <link rel="stylesheet" href="{% static 'users/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/datepicker.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/colorpicker.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/smoothness/jquery-ui-1.10.3.custom.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/jquery.orgchart.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/jquery.treeview.css' %}">
 
 
 	<style type="text/css">
@@ -566,20 +566,20 @@
 
 	</style>
 
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-	<script src="js/jquery.migration.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.swfobject.1-0.5.min.js"></script>
-    <script src="js/swfobject.js"></script>
-    <script src="js/jquery.sparkline.min.js"></script>
-    <script src="js/bootstrap-colorpicker.js"></script>
-    <script src="js/jquery.tools.min.js"></script>
-    <script src="js/holder.js"></script>
-    <script src="js/jquery.orgchart.min.js"></script>
-    <script src="js/jquery.treeview.min.js"></script>
-    <script src="js/jquery.tagcloud.min.js"></script>
+	<script src="{% static 'users/js/jquery-1.10.2.min.js' %}"></script>
+	<script src="{% static 'users/js/jquery-ui-1.10.3.custom.min.js' %}"></script>
+	<script src="{% static 'users/js/jquery.migration.js' %}"></script>
+    <script src="{% static 'users/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'users/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'users/js/jquery.swfobject.1-0-5.min.js' %}"></script>
+    <script src="{% static 'users/js/swfobject.js' %}"></script>
+    <script src="{% static 'users/js/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static 'users/js/bootstrap-colorpicker.js' %}"></script>
+    <script src="{% static 'users/js/jquery.tools.min.js' %}"></script>
+    <script src="{% static 'users/js/holder.js' %}"></script>
+    <script src="{% static 'users/js/jquery.orgchart.min.js' %}"></script>
+    <script src="{% static 'users/js/jquery.treeview.min.js' %}"></script>
+    <script src="{% static 'users/js/jquery.tagcloud.min.js' %}"></script>
 
   </head>
   <body>
@@ -859,7 +859,7 @@
 var flashvarsnap0 = {color:"0xFFFFFF", borderColor:"0x000000", rotation:"0"};
 var paramsnap0 = {wmode: "transparent"};
 var attributesnap0 = {};
-swfobject.embedSWF("swf/NapkeeCircle.swf", "nap0", "127", "73", "9.0.0", false, flashvarsnap0, paramsnap0, attributesnap0);
+swfobject.embedSWF("{% static 'users/swf/NapkeeCircle.swf' %}", "nap0", "127", "73", "9.0.0", false, flashvarsnap0, paramsnap0, attributesnap0);
 $("#nap0table").click(function(event){
 
 	event.stopPropagation();
