@@ -24,4 +24,7 @@ def MouthsView(request):
     return render(request, 'users/mouth.html', context)
 
 def RegisterView(request):
-    return render(request, 'users/register.html')
+    mealrequest = MealRequest.objects.order_by('-date_requested')
+    meal = Meal.objects.order_by('meal_rating')
+    context = {'mealrequests': mealrequest, 'meal': meal,}
+    return render(request, 'users/Registration.html', context)

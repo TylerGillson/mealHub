@@ -48,7 +48,15 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.ingredient_name
+'''
+class Review(models.Model):
+    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    reviewed_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    review_text = models.TextField(max_length =255)
 
+    def __str__(self):
+        return ("%s Review by %s" %(self.meal.mealname, self.reviewd_by.username))
+'''
 class MealRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mealRequestName = models.CharField(max_length=50)
