@@ -21,10 +21,11 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^register/$', views.RegisterView, name = 'register'),
+    url(r'^register/$', views.register, name = 'register'),
+    #url(r'^register/$', views.registerView, name = 'register'),
     #url(r'^$', auth_views.login, {'template_name': 'basic/login.html'}, name ='login'),
     url(r'^login/$', auth_views.login, {'template_name': 'mealhub/login.html'}, name = 'login'),
     url(r'^logout/$', auth_views.logout, {'next_page':'/mealhub'}, name='logout'),
     url(r'^users/', include('users.urls')),
-    url(r'^$', views.Home, name ='home'),
+    url(r'^$', views.home, name ='home'),
 ]
