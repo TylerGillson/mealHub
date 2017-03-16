@@ -36,7 +36,8 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
+	'mealhub.apps.MealhubConfig',
+	'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,13 +94,13 @@ if DJANGO_MODE == 'local':
 		    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 		 }
      }
-	
+
 elif DJANGO_MODE == 'production' or DJANGO_MODE == 'prod_debug':
 	import dj_database_url
     # Handles DATABASE_URL environment variable on Heroku
 	DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
 
-	
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
