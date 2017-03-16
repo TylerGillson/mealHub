@@ -27,4 +27,15 @@ def RegisterView(request):
     mealrequest = MealRequest.objects.order_by('-date_requested')
     meal = Meal.objects.order_by('meal_rating')
     context = {'mealrequests': mealrequest, 'meal': meal,}
-    return render(request, 'users/Registration.html', context)
+    return render(request, 'users/register.html', context)
+
+''' Date formatting example '''
+#{% if meal %}
+#{% for m in meal %}
+#<tr>
+#<td class="odd verticalLine">{{ m.user.username }}</td>
+#<td class="odd verticalLine">{{ m.mealname }}</td>
+#<td class="odd verticalLine">{{ m.servings_available }}</td>
+#<td class="odd">{{ m.date_available|date:"g:i a m/d/y" }}</td>
+#</tr>
+#{% endfor %}
