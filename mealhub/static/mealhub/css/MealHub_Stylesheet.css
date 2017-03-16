@@ -1,11 +1,11 @@
 body {
 	padding-top: 50px;
-	background-image:url("../media/fog.gif");
+	background-image:url("../media/ethiopian-platter.jpg");
 	background-position: center center;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	width: 100%;
-}	
+}
 .MealFeed{
 	visibility:shown;
 	position:relative;
@@ -28,9 +28,15 @@ body {
 	text-align: center;
 }
 .RegisterForm{
+<<<<<<< HEAD
 	background:rgba(255,255,255,.6);
 	padding-left:7%;
 	
+=======
+	background-color:white;
+
+
+>>>>>>> refs/remotes/origin/master
 }
 .RegisterForm .RegisterField{
 }
@@ -44,13 +50,10 @@ body {
 /*This is for phones*/
 @media screen and (max-width:600px){
 	.MealFeed{
-		visibility:hidden;	
+		visibility:hidden;
 	}
 	.MealFeedHeader{
 		visibility:hidden;
 	}
 
 }
-
-
-
