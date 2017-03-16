@@ -28,9 +28,11 @@ body {
 	text-align: center;
 }
 .RegisterForm{
-	background-color:white;
+	background:rgba(255,255,255,.6);
+	padding-left:7%;
 	
-	
+}
+.RegisterForm .RegisterField{
 }
 
 .MealFeedHeader{
