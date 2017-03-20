@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+	'mapwidgets',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -83,6 +84,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mealhub.wsgi.application'
 
+MAP_WIDGETS = {
+	"GooglePointFieldWidget": (
+		("zoom", 15),
+		("mapCenterLocationName", [57.7177013, -16.6300491]),
+		("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'uk'}
+	}),
+		("markerFitZoom", 12),
+	),
+	"GOOGLE_MAP_API_KEY": "AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8"
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
