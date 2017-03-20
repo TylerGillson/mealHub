@@ -10,19 +10,8 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ('username', 'first_name', 'email')
 
-
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
-
-from mapwidgets.widgets import GooglePointFieldWidget
-
-class SearchResultForm(forms.ModelForm):
-    class Meta:
-    model = City
-    fields = ("coordinates")
-    widgets = {
-        'coordinates': GooglePointFieldWidget,
-    }

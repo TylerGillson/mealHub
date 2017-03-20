@@ -38,6 +38,7 @@ else:
 INSTALLED_APPS = [
 	'mealhub.apps.MealhubConfig',
 	'users.apps.UsersConfig',
+	'meals.apps.MealsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,8 +49,11 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-	'mapwidgets',
+	'easy_maps',
 ]
+
+EASY_MAPS_CENTER = (-41.3, 32)
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,17 +87,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mealhub.wsgi.application'
-
-MAP_WIDGETS = {
-	"GooglePointFieldWidget": (
-		("zoom", 15),
-		("mapCenterLocationName", [57.7177013, -16.6300491]),
-		("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'uk'}
-	}),
-		("markerFitZoom", 12),
-	),
-	"GOOGLE_MAP_API_KEY": "AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8"
-}
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases

@@ -1,6 +1,6 @@
 body {
 	padding-top: 50px;
-	background-image:url("../media/ethiopian-platter.jpg");
+	background-image:url("../media/fog.gif");
 	background-position: center center;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -29,10 +29,10 @@ body {
 }
 
 .RegisterForm{
-	color: white;
 	background: linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.4)
     );
 	--background-color:white;
 }
@@ -51,5 +51,4 @@ body {
 	.MealFeedHeader{
 		visibility:hidden;
 	}
-
 }

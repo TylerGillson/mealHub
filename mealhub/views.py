@@ -11,7 +11,7 @@ class LoginView(generic.ListView):
     template_name = 'mealhub/login.html'
 
 def home(request):
-    return HttpResponse("Welcome to mealHub home page! :)<form action ='/users'><input type ='submit' value=\"login\" /></form>")
+    return HttpResponse("Welcome to mealHub home page! :)<form action ='/register'><input type ='submit' value=\"login\" /></form>")
 
 def registerView(request):
     return render(request, 'mealhub/register.html')
