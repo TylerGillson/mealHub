@@ -7,6 +7,16 @@ body {
 	width: 100%;
 }
 
+.messages {
+	list-style: none;
+	font-size: 20px;
+	color: red;
+	width: 18%;
+	background-color: white;
+	position: relative;
+	left: 41%;
+}
+
 .LeftSide{
 	visibility:shown;
 	position:relative;

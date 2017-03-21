@@ -2,7 +2,7 @@
   font-family: 'Alegreya', cursive;
 }
 
-header {
+#header {
   background-color: lightgrey;
   position: fixed;
   width: 100%;
@@ -10,7 +10,7 @@ header {
   left: 0;
 }
 
-header a {
+#header a {
   margin-left: 20px;
 }
 

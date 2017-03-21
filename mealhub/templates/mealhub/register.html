@@ -53,36 +53,46 @@
       </div>
     </nav>
 
-<div class="container">
-	<div class="row">
-	<!--sm class used instead of xs, so they stack on top at the smallest level-->
-		<div class="col-md-3 LeftSide">
-			<h3>What is a Mouth?</h3>
-				<p>Some cool text could go here. Maybe something about the website. Something about the creators
-  			something about the design process. Idk but some text to even it out could go here. this is only here
-  			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
-  			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
-  			read on lonely cowboy.</p>
-		</div>
-  	<div class="col-md-6 RegisterForm">
-  		<form method="post" action=".">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <input type="submit" value="Register" class="btn"/>
-      </form>
-  	</div>
-		<div class="col-md-3 RightSide">
-			<h3>What is a Chef?</h3>
-			<p>Some cool text could go here. Maybe something about the website. Something about the creators
-			something about the design process. Idk but some text to even it out could go here. this is only here
-			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
-			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
-			read on lonely cowboy.</p>
-    </div>
-  </div>
-</div><!-- /.container -->
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="{{ message.tags }}">
+        {{ message|safe }}
+        <a href="#" class="close">✖</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 
+    <div class="container">
+    	<div class="row">
+    	<!--sm class used instead of xs, so they stack on top at the smallest level-->
+    		<div class="col-md-3 LeftSide">
+    			<h3>What is a Mouth?</h3>
+    				<p>Some cool text could go here. Maybe something about the website. Something about the creators
+      			something about the design process. Idk but some text to even it out could go here. this is only here
+      			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
+      			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
+      			read on lonely cowboy.</p>
+    		</div>
+      	<div class="col-md-6 RegisterForm">
+      		<form method="post" action=".">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" value="Register" class="btn"/>
+          </form>
+      	</div>
+    		<div class="col-md-3 RightSide">
+    			<h3>What is a Chef?</h3>
+    			<p>Some cool text could go here. Maybe something about the website. Something about the creators
+    			something about the design process. Idk but some text to even it out could go here. this is only here
+    			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
+    			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
+    			read on lonely cowboy.</p>
+        </div>
+      </div>
+    </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

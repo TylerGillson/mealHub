@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib.auth import authenticate, login
 from users.models import Profile
 from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm
+from django.contrib import messages
 
 def home(request):
     return HttpResponse("Welcome to mealHub home page! :)<form action ='/login'><input type ='submit' value=\"login\" /></form>\
@@ -29,6 +30,7 @@ def register(request):
         else:
             user_form = UserRegistrationForm()
             profile_form = ProfileForm()
+            messages.error(request, 'Registration Error')
             return render(request, 'mealhub/register.html', {'user_form': user_form, 'profile_form': profile_form})
     else:
         user_form = UserRegistrationForm()
