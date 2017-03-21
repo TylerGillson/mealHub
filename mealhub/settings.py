@@ -38,6 +38,7 @@ else:
 INSTALLED_APPS = [
 	'mealhub.apps.MealhubConfig',
 	'users.apps.UsersConfig',
+	'meals.apps.MealsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +49,11 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+	'easy_maps',
 ]
+
+EASY_MAPS_CENTER = (-41.3, 32)
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,7 +87,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mealhub.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases

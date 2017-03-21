@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'mealhub/login.html'}, name = 'login'),
     url(r'^logout/$', auth_views.logout, {'next_page':'/mealhub'}, name='logout'),
     url(r'^users/', include('users.urls')),
+    url(r'^meals/', include('meals.urls')),
     url(r'^$', views.home, name ='home'),
 ]
