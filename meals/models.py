@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 import datetime
-'''
+
 class Meal(models.Model):
     RATING_VALUE = (
         (0, "No Stars"),
@@ -33,19 +34,4 @@ class Ingredient(models.Model):
 class Review(models.Model):
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
     reviewed_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    review_text = models.TextField(max_length =255)
-
-    def __str__(self):
-        return ("%s Review by %s" %(self.meal.mealname, self.reviewd_by.username))
-
-class MealRequest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    mealRequestName = models.CharField(max_length=50)
-    date_created = models.DateTimeField(default =timezone.now)
-    date_requested = models.DateTimeField(default =timezone.now)
-    servings_requested = models.IntegerField()
-    other = models.CharField(max_length=200) #I'm alergic to peanuts.. etc
-
-    def __str__(self):
-        return self.mealRequestName
-'''
+    review_text = models.TextField(max_length=255)

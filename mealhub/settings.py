@@ -1,16 +1,10 @@
-"""
-Django settings for mealhub project on Heroku. For more info, see:
-https://github.com/heroku/heroku-django-template
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.9/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.9/ref/settings/
-"""
-
 import os
 import dj_database_url
+from django.core.urlresolvers import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('user_hub')
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_URL = reverse_lazy('logout')
 
 DJANGO_MODE = os.getenv('DJANGO_MODE', "local").lower()
 USE_TZ=True
@@ -18,9 +12,6 @@ USE_TZ=True
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "!8%1z5^yu$%n(rluc$!3g6y%+*rg0gh$gf5gd9v3+423shea_e"
@@ -32,21 +23,20 @@ if DJANGO_MODE == 'local' or DJANGO_MODE == 'prod_debug':
 else:
 	DEBUG = False
 
-
 # Application definition
 
 INSTALLED_APPS = [
-	'mealhub.apps.MealhubConfig',
-	'users.apps.UsersConfig',
-	'meals.apps.MealsConfig',
+	'mealhub',
+	'meals',
+	'users',
+	#'mealhub.apps.MealhubConfig',
+	#'users.apps.UsersConfig',
+	#'meals.apps.MealsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # Disable Django's own staticfiles handling in favour of WhiteNoise, for
-    # greater consistency between gunicorn and `./manage.py runserver`. See:
-    # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 	'easy_maps',
@@ -88,14 +78,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mealhub.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
 if DJANGO_MODE == 'local':
 	DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-		    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 		 }
      }
 
@@ -103,7 +90,6 @@ elif DJANGO_MODE == 'production' or DJANGO_MODE == 'prod_debug':
 	import dj_database_url
     # Handles DATABASE_URL environment variable on Heroku
 	DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -120,27 +106,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'MST'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Update database configuration with $DATABASE_URL.
-#db_from_env = dj_database_url.config(conn_max_age=500)
-#DATABASES['default'].update(db_from_env)
-
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
@@ -150,6 +126,4 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
 ]
 
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

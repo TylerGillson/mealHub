@@ -4,9 +4,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.template import loader
 
-from .models import MealRequest, User, Meal
-
-# Create your views here.
+from .models import Profile, MealRequest
+from meals.models import Meal
 
 def ChefsView(request):
     mealrequest = MealRequest.objects.order_by('-date_requested')
