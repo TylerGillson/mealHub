@@ -2,36 +2,34 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from users.models import Profile
-from .forms import UserForm, ProfileForm, LoginForm
+from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm
 
 def home(request):
-    return HttpResponse("Welcome to mealHub home page! :)<form action ='/login'><input type ='submit' value=\"login\" /></form>")
+    return HttpResponse("Welcome to mealHub home page! :)<form action ='/login'><input type ='submit' value=\"login\" /></form>\
+                                                         <form action ='/register'><input type ='submit' value=\"register\" /></form>")
 
 def register(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST)
-        if user_form.is_valid():
-            username = user_form.cleaned_data['username']
-            first_name = user_form.cleaned_data['first_name']
-            email = user_form.cleaned_data['email']
-            password = user_form.cleaned_data['password']
-            user = User.objects.create_user(username, email, password)
-            user.first_name = first_name
-            user.save()
-        profile_form = ProfileForm(request.POST, instance=user)
-        if profile_form.is_valid():
-            profile = Profile(user=user)
+        user_form = UserRegistrationForm(request.POST)
+        profile_form = ProfileForm(request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(
+            user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            profile = Profile.objects.create(user=new_user)
             profile.user_type = profile_form.cleaned_data['user_type']
             profile.zip_code = profile_form.cleaned_data['zip_code']
             profile.save()
-            return render(request,'mealhub/register_done.html',{'user': user})
+            return render(request, 'mealhub/register_done.html', {'new_user': new_user})
     else:
-        user_form = UserForm()
+        user_form = UserRegistrationForm()
         profile_form = ProfileForm()
-        return render(request,'mealhub/register.html',{
-            'user_form': user_form, 'profile_form': profile_form})
+        return render(request, 'mealhub/register.html', {'user_form': user_form, 'profile_form': profile_form})
 
 def user_login(request):
     if request.method == 'POST':
@@ -56,3 +54,17 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def user_hub(request):
     return render(request, 'users/user_hub.html', {'section': 'user_hub'})
+
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return render(request, 'users/user_hub.html', {'section': 'user_hub'})
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(instance=request.user.profile)
+        return render(request, 'mealhub/edit.html', {'user_form': user_form, 'profile_form': profile_form})

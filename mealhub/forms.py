@@ -3,7 +3,7 @@ from users.models import Profile
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-class UserForm(forms.ModelForm):
+class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password',
                                widget=forms.PasswordInput,
                                help_text='Passwords must be at least 8 digits.')
@@ -22,7 +22,17 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
 
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'email')
+
 class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('user_type', 'zip_code')
+
+class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('user_type', 'zip_code')

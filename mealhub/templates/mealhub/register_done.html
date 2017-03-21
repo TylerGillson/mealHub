@@ -5,7 +5,7 @@
     <title>Welcome</title>
   </head>
   <body>
-    <h1>Welcome {{ user.first_name|title }}!</h1>
+    <h1>Welcome {{ new_user.first_name|title }}!</h1>
     <p>Your account has been successfully created. Now you can <a href="{% url "login" %}">log in</a>.</p>
   </body>
 </html>

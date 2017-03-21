@@ -5,10 +5,10 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
+    # House-keeping URLS:
     url(r'^admin/', admin.site.urls),
     url(r'^register/$', views.register, name = 'register'),
-
-    # House-keeping URLS:
+    url(r'^edit/$', views.edit, name='edit'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^logout-then-login/$', auth_views.logout_then_login, name='logout_then_login'),
