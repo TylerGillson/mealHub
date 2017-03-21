@@ -26,20 +26,18 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+	# Custom Apps:
 	'mealhub',
 	'meals',
 	'users',
-	#'mealhub.apps.MealhubConfig',
-	#'users.apps.UsersConfig',
-	#'meals.apps.MealsConfig',
-    'django.contrib.admin',
+	'easy_maps',
+	'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-	'easy_maps',
 ]
 
 EASY_MAPS_CENTER = (-41.3, 32)

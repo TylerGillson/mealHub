@@ -6,9 +6,6 @@ from django.contrib.auth.models import User
 from users.models import Profile
 from .forms import UserForm, ProfileForm, LoginForm
 
-class LoginView(generic.ListView):
-    template_name = 'mealhub/login.html'
-
 def home(request):
     return HttpResponse("Welcome to mealHub home page! :)<form action ='/login'><input type ='submit' value=\"login\" /></form>")
 
@@ -22,7 +19,6 @@ def register(request):
             password = user_form.cleaned_data['password']
             user = User.objects.create_user(username, email, password)
             user.first_name = first_name
-            user.is_active = False
             user.save()
         profile_form = ProfileForm(request.POST, instance=user)
         if profile_form.is_valid():

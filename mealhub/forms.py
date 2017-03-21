@@ -5,15 +5,15 @@ from django.utils.translation import ugettext_lazy as _
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(label='Password',
-                               widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password',
-                                widget=forms.PasswordInput)
+                               widget=forms.PasswordInput,
+                               help_text='Passwords must be at least 8 digits.')
+    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email')
         help_texts = {
-            'username': _('')
+            'username': _(''),
         }
 
     def clean_password2(self):
