@@ -26,6 +26,10 @@ def register(request):
             profile.zip_code = profile_form.cleaned_data['zip_code']
             profile.save()
             return render(request, 'mealhub/register_done.html', {'new_user': new_user})
+        else:
+            user_form = UserRegistrationForm()
+            profile_form = ProfileForm()
+            return render(request, 'mealhub/register.html', {'user_form': user_form, 'profile_form': profile_form})
     else:
         user_form = UserRegistrationForm()
         profile_form = ProfileForm()
