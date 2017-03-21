@@ -8,6 +8,7 @@ class UserForm(forms.ModelForm):
                                widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password',
                                 widget=forms.PasswordInput)
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email')
