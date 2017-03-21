@@ -11,13 +11,11 @@
     <meta name="author" content="">
     <link rel="icon" href="{% static 'mealhub/media/cutlery.ico' %}">
 
-    <title>MealHub Registration</title>
+    <title>Register</title>
 
     <!-- Bootstrap core CSS -->
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
 
     <!-- Custom styles for this template -->
     <link href="{% static 'mealhub/css/MealHub_Stylesheet.css' %}" rel="stylesheet">
@@ -58,67 +56,29 @@
     <div class="container">
 	<div class="row">
 	<!--sm class used instead of xs, so they stack on top at the smallest level-->
-		<div class="col-md-3 MealFeed">
-
-			<h3>Meal Feed</h3>
-				<ul>
-					{% if mealrequests %}
-					{% for mealReq in mealrequests %}
-					<li id="RequestItem">{{ mealReq.user.username }} wants {{ mealReq.servings_requested }} servings of {{ mealReq.mealRequestName }}</li>
-					{% endfor %}
-					{% else %}
-					<li>No Current Meal Requests</li>
-					{% endif %}
-				</ul>
+		<div class="col-md-3 LeftSide">
+			<h3>What is a Mouth?</h3>
+				<p>Some cool text could go here. Maybe something about the website. Something about the creators
+  			something about the design process. Idk but some text to even it out could go here. this is only here
+  			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
+  			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
+  			read on lonely cowboy.</p>
 		</div>
 		<div class="col-md-6 RegisterForm">
 		<form method="post" action=".">
-      {{ user_form.as_p }}
       {% csrf_token %}
-    <!--<form method="post" enctype="text/plain" action="mailto:spacarar@hotmail.com">-->
-        <!--<fieldset>
-            <h2>Register New User</h2>
-                <p class="RegisterRow">
-                    <label for="first-name">First Name:</label>
-                    <input type="text" id="first-name" name="first_name" class="field-large" />
-                </p>
-                <p class="RegisterRow">
-                    <label for="last-name">Last Name:</label>
-                    <input type="text" id="last-name" name="last_name" class="field-large" />
-                </p>
-				<p class="RegisterRow">
-					<label for="password">Password: </label>
-					<input type="text" id="password" name="password" class="field-large"/>
-				</p>
-				<p class="RegisterRow">
-					<label for="password_c">Confirm Password:</label>
-					<input type="text" id="password_c" name="password_c" class="field-large"/>
-				</p>
-                <p class="RegisterRow">
-                    <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" class="field-large" />
-                </p>
-                <p class="RegisterRow">
-                    <label for="email">Confirm Email:</label>
-                    <input type="email" id="email_c" name="email_c" class="field-large" />
-                </p>
-				<p class = "RegisterRow">
-					<label for="userType">Default User-Type</label>
-					<input type="radio" name ="userType" value = "Mouth"> Mouth (I want to eat)
-					<input type ="radio" name="userType" value = "Chef"> Chef (I want to cook)
-				</p>
-      </fieldset>-->
-        <input type="submit" value="Register" class="btn" />
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type="submit" value="Register" class="btn"/>
     </form>
 	</div>
 		<div class="col-md-3 RightSide">
-			<h3>Other Text</h3>
-			<p>
-			Some cool text could go here. Maybe something about the website. Something about the creators
+			<h3>What is a Chef?</h3>
+			<p>Some cool text could go here. Maybe something about the website. Something about the creators
 			something about the design process. Idk but some text to even it out could go here. this is only here
 			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
 			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
-			read on lonely cowboy.
+			read on lonely cowboy.</p>
 		</div>
   </div>
 	</div><!-- /.container -->

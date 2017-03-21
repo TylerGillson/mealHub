@@ -1,10 +1,13 @@
+import random
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.template import loader
-from .forms import UserRegistrationForm
+from .forms import UserForm, ProfileForm
+from users.models import Profile
+from django.contrib.auth.models import User
 
 # Create your views here.
 class LoginView(generic.ListView):
@@ -18,15 +21,25 @@ def registerView(request):
 
 def register(request):
     if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
+        user_form = UserForm(request.POST)
         if user_form.is_valid():
-            # Create a new user object but avoid saving it yet
-            new_user = user_form.save(commit=False)
-            # Set the chosen password
-            new_user.set_password(user_form.cleaned_data['password'])
-            # Save the User object
-            new_user.save()
-            return render(request,'mealhub/register_done.html',{'new_user': new_user})
+            username = user_form.cleaned_data['username']
+            first_name = user_form.cleaned_data['first_name']
+            email = user_form.cleaned_data['email']
+            password = user_form.cleaned_data['password']
+            user = User.objects.create_user(username, email, password)
+            user.first_name = first_name
+            user.is_active = False
+            user.save()
+        profile_form = ProfileForm(request.POST, instance=user)
+        if profile_form.is_valid():
+            profile = Profile(user=user)
+            profile.user_type = profile_form.cleaned_data['user_type']
+            profile.zip_code = profile_form.cleaned_data['zip_code']
+            profile.save()
+            return render(request,'mealhub/register_done.html',{'user': user})
     else:
-        user_form = UserRegistrationForm()
-        return render(request,'mealhub/register.html',{'user_form': user_form})
+        user_form = UserForm()
+        profile_form = ProfileForm()
+        return render(request,'mealhub/register.html',{
+            'user_form': user_form, 'profile_form': profile_form})

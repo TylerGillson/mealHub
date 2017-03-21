@@ -1,25 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 import datetime
-# Create your models here.
-class User(models.Model):
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     TYPE_CHOICES = (
         ('C', "Chef"),
         ('M', "Mouth"),
     )
-
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    email = models.EmailField(default="email@someEmail.com")
     user_type = models.CharField(max_length=1, choices=TYPE_CHOICES)
-    regdate = models.DateTimeField()
-    location = models.IntegerField(default = 00000)
-
-#    if self.user_type == 'C':
-#        user_rating = 0 #someFunction to average meal stars
+    zip_code = models.IntegerField(default = 00000)
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
 class Meal(models.Model):
     RATING_VALUE = (
@@ -30,7 +26,7 @@ class Meal(models.Model):
         (4, "Four Stars"),
         (5, "Five Stars"),
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     mealname = models.CharField(max_length=50)
     mealdesc = models.CharField(max_length=200)
     date_posted = models.DateTimeField()
@@ -58,7 +54,7 @@ class Review(models.Model):
         return ("%s Review by %s" %(self.meal.mealname, self.reviewd_by.username))
 '''
 class MealRequest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     mealRequestName = models.CharField(max_length=50)
     date_created = models.DateTimeField(default =timezone.now)
     date_requested = models.DateTimeField(default =timezone.now)
