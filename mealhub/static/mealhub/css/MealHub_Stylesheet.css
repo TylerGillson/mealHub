@@ -6,42 +6,42 @@ body {
 	background-repeat: no-repeat;
 	width: 100%;
 }
+
 .MealFeed{
 	visibility:shown;
 	position:relative;
 	background:rgba(172,173,172,.6);
-	border-left:6px solid blue;
-
 }
+
 .MealFeed h3{
 	text-align: center;
 }
+
 .RightSide{
 	visibility:shown;
 	float:right;
 	position:relative;
 	background:rgba(172,173,172,.6);
-	border-right:6px solid blue;
-
 }
+
 .RightSide h3{
 	text-align: center;
 }
 .RegisterForm{
-	background:rgba(255,255,255,.7);
-	min-height:110%;
-	padding-left:7%;
-	
-}
-.RegisterForm .RegisterField{
+	color: white;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    );
+	--background-color:white;
 }
 
 .MealFeedHeader{
 	visibility:shown;
 	position:relative;
 	text-align:center;
-
 }
+
 /*This is for phones*/
 @media screen and (max-width:600px){
 	.MealFeed{
