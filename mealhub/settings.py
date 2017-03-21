@@ -43,6 +43,13 @@ INSTALLED_APPS = [
 EASY_MAPS_CENTER = (-41.3, 32)
 EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8'
 
+# mealhub.email@gmail.com SMTP server config:
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mealhub.email@gmail.com'
+EMAIL_HOST_PASSWORD = 'RfkgjZCisCwyc3iLMAMbbLBwH'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
