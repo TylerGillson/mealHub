@@ -28,15 +28,10 @@ body {
 	text-align: center;
 }
 .RegisterForm{
-<<<<<<< HEAD
-	background:rgba(255,255,255,.6);
+	background:rgba(255,255,255,.7);
+	min-height:110%;
 	padding-left:7%;
 	
-=======
-	background-color:white;
-
-
->>>>>>> refs/remotes/origin/master
 }
 .RegisterForm .RegisterField{
 }
