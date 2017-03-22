@@ -1,0 +1,13 @@
+Tyler:
+- Nothing until Sunday...
+
+Shawn:
+- base.html for housekeeping pages
+- home page html
+
+Richard:
+- test data for users w/ meals
+- meal photo upload
+
+Matt:
+- social authentication

@@ -1,5 +1,15 @@
 * {
   font-family: 'Alegreya', cursive;
+  font-size: 20px;
+}
+
+body {
+  width: 100%;
+  background-image: url("../mealhub/media/city-users-banner.png");
+  background-position:center center;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  background-size: cover;
 }
 
 #header {
@@ -21,8 +31,15 @@
 }
 
 #content {
+  background: rgba(255,255,255,.4);
   margin-top: 100px;
   position: relative;
   left: -50%;
   float: left;
+}
+
+#content h1 {
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 40px;
 }
