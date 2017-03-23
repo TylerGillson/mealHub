@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
@@ -19,6 +20,7 @@ class Meal(models.Model):
     date_available = models.DateTimeField()
     servings_available = models.IntegerField()
     meal_rating = models.IntegerField(choices=RATING_VALUE, default=0)
+    photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True)
 
     def __str__(self):
         return self.mealname
