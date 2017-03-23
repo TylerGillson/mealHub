@@ -3,15 +3,36 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 from django.template import loader
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+from mealhub.forms import CreateMealForm
 from .models import Profile, MealRequest
 from meals.models import Meal
 
+@login_required
 def ChefsView(request):
-    mealrequest = MealRequest.objects.order_by('-date_requested')
-    meal = Meal.objects.order_by('meal_rating')
-    context = {'mealrequests': mealrequest, 'meal': meal,}
-    return render(request, 'users/chef.html', context)
+    if request.method == 'POST':
+        meal_form = CreateMealForm()
+        if meal_form.is_valid():
+            current_user = request.user
+            new_meal = Meal.objects.create(user=current_user)
+            new_meal.mealname = meal_form.cleaned_data['mealname']
+            new_meal.mealdesc = meal_form.cleaned_data['mealdesc']
+            new_meal.date_available = meal_form.cleaned_data['date_available']
+            new_meal.servings_available = meal_form.cleaned_data['servings_available']
+            new_meal.photo = meal_form.cleaned_data['photo']
+            new_meal.save()
+            return render(request, 'users/chef.html', {'new_meal': new_meal})
+        else:
+            meal_form = CreateMealForm()
+            messages.error(request, 'Create a meal Error')
+            return render(request, 'users/chef.html', {'meal_form': meal_form})
+
+    else:
+        meal_form = CreateMealForm()
+        return render(request, 'users/chef.html', {'meal_form': meal_form})
+
 
 def MouthsView(request):
     meal = Meal.objects.order_by('-date_available')

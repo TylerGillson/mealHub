@@ -1,7 +1,21 @@
 from django import forms
+#from django.forms import widgets
 from users.models import Profile
+from meals.models import Meal
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+
+from django.contrib.admin import widgets
+import datetime
+
+
+class CreateMealForm(forms.ModelForm):
+    class Meta:
+        model = Meal
+        fields = ('mealname', 'mealdesc', 'date_available', 'servings_available', 'photo')
+        widgets = {
+            'date_available': widgets.AdminTimeWidget(),
+        }
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password',
