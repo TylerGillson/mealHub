@@ -6,7 +6,34 @@
     <meta charset="utf-8">
     <title>Search</title>
   </head>
+
+  {% if request.user.is_authenticated %}
   <body>
+
+    <!--DEBUG Code-->
+    {{ request.user.username }} {{ request.user.profile.user_type }} {{ request.user.profile.zip_code }}
+
     {% easy_map address using 'meals/map.html' %}
+    <!--Chef feed -->
+    {% if request.user.profile.user_type == "C" %}
+
+    {% endif %}
+
+    <!--Mouth Feed -->
+    {% if request.user.profile.user_type == "M" %}
+    {% if meal %}
+    <ul>
+      {% for m in meal %}
+        {% if m.user.profile.zip_code == request.user.profile.zip_code %}
+          <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+
+
+
   </body>
+  {% endif %}
 </html>
