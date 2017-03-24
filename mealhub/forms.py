@@ -12,9 +12,9 @@ import datetime
 class CreateMealForm(forms.ModelForm):
     class Meta:
         model = Meal
-        fields = ('mealname', 'mealdesc', 'date_available', 'servings_available', 'photo')
+        fields = ('mealname', 'mealdesc', 'servings_available', 'photo')
         widgets = {
-            'date_available': widgets.AdminTimeWidget(),
+            'date_available': widgets.AdminSplitDateTime(),
         }
 
 class UserRegistrationForm(forms.ModelForm):

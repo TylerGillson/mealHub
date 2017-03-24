@@ -16,11 +16,12 @@ class Meal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mealname = models.CharField(max_length=50)
     mealdesc = models.CharField(max_length=200)
+    #need to fix the date
     date_posted = models.DateTimeField(auto_now_add=True)
-    date_available = models.DateTimeField()
-    servings_available = models.IntegerField()
+    date_available = models.DateTimeField(auto_now_add=True)
+    servings_available = models.IntegerField(null=True)
     meal_rating = models.IntegerField(choices=RATING_VALUE, default=0)
-    photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True)
+    photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True, default='meals/None/noimg.jpg')
 
     def __str__(self):
         return self.mealname

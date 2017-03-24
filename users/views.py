@@ -13,17 +13,19 @@ from meals.models import Meal
 @login_required
 def ChefsView(request):
     if request.method == 'POST':
-        meal_form = CreateMealForm()
+        meal_form = CreateMealForm(request.POST, request.FILES)
         if meal_form.is_valid():
-            current_user = request.user
-            new_meal = Meal.objects.create(user=current_user)
+            meal_form.save(commit=False)
+
+            new_meal = Meal.objects.create(user=request.user)
             new_meal.mealname = meal_form.cleaned_data['mealname']
             new_meal.mealdesc = meal_form.cleaned_data['mealdesc']
-            new_meal.date_available = meal_form.cleaned_data['date_available']
+            #FIXME -- need to figure out date widget, otherwise form erros for daysss
+            #new_meal.date_available = meal_form.cleaned_data['date_available']
             new_meal.servings_available = meal_form.cleaned_data['servings_available']
             new_meal.photo = meal_form.cleaned_data['photo']
             new_meal.save()
-            return render(request, 'users/chef.html', {'new_meal': new_meal})
+            return render(request, 'users/chef.html', {'meal_form': meal_form})
         else:
             meal_form = CreateMealForm()
             messages.error(request, 'Create a meal Error')
