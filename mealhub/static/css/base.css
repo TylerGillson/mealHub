@@ -12,6 +12,16 @@ body {
   background-size: cover;
 }
 
+.messages {
+	list-style: none;
+	font-size: 20px;
+	color: red;
+	width: 18%;
+	background-color: white;
+	position: relative;
+	left: 41%;
+}
+
 #header {
   background-color: lightgrey;
   position: fixed;
@@ -36,10 +46,16 @@ body {
   position: relative;
   left: -50%;
   float: left;
+  padding: 10px;
 }
 
 #content h1 {
   font-size: 30px;
   text-align: center;
   padding-bottom: 40px;
+}
+
+input {
+  display: inline-block;
+  float: right;
 }
