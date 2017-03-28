@@ -1,18 +1,37 @@
-{% load easy_maps_tags %}
 
+{% load easy_maps_tags %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Search</title>
+    <style>
+      #header {
+        background-color: lightgrey;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      #header a {
+        margin-left: 20px;
+      }
+
+      ul {
+        position: relative;
+        top: 80px;
+      }
+
+    </style>
   </head>
 
   {% if request.user.is_authenticated %}
   <body>
-
-    <!--DEBUG Code-->
-    {{ request.user.username }} {{ request.user.profile.user_type }} {{ request.user.profile.zip_code }}
-
+    <div id="header">
+      <p><a href="{% url "home" %}">Home</a></p>
+    </div>
+    
     {% easy_map address using 'meals/map.html' %}
 
     <!--Chef feed -->
