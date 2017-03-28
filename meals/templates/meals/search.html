@@ -14,10 +14,16 @@
     {{ request.user.username }} {{ request.user.profile.user_type }} {{ request.user.profile.zip_code }}
 
     {% easy_map address using 'meals/map.html' %}
-    
+
     <!--Chef feed -->
     {% if request.user.profile.user_type == "C" %}
-
+    {% if meal_request %}
+    <ul>
+      {% for r in meal_request %}
+        <li>{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|date:"g:i a m/d/y" }} {{ r.user.profile.zip_code }}
+      {% endfor %}
+    </ul>
+    {% endif %}
     {% endif %}
 
     <!--Mouth Feed --- needs a containter and link each to the chefs page with their meals-->
@@ -25,9 +31,7 @@
     {% if meal %}
     <ul>
       {% for m in meal %}
-        {% if m.user.profile.zip_code == request.user.profile.zip_code %}
-          <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
-        {% endif %}
+        <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
       {% endfor %}
     </ul>
     {% endif %}
