@@ -1,12 +1,63 @@
-{% load easy_maps_tags %}
 
+{% load easy_maps_tags %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Search</title>
+    <style>
+      #header {
+        background-color: lightgrey;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      #header a {
+        margin-left: 20px;
+      }
+
+      ul {
+        position: relative;
+        top: 80px;
+      }
+
+    </style>
   </head>
+
+  {% if request.user.is_authenticated %}
   <body>
+    <div id="header">
+      <p><a href="{% url "home" %}">Home</a></p>
+    </div>
+    
     {% easy_map address using 'meals/map.html' %}
+
+    <!--Chef feed -->
+    {% if request.user.profile.user_type == "C" %}
+    {% if meal_request %}
+    <ul>
+      {% for r in meal_request %}
+        <li>{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|date:"g:i a m/d/y" }} {{ r.user.profile.zip_code }}
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+
+    <!--Mouth Feed --- needs a containter and link each to the chefs page with their meals-->
+    {% if request.user.profile.user_type == "M" %}
+    {% if meal %}
+    <ul>
+      {% for m in meal %}
+        <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endif %}
+
+
+
   </body>
+  {% endif %}
 </html>

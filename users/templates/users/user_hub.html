@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}User Hub{% endblock %}
 
@@ -11,10 +12,56 @@
     <title>User Hub</title>
   </head>
   <body>
+    {% if request.user.is_authenticated %}
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+          {{ message|safe }}
+          <a href="/users/user_hub" class="close">✖</a>
+        </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
     <h1>Welcome {{ user.first_name|title }}!</h1>
     <p>Welcome to your dashboard. You can <a href="{% url "edit" %}">edit your profile</a>
       or <a href="{% url "password_change" %}">change your password</a>
       or <a href="{% url "logout" %}">logout</a>.</p>
+      <!--Chef feed -->
+    {% if request.user.profile.user_type == "C" %}
+    <h2>Chef Hub</h2>
+
+    <h1> {{ user.first_name|title }}'s hub</h1>
+    <!-- post a meal form -->
+    <div class ="CreateMealForm">
+      <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ meal_form.as_p }}
+        <input type="submit" value="Post A Meal" class="btn"/>
+      </form>
+    </div>
+
+    {% endif %}
+
+    <!--Mouth feed-->
+    {% if request.user.profile.user_type == "M" %}
+    <h2> Mouth Hub</h2>
+    <h1> {{ user.first_name|title }}'s hub</h1>
+    <!-- post a meal form -->
+    <div class ="MealRequestForm">
+      <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ meal_request.as_p }}
+        <input type="submit" value="Post A Meal Request" class="btn"/>
+      </form>
+    </div>
+    {% endif %}
+
+
+
+    {% endif %}
   </body>
 </html>
 {% endblock %}

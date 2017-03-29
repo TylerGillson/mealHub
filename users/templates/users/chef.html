@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Chef Hub {% endblock %}
+
+{% block content %}
+
+
+
+
+<html>
+  <head>
+    <meata charset="utf-8">
+      <title>Chef Hub</title>
+  </head>
+    <body>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="{{ message.tags }}">
+        {{ message|safe }}
+        <a href="/users/chefs" class="close">✖</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1> {{ user.first_name|title }}'s hub</h1>
+    <!-- post a meal form -->
+    <div class ="CreateMealForm">
+      <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ meal_form.as_p }}
+        <input type="submit" value="Post A Meal" class="btn"/>
+      </form>
+    </div>
+  </body>
+  </html>
+  {% endblock %}

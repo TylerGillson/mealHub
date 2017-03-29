@@ -58,6 +58,7 @@ def user_login(request):
 from django.contrib.auth.decorators import login_required
 
 @login_required
+<<<<<<< HEAD
 def user_hub(request):
     return render(request, 'users/user_hub.html', {'section': 'user_hub'})
 	
@@ -76,6 +77,8 @@ def home(request):
 	return render(request,'mealhub/home.html',{'section':'settings'})
 
 @login_required
+=======
+>>>>>>> refs/remotes/origin/master
 def edit(request):
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
