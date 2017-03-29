@@ -19,6 +19,12 @@ urlpatterns = [
     url(r'^password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$', auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^password-reset/complete/$', auth_views.password_reset_complete, name='password_reset_complete'),
 
+	#Shawn's WIP page stuff
+	url(r'^userhub/$',views.userhub,name='userhub'),
+	url(r'^about/$',views.aboutUs,name='about'),
+	url(r'^settings/$',views.settings,name='settings'),
+	url(r'^home/$',views.home,name='home'),
+	
     # Custom app URLS:
     url(r'^users/', include('users.urls')),
     url(r'^meals/', include('meals.urls')),

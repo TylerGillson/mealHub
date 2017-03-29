@@ -1,12 +1,42 @@
 body {
-	padding-top: 100px;
-	background-image:url("../media/ethiopian-platter.jpg");
 	background-position: center center;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
+	background-size: cover;
 	width: 100%;
+
 }
 
+/*These are defined in the html body pages to set backgrounds*/
+#login{
+	background-image:url("../media/city-users-banner.png");
+}
+#register{
+	background-image:url("../media/ethiopian-platter.jpg");
+}
+#UserHub{
+	background-image:url("../media/indian-dishes.jpg");
+}
+#about{
+	background-image:url("../media/peer-to-peer-background.png");
+}
+#homePage{
+	background-image:url("../media/medium-veggies.jpg");
+}
+
+/*These are part of and have to deal with base.html*/
+#outer {
+  position: relative;
+  left: 50%;
+  float: left;
+}
+#content {
+  background: rgba(255,255,255,.6);
+  margin-top: 50px;
+  position: relative;
+  left: -50%;
+  float: left;
+}
 .messages {
 	list-style: none;
 	font-size: 20px;
@@ -17,39 +47,21 @@ body {
 	left: 41%;
 }
 
-.LeftSide{
-	visibility:shown;
-	position:relative;
-	background:rgba(172,173,172,.6);
-}
-
-.LeftSide h3{
-	text-align: center;
-}
-
-.RightSide{
-	visibility:shown;
-	float:right;
-	position:relative;
-	background:rgba(172,173,172,.6);
-}
-
-.RightSide h3{
-	text-align: center;
-}
+/*feeds and forms formattings */
 .RegisterForm{
-	background-color:white;
 	padding-bottom: 21px;
 	padding-top: 21px;
+}
+.MealFeed{
+	border:2px solid black;
+	border-radius:2px;
+}
+.RequestFeed{
+	border:2px solid black;
+	border-radius:2px;
 }
 
 /*This is for phones*/
 @media screen and (max-width:600px){
-	.MealFeed{
-		visibility:hidden;
-	}
-	.MealFeedHeader{
-		visibility:hidden;
-	}
 
 }
