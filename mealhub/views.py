@@ -1,14 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from django.contrib.auth import authenticate, login
-from users.models import Profile
-from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm, CreateMealForm, MealRequestForm
+from .models import Profile, Meal, MealRequest
 
-def home(request):
-    return HttpResponse("Welcome to mealHub home page! :)<form action ='/login'><input type ='submit' value=\"login\" /></form>\
-                                                         <form action ='/register'><input type ='submit' value=\"register\" /></form>")
 def home(request):
 	return render(request,'mealhub/home.html',{'section':'home'})
 
@@ -57,14 +55,12 @@ def user_login(request):
         form = LoginForm()
     return render(request, 'registration/login.html', {'form': form})
 
-from django.contrib.auth.decorators import login_required
-
 def aboutUs(request):
 	return render(request,'mealhub/about.html',{'section':'aboutUs'})
 
 @login_required
 def settings(request):
-	return render(request,'mealhub/settings.html',{'section':'settings'})
+	return render(request,'mealhub/edit.html',{'section':'settings'})
 
 @login_required
 def edit(request):
@@ -74,8 +70,68 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return render(request, 'users/user_hub.html', {'section': 'user_hub'})
+            return render(request, 'mealhub/user_hub.html', {'section': 'user_hub'})
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
         return render(request, 'mealhub/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+
+### MEALS ###
+
+def SearchView(request):
+    meal = Meal.objects.order_by('-date_available')
+    meal_request = MealRequest.objects.order_by('-date_requested')
+    context = {'meal': meal,'meal_request': meal_request, }
+    return render(request, 'mealhub/search.html', context)
+
+### USERS ###
+
+@login_required
+def UserHubView(request):
+    if request.user.profile.user_type == "C":
+        if request.method == 'POST':
+            meal_form = CreateMealForm(request.POST, request.FILES)
+            if meal_form.is_valid():
+                meal_form.save(commit=False)
+
+                new_meal = Meal.objects.create(user=request.user)
+                new_meal.mealname = meal_form.cleaned_data['mealname']
+                new_meal.mealdesc = meal_form.cleaned_data['mealdesc']
+                #FIXME -- need to figure out date widget, otherwise form erros for daysss
+                #new_meal.date_available = meal_form.cleaned_data['date_available']
+                new_meal.servings_available = meal_form.cleaned_data['servings_available']
+                new_meal.photo = meal_form.cleaned_data['photo']
+                new_meal.save()
+                messages.success(request, new_meal.mealname + ' Posted!')
+                return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form})
+            else:
+                meal_form = CreateMealForm()
+                messages.error(request, 'Create a meal Error')
+                return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form})
+
+        else:
+            meal_form = CreateMealForm()
+            return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form})
+
+    if request.user.profile.user_type == "M":
+        if request.method == 'POST':
+            meal_request = MealRequestForm(request.POST)
+            if meal_request.is_valid():
+                meal_request.save(commit=False)
+                new_request = MealRequest.objects.create(user=request.user)
+                new_request.mealRequestName = meal_request.cleaned_data['mealRequestName']
+                new_request.servings_requested = meal_request.cleaned_data['servings_requested']
+                #FIXME -- need to figure out date widget, otherwise form erros for daysss
+                #new_meal.date_available = meal_form.cleaned_data['date_available']
+                new_request.other = meal_request.cleaned_data['other']
+                new_request.save()
+                messages.success(request, new_request.mealRequestName + ' Requested!')
+                return render(request, 'mealhub/user_hub.html', {'meal_request': meal_request})
+            else:
+                meal_request = MealRequestForm()
+                messages.error(request, 'Create a meal request Error')
+                return render(request, 'mealhub/user_hub.html', {'meal_request': meal_request})
+
+        else:
+            meal_request = MealRequestForm()
+            return render(request, 'mealhub/user_hub.html', {'meal_request': meal_request})

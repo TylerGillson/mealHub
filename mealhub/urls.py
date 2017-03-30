@@ -7,7 +7,6 @@ from . import views
 urlpatterns = [
     # House-keeping URLS:
     url(r'^admin/', admin.site.urls),
-    url(r'^register/$', views.register, name = 'register'),
     url(r'^edit/$', views.edit, name='edit'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
@@ -18,11 +17,12 @@ urlpatterns = [
     url(r'^password-reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
     url(r'^password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$', auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^password-reset/complete/$', auth_views.password_reset_complete, name='password_reset_complete'),
-    url(r'^about/$', views.aboutUs, name='about'),
-	url(r'^home/$', views.home, name='home'),
 
-    # Custom app URLS:
-    url(r'^users/', include('users.urls')),
-    url(r'^meals/', include('meals.urls')),
+    url(r'^register/$', views.register, name = 'register'),
+    url(r'^about/$', views.aboutUs, name='about'),
+    url(r'^user_hub/$', views.UserHubView, name = 'user_hub'),
+    url(r'^search/$', views.SearchView, name ='search'),
+
     url(r'^$', views.home, name ='home'),
+    url(r'^home/$', views.home, name='home'),
 ]

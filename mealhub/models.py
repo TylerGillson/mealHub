@@ -4,6 +4,18 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
 
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    TYPE_CHOICES = (
+        ('C', "Chef"),
+        ('M', "Mouth"),
+    )
+    user_type = models.CharField(max_length=1, choices=TYPE_CHOICES)
+    zip_code = models.IntegerField(default = 00000)
+
+    def __str__(self):
+        return self.user.username
+
 class Meal(models.Model):
     RATING_VALUE = (
         (0, "No Stars"),
@@ -21,7 +33,7 @@ class Meal(models.Model):
     date_available = models.DateTimeField(auto_now_add=True)
     servings_available = models.IntegerField(null=True)
     meal_rating = models.IntegerField(choices=RATING_VALUE, default=0)
-    photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True, default='meals/None/noimg.jpg')
+    photo = models.ImageField(upload_to='mealhub/%Y/%m/%d', blank=True, default='mealhub/None/noimg.jpg')
 
     def __str__(self):
         return self.mealname
@@ -38,3 +50,14 @@ class Review(models.Model):
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
     reviewed_by = models.ForeignKey(User, on_delete=models.CASCADE)
     review_text = models.TextField(max_length=255)
+
+class MealRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mealRequestName = models.CharField(max_length=50)
+    date_created = models.DateTimeField(default =timezone.now)
+    date_requested = models.DateTimeField(default =timezone.now)
+    servings_requested = models.IntegerField(null=True)
+    other = models.CharField(max_length=200) #I'm alergic to peanuts.. etc
+
+    def __str__(self):
+        return self.mealRequestName
