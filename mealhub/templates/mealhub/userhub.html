@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}User Hub{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>User Hub</title>
+	</head>
+	<body id="UserHub">
+	<!-- If user is authenticated show content -->
+	{% if request.user.is_authenticated %}
+		<div class="container">
+		<!-- CHEF HUB SECTION -->
+		{% if user.profile.user_type == "C" %}
+			<div class="row">
+				<div class = "col-md-4">
+				</div>
+				<div class="col-md-2">
+					<p>Post a Meal</p>
+				</div>
+				<div class="col-md-2">
+					<p>Search Meals</p>
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+			<div class="row">
+				<div class = "col-md-6">
+				<!-- CHEF FEED -->
+				</div>
+				<div class = "col-md-6">
+				<!--RATINGS!!!!-->
+				</div>
+			</div>
+		<!-- MOUTH HUB SECTION -->
+		{% elif user.profile.user_type == "M" %}
+			<div class="row" style="border-bottom:1px solid black">
+				<div class = "col-md-4">
+				</div>
+				<div class="col-md-2">
+					<p>Find a meal</p>
+				</div>
+				<div class="col-md-2">
+					<p>Your Area</p>
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+			<div class="row">
+				<div class = "col-md-6" style="border-right:1px solid black">
+					<p>mouth feed here</p>
+				<!-- MOUTH FEED -->
+				</div>
+				<div class = "col-md-6" style="border-left:1px solid black">
+					<p>Meal Request form here</p>
+				<!--RATINGS!!!!-->
+				</div>
+			</div>
+		{% endif %}
+		</div>
+	{% endif %}
+	</body>
+</html>
+{% endblock %}
