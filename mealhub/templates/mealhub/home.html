@@ -15,9 +15,23 @@
 		<div class="row">
 			<div class="col-md-6 MealFeed">
 				<p>MEALFEED HERE</p>
+				{% if meal %}
+		    <ul>
+		      {% for m in meal %}
+		        <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
+		      {% endfor %}
+		    </ul>
+		    {% endif %}
 			</div>
 			<div class="col-md-6 RequestFeed">
 				<p>REQUESTFEED HERE</p>
+				{% if meal_request %}
+		    <ul>
+		      {% for r in meal_request %}
+		        <li>{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|date:"g:i a m/d/y" }} {{ r.user.profile.zip_code }}
+		      {% endfor %}
+		    </ul>
+		    {% endif %}
 			</div>
 		</div>
 	</div>

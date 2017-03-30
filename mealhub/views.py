@@ -8,7 +8,10 @@ from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditF
 from .models import Profile, Meal, MealRequest
 
 def home(request):
-	return render(request,'mealhub/home.html',{'section':'home'})
+    meal = Meal.objects.order_by('-date_available')
+    meal_request = MealRequest.objects.order_by('-date_requested')
+    context = {'meal': meal,'meal_request': meal_request,'section':'home'}
+    return render(request,'mealhub/home.html', context)
 
 def register(request):
     if request.method == 'POST':

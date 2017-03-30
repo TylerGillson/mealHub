@@ -120,7 +120,7 @@ USE_TZ = True
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','www.mealhub.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','www.mealhub.com', 'mealhub.com']
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
