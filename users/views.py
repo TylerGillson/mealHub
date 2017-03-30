@@ -6,7 +6,7 @@ from django.template import loader
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from mealhub.forms import CreateMealForm, MealRequestForm
+from .forms import CreateMealForm, MealRequestForm
 from .models import Profile, MealRequest
 from meals.models import Meal
 

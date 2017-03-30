@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-  <head> 
+  <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,11 +33,11 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
 		  {% if request.user.is_authenticated %}
-           {% if user.profile.user_type == "C" %} <li class="active"><a href="{% url "userhub" %}>Chef Hub</a></li> {% endif %}
-            {% if user.profile.user_type == "M" %}<li><a href="{% url "userhub" %}">Mouth Hub</a></li>  {% endif %}
-			<li><a href="{% url "settings" %}">Settings</a></li>
+           {% if user.profile.user_type == "C" %} <li class="active"><a href="{% url "user_hub" %}">Chef Hub</a></li> {% endif %}
+            {% if user.profile.user_type == "M" %}<li><a href="{% url "user_hub" %}">Mouth Hub</a></li>  {% endif %}
+			<li><a href="{% url "edit" %}">Settings</a></li>
 			<li><a href="{% url "logout" %}">Logout</a></li>
-			
+
 			<!--this line is last (if not logged in) -->
 			{% else %} <li><a href="{% url "login" %}">Login/Register</a></li>
 		  {% endif %}

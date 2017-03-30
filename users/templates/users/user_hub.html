@@ -14,17 +14,6 @@
   <body>
     {% if request.user.is_authenticated %}
 
-    {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-        <li class="{{ message.tags }}">
-          {{ message|safe }}
-          <a href="/users/user_hub" class="close">✖</a>
-        </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-
     <h1>Welcome {{ user.first_name|title }}!</h1>
     <p>Welcome to your dashboard. You can <a href="{% url "edit" %}">edit your profile</a>
       or <a href="{% url "password_change" %}">change your password</a>
