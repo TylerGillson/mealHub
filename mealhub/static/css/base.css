@@ -47,6 +47,8 @@ body {
   left: -50%;
   float: left;
   padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 #content h1 {
