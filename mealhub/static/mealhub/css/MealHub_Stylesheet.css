@@ -11,16 +11,6 @@ body {
 	width: 100%;
 }
 
-.messages {
-	list-style: none;
-	font-size: 20px;
-	color: red;
-	width: 18%;
-	background-color: white;
-	position: relative;
-	left: 41%;
-}
-
 /*These are defined in the html body pages to set backgrounds*/
 #login{
 	background-image:url("../media/city-users-banner.png");
