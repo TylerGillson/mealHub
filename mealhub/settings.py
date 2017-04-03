@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 	'easy_maps',
+	'postman',
 ]
 
 EASY_MAPS_CENTER = (-41.3, 32)
@@ -46,6 +47,13 @@ EMAIL_HOST_USER = 'mealhub.email@gmail.com'
 EMAIL_HOST_PASSWORD = 'RfkgjZCisCwyc3iLMAMbbLBwH'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# postman config:
+POSTMAN_DISALLOW_ANONYMOUS = True
+POSTMAN_DISALLOW_MULTIRECIPIENTS = True
+POSTMAN_DISALLOW_COPIES_ON_REPLY = True
+POSTMAN_AUTO_MODERATE_AS = True
+#POSTMAN_SHOW_USER_AS = 'username'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

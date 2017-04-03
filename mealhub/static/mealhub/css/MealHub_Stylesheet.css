@@ -50,6 +50,7 @@ body {
 	color: red;
 	width: 18%;
 	background-color: white;
+  z-index: 10;
 	position: relative;
 	left: 41%;
 }

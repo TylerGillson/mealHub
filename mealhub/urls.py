@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    # House-keeping URLS:
+    # House-keeping URLs:
     url(r'^admin/', admin.site.urls),
     url(r'^edit/$', views.edit, name='edit'),
     url(r'^login/$', auth_views.login, name='login'),
@@ -25,4 +25,7 @@ urlpatterns = [
 
     url(r'^$', views.home, name ='home'),
     url(r'^home/$', views.home, name='home'),
+
+    # Postman URLs:
+    url(r'^messages/', include('postman.urls', namespace='postman', app_name='postman')),
 ]
