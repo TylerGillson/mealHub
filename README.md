@@ -1,9 +1,9 @@
 # MealHub
 ## Semester Project for CSCI 310: Python
 
-###About MealHub:  
+### About MealHub:  
 <p>
-  Many struggle to find time to cook, while others enjoy
+    Many struggle to find time to cook, while others enjoy
 plenty. Mealhub is a peer-to peer local meal-sourcing platform
 that connects busy and/or cash strapped people in search
 of an affordable, home cooked meals (Mouths) to those interested
