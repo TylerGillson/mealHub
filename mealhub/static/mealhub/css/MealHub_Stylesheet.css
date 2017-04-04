@@ -69,10 +69,24 @@ body {
 	border:2px solid black;
 	border-radius:2px;
 }
+.MealFeed p {
+  position: relative;
+  left: 40%;
+  padding-top: 5px;
+  font-size: 20px;
+}
 .RequestFeed{
 	border:2px solid black;
 	border-radius:2px;
 }
+.RequestFeed p {
+  position: relative;
+  left: 40%;
+  padding-top: 5px;
+  font-size: 20px;
+}
+
+
 
 /*This is for phones*/
 @media screen and (max-width:600px){
