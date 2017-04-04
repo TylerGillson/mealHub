@@ -1,6 +1,5 @@
-# csci-310-semester-proj
+# MealHub
+## Semester Project for CSCI 310: Python
 
-##Url:
-[MealHub](https://mealhub.herokuapp.com/)
 
 
