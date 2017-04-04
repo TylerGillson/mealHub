@@ -46,19 +46,18 @@
       </div>
     </nav>
 
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-      <li class="{{ message.tags }}">
-        {{ message|safe }}
-        <a href="#" class="close">✖</a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-
     <div id="outer">
       <div id="content">
+	        {% if messages %}
+				<ul class="messages" style="padding-top:25px;">
+			{% for message in messages %}
+				<li class="{{ message.tags }}">
+			{{ message|safe }}
+				<a href="#" class="close">✖</a>
+				</li>
+			{% endfor %}
+				</ul>
+			{% endif %}
         {% block content %}
         {% endblock %}
       </div>
