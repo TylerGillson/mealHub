@@ -8,8 +8,8 @@ from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditF
 from .models import Profile, Meal, MealRequest
 
 def home(request):
-    meal = Meal.objects.order_by('-date_available')
-    meal_request = MealRequest.objects.order_by('-date_requested')
+    meal = Meal.objects.order_by('-date_available')[0:10]
+    meal_request = MealRequest.objects.order_by('-date_requested')[0:10]
     context = {'meal': meal,'meal_request': meal_request,'section':'home'}
     return render(request,'mealhub/home.html', context)
 
@@ -73,7 +73,7 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return render(request, 'mealhub/user_hub.html', {'section': 'user_hub'})
+            return UserHubView(request)
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
@@ -106,6 +106,7 @@ def UserHubView(request):
                 new_meal.photo = meal_form.cleaned_data['photo']
                 new_meal.save()
                 messages.success(request, new_meal.mealname + ' Posted!')
+                meal_form = CreateMealForm()
                 return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form})
             else:
                 meal_form = CreateMealForm()
@@ -129,6 +130,7 @@ def UserHubView(request):
                 new_request.other = meal_request.cleaned_data['other']
                 new_request.save()
                 messages.success(request, new_request.mealRequestName + ' Requested!')
+                meal_request = MealRequestForm()
                 return render(request, 'mealhub/user_hub.html', {'meal_request': meal_request})
             else:
                 meal_request = MealRequestForm()
