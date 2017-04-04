@@ -13,7 +13,7 @@
   </head>
   <body id="UserHub">
   <div class="container">
-	
+
     {% if request.user.is_authenticated %}
 	<div class="row">
 	<div class="col-md-12">
@@ -21,19 +21,33 @@
     <p>Welcome to your dashboard. You can <a href="{% url "edit" %}">edit your profile</a>
       or <a href="{% url "password_change" %}">change your password</a>
       or <a href="{% url "logout" %}">logout</a>.</p>
-	  
+
       <!--Chef feed -->
     {% if request.user.profile.user_type == "C" %}
     <h2>Chef Hub</h2>
 
     <h1> {{ user.first_name|title }}'s hub</h1>
     <!-- post a meal form -->
+    <div class="row">
+			<div class="col-md-6 RequestFeed">
+        <p>REQUESTFEED HERE</p>
+				{% if meal_request %}
+		    <ul>
+		      {% for r in meal_request %}
+		        <li>{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|date:"g:i a m/d/y" }} {{ r.user.profile.zip_code }}
+		      {% endfor %}
+		    </ul>
+		    {% endif %}
+      </div>
+      <div class="col-md-6 MealFeed">
     <div class ="CreateMealForm">
       <form method="post" action="." enctype="multipart/form-data">
         {% csrf_token %}
         {{ meal_form.as_p }}
         <input type="submit" value="Post A Meal" class="btn"/>
       </form>
+    </div>
+    </div>
     </div>
 
     {% endif %}
@@ -42,15 +56,30 @@
     {% if request.user.profile.user_type == "M" %}
     <h2> Mouth Hub</h2>
     <h1> {{ user.first_name|title }}'s hub</h1>
+    <div class="row">
+			<div class="col-md-6 MealFeed">
+				<p>MEALFEED HERE</p>
+				{% if meal %}
+		    <ul>
+		      {% for m in meal %}
+		        <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
+		      {% endfor %}
+		    </ul>
+		    {% endif %}
+			</div>
     <!-- post a meal form -->
+    <div class="col-md-6 MealFeed">
     <div class ="MealRequestForm">
       <form method="post" action="." enctype="multipart/form-data">
         {% csrf_token %}
-        {{ meal_request.as_p }}
+        {{ meal_request_form.as_p }}
         <input type="submit" value="Post A Meal Request" class="btn"/>
       </form>
     </div>
     {% endif %}
+  </div>
+</div>
+
 	</div>
 	</div>
 	</div>
