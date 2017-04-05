@@ -2,6 +2,11 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
+
+#for meal photos
+from django.conf import settings
+from django.conf.urls.static import static
+
 from . import views
 
 urlpatterns = [
@@ -23,9 +28,11 @@ urlpatterns = [
     url(r'^user_hub/$', views.UserHubView, name = 'user_hub'),
     url(r'^search/$', views.SearchView, name ='search'),
 
+    url(r'^meals/(?P<username>\w+)\/(?P<mealname>\w+)/', views.meals, name = 'meals'),
+
     url(r'^$', views.home, name ='home'),
     url(r'^home/$', views.home, name='home'),
 
     # Postman URLs:
     url(r'^messages/', include('postman.urls', namespace='postman', app_name='postman')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

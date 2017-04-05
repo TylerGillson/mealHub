@@ -33,7 +33,7 @@
         <p>REQUESTFEED HERE</p>
 				{% if meal_request %}
 		    <ul>
-		      {% for r in meal_request %}
+          {% for r in meal_request %}
 		        <li>{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|date:"g:i a m/d/y" }} {{ r.user.profile.zip_code }}
 		      {% endfor %}
 		    </ul>
@@ -61,8 +61,9 @@
 				<p>MEALFEED HERE</p>
 				{% if meal %}
 		    <ul>
-		      {% for m in meal %}
-		        <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
+          {% load filters %}
+          {% for m in meal %}
+		        <li><a href="{% url 'meals' username=m.user.username|cut:"." mealname=m.mealname.split|join:"_" %}">{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</a></li>
 		      {% endfor %}
 		    </ul>
 		    {% endif %}
