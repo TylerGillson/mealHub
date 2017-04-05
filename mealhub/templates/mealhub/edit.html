@@ -13,11 +13,11 @@
   <body id="register">
     <h1>Edit your account</h1>
     <p>You can edit your account using the following form:</p>
-    <form action="{% url 'user_hub' %}" method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
       {{ user_form.as_p }}
       {{ profile_form.as_p }}
-      {% csrf_token %}
-      <p><input type="submit" value="Save changes"></p>
+      <button type="submit">Save changes</button>
     </form>
   </body>
 </html>

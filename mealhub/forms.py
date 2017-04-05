@@ -52,7 +52,7 @@ class MealRequestForm(forms.ModelForm):
             'servings_requested': _('Servings Requested')
         }
         help_texts = {
-            'other': _("ex: I'm alergic to peanuts")
+            'other': _("ex: I'm allergic to peanuts.")
         }
 
 class CreateMealForm(forms.ModelForm):

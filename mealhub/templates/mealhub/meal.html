@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Meal{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <body>
+  {% if meal %}
+    <div>
+      <ul>
+        <p> {{ meal.mealname }} </p>
+        <!-- <p> {{ meal.photo.url }}</p> -->
+        <img src="{{ meal.photo.url }}" alt="photo" style="width:200px;height:200px;">
+      </ul>
+    </div>
+  {% endif %}
+  </body>
+</html>
+{% endblock %}

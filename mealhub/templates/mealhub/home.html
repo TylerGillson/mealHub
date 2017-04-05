@@ -18,7 +18,7 @@
 				{% if meal %}
 		    <ul>
 		      {% for m in meal %}
-		        <li>{{ m.user.username }} posted {{ m.mealname }} on {{ m.date_available|date:"m/d/y" }} at {{ m.date_available|date:"g:i a" }}</li>
+						<li>{{ m.user.username }} posted {{ m.mealname }} on {{ m.date_available|date:"m/d/y" }} at {{ m.date_available|date:"g:i a" }}</li>
 		      {% endfor %}
 		    </ul>
 		    {% endif %}

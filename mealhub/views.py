@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.core.urlresolvers import reverse
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -68,12 +69,13 @@ def settings(request):
 @login_required
 def edit(request):
     if request.method == 'POST':
-        user_form = UserEditForm(instance=request.user, data=request.POST)
-        profile_form = ProfileEditForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+        user_form = UserEditForm(request.POST, instance=request.user)#, data=request.POST)
+        profile_form = ProfileEditForm(request.POST, instance=request.user.profile)#, data=request.POST, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return UserHubView(request)
+            messages.success(request, 'Your profile was successfully updated!')
+            return HttpResponseRedirect(reverse('user_hub'))
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
@@ -93,12 +95,11 @@ def SearchView(request):
 def UserHubView(request):
     meal = Meal.objects.order_by('-date_available')[0:10]
     meal_request = MealRequest.objects.order_by('-date_requested')[0:10]
-    if request.user.profile.user_type == "C":
+    if request.user.profile.user_type == 'C':
         if request.method == 'POST':
             meal_form = CreateMealForm(request.POST, request.FILES)
             if meal_form.is_valid():
                 meal_form.save(commit=False)
-
                 new_meal = Meal.objects.create(user=request.user)
                 new_meal.mealname = meal_form.cleaned_data['mealname']
                 new_meal.mealdesc = meal_form.cleaned_data['mealdesc']
@@ -119,26 +120,38 @@ def UserHubView(request):
             meal_form = CreateMealForm()
             return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form, 'meal_request': meal_request})
 
-    if request.user.profile.user_type == "M":
+    elif request.user.profile.user_type == 'M':
         if request.method == 'POST':
-            meal_request_form = MealRequestForm(request.POST)
-            if meal_request.is_valid():
-                meal_request.save(commit=False)
+            meal_request_form = MealRequestForm(request.POST, request.FILES)
+            if meal_request_form.is_valid():
+                meal_request_form.save(commit=False)
                 new_request = MealRequest.objects.create(user=request.user)
-                new_request.mealRequestName = meal_request.cleaned_data['mealRequestName']
-                new_request.servings_requested = meal_request.cleaned_data['servings_requested']
+                new_request.mealRequestName = meal_request_form.cleaned_data['mealRequestName']
+                new_request.servings_requested = meal_request_form.cleaned_data['servings_requested']
                 #FIXME -- need to figure out date widget, otherwise form erros for daysss
                 #new_request.date_requested  = meal_form.cleaned_data['date_requested']
-                new_request.other = meal_request.cleaned_data['other']
+                new_request.other = meal_request_form.cleaned_data['other']
                 new_request.save()
                 messages.success(request, new_request.mealRequestName + ' Requested!')
                 meal_request_form = MealRequestForm()
-                return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, "meal": meal})
+                return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, 'meal': meal})
             else:
                 meal_request_form = MealRequestForm()
                 messages.error(request, 'Create a meal request Error')
-                return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, "meal": meal})
+                return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, 'meal': meal})
 
         else:
             meal_request_form = MealRequestForm()
-            return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, "meal": meal})
+            return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, 'meal': meal})
+
+def meals(request, username, mealname):
+    meals = Meal.objects.order_by('-date_available')
+    meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','') == mealname]
+    meal = meal[0]
+    return(render(request, 'mealhub/meal.html', {'meal':meal}))
+
+def meal_requests(request, username, meal_request_name):
+    meal_requests = MealRequest.objects.order_by('-date_requested')
+    meal_request = [x for x in meal_requests if x.user.username.replace('.','') == username and x.mealRequestName.replace(' ','') == meal_request_name]
+    meal_request = meal_request[0]
+    return(render(request, 'mealhub/meal_request.html', {'meal_request':meal_request}))
