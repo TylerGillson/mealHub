@@ -30,7 +30,7 @@
     <!-- post a meal form -->
     <div class="row">
 			<div class="col-md-6 RequestFeed">
-        <p>REQUESTFEED HERE</p>
+        <p>Request Feed</p>
 				{% if meal_request %}
 		    <ul>
           {% for r in meal_request %}
@@ -58,12 +58,12 @@
     <h1> {{ user.first_name|title }}'s hub</h1>
     <div class="row">
 			<div class="col-md-6 MealFeed">
-				<p>MEALFEED HERE</p>
+				<p>Meal Feed</p>
 				{% if meal %}
 		    <ul>
           {% load filters %}
           {% for m in meal %}
-		        <li><a href="{% url 'meals' username=m.user.username|cut:"." mealname=m.mealname.split|join:"_" %}">{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</a></li>
+		        <li><a href="{% url 'meals' username=m.user.username|cut:"." mealname=m.mealname.split|join:"_" %}">{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }}</a></li>
 		      {% endfor %}
 		    </ul>
 		    {% endif %}
