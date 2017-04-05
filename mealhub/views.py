@@ -123,14 +123,14 @@ def UserHubView(request):
     elif request.user.profile.user_type == 'M':
         if request.method == 'POST':
             meal_request_form = MealRequestForm(request.POST, request.FILES)
-            if meal_request.is_valid():
-                meal_request.save(commit=False)
+            if meal_request_form.is_valid():
+                meal_request_form.save(commit=False)
                 new_request = MealRequest.objects.create(user=request.user)
-                new_request.mealRequestName = meal_request.cleaned_data['mealRequestName']
-                new_request.servings_requested = meal_request.cleaned_data['servings_requested']
+                new_request.mealRequestName = meal_request_form.cleaned_data['mealRequestName']
+                new_request.servings_requested = meal_request_form.cleaned_data['servings_requested']
                 #FIXME -- need to figure out date widget, otherwise form erros for daysss
                 #new_request.date_requested  = meal_form.cleaned_data['date_requested']
-                new_request.other = meal_request.cleaned_data['other']
+                new_request.other = meal_request_form.cleaned_data['other']
                 new_request.save()
                 messages.success(request, new_request.mealRequestName + ' Requested!')
                 meal_request_form = MealRequestForm()
@@ -144,7 +144,14 @@ def UserHubView(request):
             meal_request_form = MealRequestForm()
             return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, 'meal': meal})
 
-@login_required
-def meals(request, username='', mealname=''):
-    meal = Meal.objects.order_by('-date_available')
-    return(render(request, 'mealhub/meal.html', {'meal':meal, 'username':username, 'mealname':mealname}))
+def meals(request, username, mealname):
+    meals = Meal.objects.order_by('-date_available')
+    meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','') == mealname]
+    meal = meal[0]
+    return(render(request, 'mealhub/meal.html', {'meal':meal}))
+
+def meal_requests(request, username, meal_request_name):
+    meal_requests = MealRequest.objects.order_by('-date_requested')
+    meal_request = [x for x in meal_requests if x.user.username.replace('.','') == username and x.mealRequestName.replace(' ','') == meal_request_name]
+    meal_request = meal_request[0]
+    return(render(request, 'mealhub/meal_request.html', {'meal_request':meal_request}))

@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^search/$', views.SearchView, name ='search'),
 
     url(r'^meals/(?P<username>\w+)\/(?P<mealname>\w+)/', views.meals, name = 'meals'),
+    url(r'^meal-requests/(?P<username>\w+)\/(?P<meal_request_name>\w+)/', views.meal_requests, name = 'meal_requests'),
 
     url(r'^$', views.home, name ='home'),
     url(r'^home/$', views.home, name='home'),

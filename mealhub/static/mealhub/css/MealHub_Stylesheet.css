@@ -66,13 +66,61 @@ body {
 	padding-bottom: 21px;
 	padding-top: 21px;
 }
+
 .MealFeed{
 	border:2px solid black;
 	border-radius:2px;
 }
+.MealFeed p {
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
 .RequestFeed{
 	border:2px solid black;
 	border-radius:2px;
+}
+.RequestFeed p {
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.CreateMealForm {
+  position: relative;
+  margin-top: 10px;
+  right: 30%;
+}
+.CreateMealForm p:first-child {
+  position: relative;
+  left: 60%;
+  margin-bottom: 15px;
+}
+.CreateMealForm button {
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.MealRequestForm {
+  position: relative;
+  margin-top: 10px;
+  right: 30%;
+}
+.MealRequestForm p:first-child {
+  position: relative;
+  left: 60%;
+  margin-bottom: 30px;
+}
+.MealRequestForm button {
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 /*This is for phones*/

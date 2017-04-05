@@ -1,25 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Meals{% endblock %}
+{% block title %}Meal{% endblock %}
 
 {% block content %}
 <!DOCTYPE html>
 <html>
-<body>
-
-{% if meal %}
-  {% for m in meal %}
-  {% if m.user.username == username and m.mealname == mealname %}
-<div>
-<ul>
-  <p> {{ m.mealname }} </p>
-  <p> {{ m.photo.url }}</p>
-  <img src="{{ m.photo.url }}" alt="photo" style="width:200px;height:200px;">
-</ul>
+  <body>
+  {% if meal %}
+    <div>
+      <ul>
+        <p> {{ meal.mealname }} </p>
+        <!-- <p> {{ meal.photo.url }}</p> -->
+        <img src="{{ meal.photo.url }}" alt="photo" style="width:200px;height:200px;">
+      </ul>
+    </div>
   {% endif %}
-  {% endfor %}
-{% endif %}
-</div>
-</body>
+  </body>
 </html>
 {% endblock %}
