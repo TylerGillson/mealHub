@@ -9,11 +9,15 @@ class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password',
                                widget=forms.PasswordInput,
                                help_text='Passwords must be at least 8 digits.')
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput)
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email')
+        labels = {
+            'first_name': _('First Name'),
+            'email': _('Email Address')
+        }
         help_texts = {
             'username': _(''),
         }
@@ -28,16 +32,28 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email')
+        labels = {
+            'first_name': _('First Name'),
+            'email': _('Email Address')
+        }
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('user_type', 'zip_code')
+        labels = {
+            'user_type': _('User Type'),
+            'zip_code': _('Zip Code')
+        }
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('user_type', 'zip_code')
+        labels = {
+            'user_type': _('User Type'),
+            'zip_code': _('Zip Code')
+        }
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -60,7 +76,9 @@ class CreateMealForm(forms.ModelForm):
         model = Meal
         fields = ('mealname', 'mealdesc', 'servings_available', 'photo')
         labels = {
+            'mealname': _('Meal Name'),
             'mealdesc': _('Meal Description'),
+            'servings_available': _('Servings Available'),
         }
         widgets = {
             'date_available': widgets.AdminSplitDateTime(),

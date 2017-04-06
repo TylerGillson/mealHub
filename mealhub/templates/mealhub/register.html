@@ -14,27 +14,29 @@
     	<!--sm class used instead of xs, so they stack on top at the smallest level-->
     		<div class="col-md-3">
     			<h3>What is a Mouth?</h3>
-    				<p>Some cool text could go here. Maybe something about the website. Something about the creators
-      			something about the design process. Idk but some text to even it out could go here. this is only here
-      			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
-      			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
-      			read on lonely cowboy.</p>
+    				<p>Are you a busy and/or cash strapped person in search of an affordable, home cooked meal?
+            If so, then you're a Mouth. Mealhub.com enables mouths interested in purchasing meals to see meals which have been cooked by Chefs in their area.
+            As a Mouth, you can post meal requests that will be seen by Chefs in your area, or you can simply browse for meals that are already available.
+            If you see a meal that looks good, simply click, "Message the Chef" to start up a conversation with the Chef who cooked it.
+            After trying a meal, Mouths are able to rate it based on their eating experience.
+            Mouths and Chefs will arrange the financial details of their transactions on their own terms.</p>
     		</div>
       	<div class="col-md-6 RegisterForm">
       		<form method="post" action=".">
             {% csrf_token %}
             {{ user_form.as_p }}
             {{ profile_form.as_p }}
-            <input type="submit" value="Register" class="btn"/>
+            <button type="submit">Register</button>
           </form>
       	</div>
     		<div class="col-md-3">
     			<h3>What is a Chef?</h3>
-    			<p>Some cool text could go here. Maybe something about the website. Something about the creators
-    			something about the design process. Idk but some text to even it out could go here. this is only here
-    			to serve as a simple example text. So needless to say this is worthless text and if you have bothered
-    			to read this far, you must have realized it is a waste of time. So read away but you will receive of value.
-    			read on lonely cowboy.</p>
+    			<p>Are you interested in monetizing your kitchen and culinary skills?
+          If so, then you're a Chef. Mealhub.com enables chefs interested in selling home-cooked meals to connect with hungry Mouths in their area.
+          As a Chef, you will advertise the meals you are willing to provide, as well as which meals you have currently available.
+          Your meal postings will contain information such as ingredients, nuber of servings, price, and availability time.
+          If you see a meal request for something you'd like to cook, simply click, "Message the Mouth" to start up a conversation with the Mouth who requested it.
+          Mouths and Chefs will arrange the financial details of their transactions on their own terms.</p>
         </div>
       </div>
     </div><!-- /.container -->
