@@ -8,7 +8,6 @@ TO DO:
   - Add Address field(s)
 4. UserHub page:
   - "My Area" button (links to /search)
-  - "My Messages" button (links to /messages/inbox)
 5. Search page:
   - Background photo
   - Fix header
