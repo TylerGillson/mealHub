@@ -27,7 +27,9 @@ body {
 #homePage{
 	background-image:url("../media/medium-veggies.jpg");
 }
-
+#mealView{
+	background-image:url("../media/ethiopian-platter.jpg");
+}
 /*These are part of and have to deal with base.html*/
 #outer {
   position: relative;
