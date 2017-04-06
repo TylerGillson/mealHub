@@ -36,8 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	'easy_maps',
 	'postman',
-	'social.apps.django_app.default',
-
+	'social_django',
 ]
 
 EASY_MAPS_CENTER = (-41.3, 32)
@@ -151,6 +150,19 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'mealhub.pipeline.backend_save_profile',  # <--- set the path to the function
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
 
 SOCIAL_AUTH_FACEBOOK_KEY = '691384897711430'
 SOCIAL_AUTH_FACEBOOK_SECRET = '7f4dd70a72e11c223586404eb23660f7'

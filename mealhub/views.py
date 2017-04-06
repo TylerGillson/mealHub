@@ -143,6 +143,8 @@ def UserHubView(request):
         else:
             meal_request_form = MealRequestForm()
             return render(request, 'mealhub/user_hub.html', {'meal_request_form': meal_request_form, 'meal': meal})
+    else:
+        return HttpResponseRedirect(reverse('edit'))
 
 def meals(request, username, mealname):
     meals = Meal.objects.order_by('-date_available')
