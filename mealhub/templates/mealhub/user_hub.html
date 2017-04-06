@@ -15,24 +15,23 @@
     <div class="container">
 
       {% if request.user.is_authenticated %}
-		<div class="row">
+            <!--Chef feed -->
+          {% if request.user.profile.user_type == "C" %}
+		 <div class="row">
 			<div class="col-md-12">
-				<h1 style="text-align:center"> {{ user.first_name|title }}'s hub</h1>
+				<h1 style="text-align:center">Chef Hub</h1>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<p>Welcome {{ user.first_name|title }}!<p>
-			</div>
-			<div class="col-md-6">
-				<p style="float:right"> You can 
+
+		  <div class="row">
+			<div style="text-align:center">
+				<h4>Welcome {{ user.first_name|title }}!<h4>
+				<p> You can 
 				<a href="{% url "edit" %}">edit your profile</a>
 				or <a href="{% url "password_change" %}">change your password</a>
 				or <a href="{% url "logout" %}">logout</a>.</p>
 			</div>
 		</div>
-            <!--Chef feed -->
-          {% if request.user.profile.user_type == "C" %}
           <div class="row">
             <!-- Meal request feed -->
             <div class="col-md-6 RequestFeed">
@@ -60,7 +59,20 @@
           {% endif %}
 
           {% if request.user.profile.user_type == "M" %}
-
+		  <div class="row">
+			<div class="col-md-12">
+				<h1 style="text-align:center">Mouth Hub</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div style="text-align:center">
+				<h4>Welcome {{ user.first_name|title }}!<h4>
+				<p> You can 
+				<a href="{% url "edit" %}">edit your profile</a>
+				or <a href="{% url "password_change" %}">change your password</a>
+				or <a href="{% url "logout" %}">logout</a>.</p>
+			</div>
+		</div>
           <div class="row">
             <!--Meal Feed-->
             <div class="col-md-6 MealFeed">
