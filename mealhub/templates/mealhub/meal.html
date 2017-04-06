@@ -9,15 +9,15 @@
 <body id = "mealView">
 	<div class="container">
 		<div class="row">
-			<h1 style="text-align:center">pythonic mealname here</h1>
+			<h1 style="text-align:center">{{ meal.mealname }}</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-6 MealView">
 				<h4 style="text-align:center;">meal info placeholder</h4>
 				<ul>
-					<li>availability: </li>
-					<li>servings: </li>
-					<li>description: </li>
+					<li>posted: {{ meal.date_posted|timesince }} ago.</li>
+					<li>servings:{{ meal.servings_available }} </li>
+					<li>description:{{ meal.mealdesc }} </li>
 					<li>ingredients: </li>
 					<!--for ingredients in meal
 						<li> ingredients.name</li>
@@ -35,7 +35,7 @@
 			</div>
 			<div class="col-md-6 MealRatings">
 				<h4 style="text-align:center;">Ratings</h4>
-				<h5 style="text-align:center;">overall: *****</h5>
+				<h5 style="text-align:center;">overall: {{ meal.meal_rating }}</h5>
 				<p class="ratelist">user rating list here</p>
 				<h2>Rate this Meal</h2>
 				<p>rating form here</p>
