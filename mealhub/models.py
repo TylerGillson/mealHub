@@ -33,7 +33,7 @@ class Meal(models.Model):
     date_available = models.DateTimeField(auto_now_add=True)
     servings_available = models.IntegerField(null=True)
     meal_rating = models.IntegerField(choices=RATING_VALUE, default=0)
-    photo = models.ImageField(upload_to='mealhub/%Y/%m/%d', blank=True, default='mealhub/None/noimg.jpg')
+    photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True, default='meals/None/noimg.jpg')
 
     def __str__(self):
         return self.mealname
