@@ -124,6 +124,40 @@ body {
   margin-bottom: 40px;
 }
 
+.google {
+  background-color: white;
+  padding: 8px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+.google li {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: bold;
+}
+.google a {
+  color: black;
+}
+.facebook {
+  background-color: white;
+  padding: 8px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+.facebook li {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: bold;
+}
+.facebook a {
+  color: black;
+}
 /*This is for phones*/
 @media screen and (max-width:600px){
 }

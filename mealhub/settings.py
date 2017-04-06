@@ -96,6 +96,7 @@ TEMPLATES = [
 
 AUTHENTICATION_BACKENDS = (
 	'social_core.backends.google.GoogleOAuth2',
+	'social_core.backends.facebook.FacebookOAuth2',
 	'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -149,7 +150,6 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',

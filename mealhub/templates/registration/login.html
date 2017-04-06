@@ -29,11 +29,14 @@
     </div>
     <div class="social">
       <ul>
-        <li class="facebook"><a href="{% url "social:begin" "facebook" %}">
-          Login with Facebook</a></li>
-          <li class="google"><a href="{% url "social:begin" "google-oauth2" %}">Login
-  with Google</a></li>
-        
+        <span class="facebook">
+          <img src="/static/mealhub/icons/facebook.png" alt="facebook_icon" height="42" width="42">
+          <li><a href="{% url "social:begin" "facebook-oath2" %}">Login with Facebook</a></li>
+        </span><br><br>
+        <span class="google">
+          <img src="/static/mealhub/icons/google.png" alt="google_icon" height="42" width="42">
+          <li><a href="{% url "social:begin" "google-oauth2" %}">Login with Google</a></li>
+        </span>
       </ul>
     </div>
   </body>
