@@ -36,10 +36,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	'easy_maps',
 	'postman',
+	'social.apps.django_app.default',
+
 ]
 
 EASY_MAPS_CENTER = (-41.3, 32)
 EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8'
+
 
 # mealhub.email@gmail.com SMTP server config:
 EMAIL_HOST = 'smtp.gmail.com'
@@ -68,6 +71,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'mealhub.urls'
@@ -83,11 +87,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+				'social_django.context_processors.backends',
+				'social_django.context_processors.login_redirect',
             ],
             'debug': DEBUG,
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+	'social_core.backends.google.GoogleOAuth2',
+	'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'mealhub.wsgi.application'
 
@@ -139,3 +150,9 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '691384897711430'
+SOCIAL_AUTH_FACEBOOK_SECRET = '7f4dd70a72e11c223586404eb23660f7'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '998542322949-o304qvpqni1iut1phdhf2dl71i6i3hik.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='FAOtS7yWYIdmTIUG64HHxYgh'

@@ -26,7 +26,7 @@
 		  <div class="row">
 			<div style="text-align:center">
 				<h4>Welcome {{ user.first_name|title }}!<h4>
-				<p> You can 
+				<p> You can
 				<a href="{% url "edit" %}">edit your profile</a>
 				or <a href="{% url "password_change" %}">change your password</a>
 				or <a href="{% url "logout" %}">logout</a>.</p>
@@ -67,7 +67,7 @@
 		<div class="row">
 			<div style="text-align:center">
 				<h4>Welcome {{ user.first_name|title }}!<h4>
-				<p> You can 
+				<p> You can
 				<a href="{% url "edit" %}">edit your profile</a>
 				or <a href="{% url "password_change" %}">change your password</a>
 				or <a href="{% url "logout" %}">logout</a>.</p>
@@ -79,7 +79,7 @@
       				<p>Meal Feed</p>
       				{% if meal %}
       		    <ul>
-                {% load filters %}
+                
                 {% for m in meal %}
       		        <li><a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.user.username }} posted {{ m.mealname }} on {{ m.date_available|date:"m/d/y" }} at {{ m.date_available|date:"g:i a" }}</a></li>
       		      {% endfor %}
