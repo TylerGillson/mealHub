@@ -4,16 +4,11 @@ TO DO:
   - "Message this user" postman link
 2. Meal Request page HTML
   - "Message this user" postman link
-3. UserHub page:
-  - "My Area" button (links to /search)
-4. Search page:
-  - Background photo
-  - Fix header
-  - Linkify feed contents
+3. Search page:
   - Auto-populate top ten results based on first 4 zip code numbers
   - Make geocoder map auto-drop a pin at the ADDRESS of each of the results
-5. Add 'date requested' and 'date posted' to meal requests and meals
-6. Populate meals with ingredients
-7. Create default image for 'meals/None/noimg.jpg'... i.e. create mealhub logo
-8. Replace feed bullet points with chef/mouth icons
-9. Create reviews for meals
+4. Add 'date requested' and 'date posted' to meal requests and meals
+5. Populate meals with ingredients
+6. Create default image for 'meals/None/noimg.jpg'... i.e. create mealhub logo
+7. Replace feed bullet points with chef/mouth icons (???)
+8. Create reviews for meals
