@@ -16,8 +16,8 @@ in the INSTALLED_APPS setting.
 {% else %}
 {% if pm_messages %}
 {% block pm_by_modes %}<div id="pm_byModes">
-<span class="pm_by-mode">{% if by_message %}<a href="{{ by_conversation_url }}">{% endif %}{% trans "by conversation" %}{% if by_message %}</a>{% endif %}</span>
-<span class="pm_by-mode">{% if by_conversation %}<a href="{{ by_message_url }}">{% endif %}{% trans "by message" %}{% if by_conversation %}</a>{% endif %}</span>
+<span class="pm_by-mode">{% if by_message %}<a href="{{ by_conversation_url }}">{% endif %}{% trans "By Conversation" %}{% if by_message %}</a>{% endif %}</span>
+<span class="pm_by-mode">{% if by_conversation %}<a href="{{ by_message_url }}">{% endif %}{% trans "By Message" %}{% if by_conversation %}</a>{% endif %}</span>
 </div>{% endblock pm_by_modes %}
 <form action="{% block pm_form_action %}{% endblock %}" method="post">{% csrf_token %}
 {% block pm_form_buttons %}<span id="pm_buttons">

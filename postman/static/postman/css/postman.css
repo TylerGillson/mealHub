@@ -19,31 +19,61 @@ body {
   float: left;
 }
 .content {
-  background: rgba(255,255,255,.9);
-  margin-top: 130px;
   position: relative;
   left: -50%;
-	float: left;
+  float: left;
+  background: rgba(255,255,255,.9);
+  margin-top: 150px;
   padding-right: 20px;
-	padding-left: 20px;
-	padding-bottom: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  border: 2px solid black;
+  width: 600px;
 }
 
 #postman_menu {
   position: fixed;
-  left: 32%;
+  left: 28%;
   margin-top: 100px;
-  margin-bottom: 20px;
   background: rgba(255,255,255,.9);
-  font-size: 16px;
+  font-size: 20px;
+  z-index: 100;
 }
 #postman_menu li {
   display: inline;
   list-style: none;
   margin-right: 10px;
 }
-#pm_messages thead tr th {
-  margin-right: 10px;
+
+#pm_byModes {
+  margin-bottom: 10px;
+}
+#pm_messages table, th, td {
+  border: 1px solid black;
+  width: 100%;
+}
+#pm_messages th {
+  padding: 5px;
+  text-align: center;
+}
+#pm_messages td {
+  padding: 7px;
+  text-align: center;
+}
+
+.button {
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 4px 6px 4px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+.button:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .pm_message.pm_deleted {

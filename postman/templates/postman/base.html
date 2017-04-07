@@ -44,11 +44,11 @@
   </nav>
 
   <ul id="postman_menu">{% postman_unread as unread_count %}
-   <li><a href="{% url 'postman:inbox' %}">{% trans "Inbox" %}{% if unread_count %} <strong>({{ unread_count }})</strong>{% endif %}</a></li>
-   <li><a href="{% url 'postman:sent' %}">{% trans "Sent Messages" %}</a></li>
-   <li><a href="{% url 'postman:write' %}">{% trans "Write" %}</a></li>
-   <li><a href="{% url 'postman:archives' %}">{% trans "Archives" %}</a></li>
-   <li><a href="{% url 'postman:trash' %}">{% trans "Trash" %}</a></li>
+   <li><a href="{% url 'postman:inbox' %}" class="button">{% trans "Inbox" %}{% if unread_count %} <strong>({{ unread_count }})</strong>{% endif %}</a></li>
+   <li><a href="{% url 'postman:sent' %}" class="button">{% trans "Sent Messages" %}</a></li>
+   <li><a href="{% url 'postman:write' %}" class="button">{% trans "Write" %}</a></li>
+   <li><a href="{% url 'postman:archives' %}" class="button">{% trans "Archives" %}</a></li>
+   <li><a href="{% url 'postman:trash' %}" class="button">{% trans "Trash" %}</a></li>
   </ul>
   {% endblock %}
 
