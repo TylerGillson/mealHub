@@ -182,6 +182,21 @@ body footer {
 .facebook a {
   color: black;
 }
+
+.button {
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 4px 6px 4px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+.button:hover {
+  text-decoration: none;
+  color: black;
+}
 /*This is for phones*/
 @media screen and (max-width:600px){
 }

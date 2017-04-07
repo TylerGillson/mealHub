@@ -14,6 +14,8 @@
 		<div class="row">
 			<div class="col-md-6 MealView">
 				<h4 style="text-align:center;">meal info placeholder</h4>
+				<!-- MESSAGE THE CHEF BUTTON -->
+				<a href="{% url "postman:write" meal.user.username %}" class="button">Message this Chef</a>
 				<ul>
 					<li>posted: {{ meal.date_posted|timesince }} ago.</li>
 					<li>servings:{{ meal.servings_available }} </li>

@@ -13,6 +13,8 @@
         <p> {{ meal_request.servings_requested }}</p>
         <p> {{ meal_request.other }}</p>
       </ul>
+      <!-- MESSAGE THE MOUTH BUTTON -->
+      <a href="{% url "postman:write" meal_request.user.username %}" class="button">Message this Mouth</a>
     </div>
   {% endif %}
   </body>
