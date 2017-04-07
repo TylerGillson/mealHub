@@ -9,7 +9,7 @@ from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditF
 from .models import Profile, Meal, MealRequest
 
 def home(request):
-    meal = Meal.objects.order_by('-date_available')[0:10]
+    meal = Meal.objects.order_by('-date_posted')[0:10]
     meal_request = MealRequest.objects.order_by('-date_requested')[0:10]
     context = {'meal': meal,'meal_request': meal_request,'section':'home'}
     return render(request,'mealhub/home.html', context)
@@ -87,7 +87,7 @@ def edit(request):
 ### MEALS ###
 
 def SearchView(request):
-    meal = Meal.objects.order_by('-date_available')
+    meal = Meal.objects.order_by('-date_posted')
     meal_request = MealRequest.objects.order_by('-date_requested')
     context = {'meal': meal,'meal_request': meal_request, }
     return render(request, 'mealhub/search.html', context)
@@ -96,7 +96,7 @@ def SearchView(request):
 
 @login_required
 def UserHubView(request):
-    meal = Meal.objects.order_by('-date_available')[0:10]
+    meal = Meal.objects.order_by('-date_posted')[0:10]
     meal_request = MealRequest.objects.order_by('-date_requested')[0:10]
     if request.user.profile.user_type == 'C':
         if request.method == 'POST':
@@ -106,8 +106,6 @@ def UserHubView(request):
                 new_meal = Meal.objects.create(user=request.user)
                 new_meal.mealname = meal_form.cleaned_data['mealname']
                 new_meal.mealdesc = meal_form.cleaned_data['mealdesc']
-                #FIXME -- need to figure out date widget, otherwise form erros for daysss
-                #new_meal.date_available = meal_form.cleaned_data['date_available']
                 new_meal.servings_available = meal_form.cleaned_data['servings_available']
                 new_meal.ingredients = meal_form.cleaned_data['ingredients']
                 new_meal.photo = meal_form.cleaned_data['photo']
@@ -132,8 +130,6 @@ def UserHubView(request):
                 new_request = MealRequest.objects.create(user=request.user)
                 new_request.mealRequestName = meal_request_form.cleaned_data['mealRequestName']
                 new_request.servings_requested = meal_request_form.cleaned_data['servings_requested']
-                #FIXME -- need to figure out date widget, otherwise form erros for daysss
-                #new_request.date_requested  = meal_form.cleaned_data['date_requested']
                 new_request.other = meal_request_form.cleaned_data['other']
                 new_request.save()
                 messages.success(request, new_request.mealRequestName + ' Requested!')
@@ -151,7 +147,7 @@ def UserHubView(request):
         return HttpResponseRedirect(reverse('edit'))
 
 def meals(request, username, mealname):
-    meals = Meal.objects.order_by('-date_available')
+    meals = Meal.objects.order_by('-date_posted')
     meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','') == mealname]
     meal = meal[0]
     return(render(request, 'mealhub/meal.html', {'meal':meal}))

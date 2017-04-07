@@ -96,7 +96,7 @@
       {% if meal %}
       <ul>
         {% for m in meal %}
-          <li><a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.user.username }} posted {{ m.mealname }} {{ m.date_available|timesince }} ago. </a></li>
+          <li><a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.user.username }} posted {{ m.mealname }} {{ m.date_posted|timesince }} ago. </a></li>
         {% endfor %}
       </ul>
       {% endif %}

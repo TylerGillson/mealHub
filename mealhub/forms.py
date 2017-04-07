@@ -80,6 +80,3 @@ class CreateMealForm(forms.ModelForm):
             'mealdesc': _('Meal Description'),
             'servings_available': _('Servings Available'),
         }
-        widgets = {
-            'date_available': widgets.AdminSplitDateTime(),
-        }
