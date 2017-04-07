@@ -4,23 +4,42 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>Search</title>
     <style>
-      #header {
-        background-color: lightgrey;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
+
+      * {
+        font-size: 16px;
       }
 
-      #header a {
-        margin-left: 20px;
+      body {
+      	background-position: center center;
+      	background-attachment: fixed;
+      	background-repeat: no-repeat;
+      	background-size: cover;
+      	width: 100%;
+        background-image:url("../static/mealhub/media/peer-to-peer-background.png");
       }
 
-      ul {
+      .feed {
         position: relative;
         top: 80px;
+        margin-left: 20px;
+        background: rgba(255,255,255,.8);
+        width: 45%;
+        padding-bottom: 10px;
+      }
+      .feed h1 {
+        padding-top: 10px;
+        text-align: center;
+      }
+      .feed ul {
+        text-align: middle;
       }
 
     </style>
@@ -28,33 +47,61 @@
 
   {% if request.user.is_authenticated %}
   <body>
-    <div id="header">
-      <p><a href="{% url "home" %}">Home</a></p>
-    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url "home" %}">MealHub</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+		       {% if user.profile.user_type == "C" %}
+           <li class="active"><a href="{% url "user_hub" %}">Chef Hub</a></li>
+           {% endif %}
+           {% if user.profile.user_type == "M" %}
+           <li><a href="{% url "user_hub" %}">Mouth Hub</a></li>
+           {% endif %}
+			     <li><a href="{% url "edit" %}">Settings</a></li>
+           <li><a href="{% url "postman:inbox" %}">My Messages</a></li>
+           <li><a href="{% url "search" %}">My Area</a></li>
+			     <li><a href="{% url "logout" %}">Logout</a></li>
+			    </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
     {% easy_map address using 'mealhub/map.html' %}
 
-    <!--Chef feed -->
-    {% if request.user.profile.user_type == "C" %}
-    {% if meal_request %}
-    <ul>
-      {% for r in meal_request %}
-        <li>{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|date:"g:i a m/d/y" }} {{ r.user.profile.zip_code }}
-      {% endfor %}
-    </ul>
-    {% endif %}
-    {% endif %}
+    <div class="feed">
+      <!--Chef Feed -->
+      {% if request.user.profile.user_type == "C" %}
+      <h1>Meals Requests in My Area</h1>
+      {% if meal_request %}
+      <ul>
+        {% for r in meal_request %}
+          <li><a href="{% url 'meal_requests' username=r.user.username|cut:'.' meal_request_name=r.mealRequestName|cut:' ' %}">{{ r.user.username }} requested {{ r.mealRequestName }} {{ r.date_requested|timesince }} ago. </a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endif %}
 
-    <!--Mouth Feed --- needs a containter and link each to the chefs page with their meals-->
-    {% if request.user.profile.user_type == "M" %}
-    {% if meal %}
-    <ul>
-      {% for m in meal %}
-        <li>{{ m.user.username }} {{ m.mealname }} {{ m.date_available|date:"g:i a m/d/y" }} {{ m.user.profile.zip_code }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    {% endif %}
+      <!--Mouth Feed -->
+      {% if request.user.profile.user_type == "M" %}
+      <h1>Meals in My Area</h1>
+      {% if meal %}
+      <ul>
+        {% for m in meal %}
+          <li><a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.user.username }} posted {{ m.mealname }} {{ m.date_available|timesince }} ago. </a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endif %}
+    </div>
 
   </body>
   {% endif %}

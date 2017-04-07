@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta charset="utf-8">
+	  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -41,6 +41,7 @@
            {% endif %}
 			     <li><a href="{% url "edit" %}">Settings</a></li>
            <li><a href="{% url "postman:inbox" %}">My Messages</a></li>
+           <li><a href="{% url "search" %}">My Area</a></li>
 			     <li><a href="{% url "logout" %}">Logout</a></li>
 
 			<!--this line is last (if not logged in) -->

@@ -18,9 +18,14 @@ RATING_VALUE = (
     (5, "Five Stars"),
 )
 
+US_STATES = (('AL', 'Alabama'), ('AZ', 'Arizona'), ('AR', 'Arkansas'), ('CA', 'California'), ('CO', 'Colorado'), ('CT', 'Connecticut'), ('DE', 'Delaware'), ('DC', 'District of Columbia'), ('FL', 'Florida'), ('GA', 'Georgia'), ('ID', 'Idaho'), ('IL', 'Illinois'), ('IN', 'Indiana'), ('IA', 'Iowa'), ('KS', 'Kansas'), ('KY', 'Kentucky'), ('LA', 'Louisiana'), ('ME', 'Maine'), ('MD', 'Maryland'), ('MA', 'Massachusetts'), ('MI', 'Michigan'), ('MN', 'Minnesota'), ('MS', 'Mississippi'), ('MO', 'Missouri'), ('MT', 'Montana'), ('NE', 'Nebraska'), ('NV', 'Nevada'), ('NH', 'New Hampshire'), ('NJ', 'New Jersey'), ('NM', 'New Mexico'), ('NY', 'New York'), ('NC', 'North Carolina'), ('ND', 'North Dakota'), ('OH', 'Ohio'), ('OK', 'Oklahoma'), ('OR', 'Oregon'), ('PA', 'Pennsylvania'), ('RI', 'Rhode Island'), ('SC', 'South Carolina'), ('SD', 'South Dakota'), ('TN', 'Tennessee'), ('TX', 'Texas'), ('UT', 'Utah'), ('VT', 'Vermont'), ('VA', 'Virginia'), ('WA', 'Washington'), ('WV', 'West Virginia'), ('WI', 'Wisconsin'), ('WY', 'Wyoming'))
+
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     user_type = models.CharField(max_length=1, choices=TYPE_CHOICES)
+    address = models.CharField(max_length=200, null=True)
+    city = models.CharField(max_length=200, null=True)
+    state = models.CharField(max_length=50, choices=US_STATES, null=True)
     zip_code = models.IntegerField(default = 00000)
 
     def __str__(self):
@@ -35,17 +40,11 @@ class Meal(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
     date_available = models.DateTimeField(auto_now_add=True)
     servings_available = models.IntegerField(null=True)
+    ingredients = models.CharField(max_length=2000, null=True)
     photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True, default='meals/None/noimg.jpg')
 
     def __str__(self):
         return self.mealname
-
-class Ingredient(models.Model):
-    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    ingredient_name = models.CharField(max_length=25)
-
-    def __str__(self):
-        return self.ingredient_name
 
 class Review(models.Model):
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)

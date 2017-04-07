@@ -40,7 +40,7 @@ class UserEditForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('user_type', 'zip_code')
+        fields = ('user_type', 'address', 'city', 'state', 'zip_code')
         labels = {
             'user_type': _('User Type'),
             'zip_code': _('Zip Code')
@@ -49,7 +49,7 @@ class ProfileForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('user_type', 'zip_code')
+        fields = ('user_type', 'address', 'city', 'state', 'zip_code')
         labels = {
             'user_type': _('User Type'),
             'zip_code': _('Zip Code')
@@ -74,7 +74,7 @@ class MealRequestForm(forms.ModelForm):
 class CreateMealForm(forms.ModelForm):
     class Meta:
         model = Meal
-        fields = ('mealname', 'mealdesc', 'servings_available', 'photo')
+        fields = ('mealname', 'mealdesc', 'servings_available', 'ingredients', 'photo')
         labels = {
             'mealname': _('Meal Name'),
             'mealdesc': _('Meal Description'),

@@ -15,94 +15,96 @@
     <div class="container">
 
       {% if request.user.is_authenticated %}
-            <!--Chef feed -->
-          {% if request.user.profile.user_type == "C" %}
-		 <div class="row">
-			<div class="col-md-12">
-				<h1 style="text-align:center">Chef Hub</h1>
-			</div>
-		</div>
+
+      <!--Chef Hub -->
+      {% if request.user.profile.user_type == "C" %}
+		    <div class="row">
+          <div class="col-md-12">
+            <h1 style="text-align:center">Chef Hub</h1>
+          </div>
+        </div>
 
 		  <div class="row">
-			<div style="text-align:center">
-				<h4>Welcome {{ user.first_name|title }}!<h4>
-				<p> You can
-				<a href="{% url "edit" %}">edit your profile</a>
-				or <a href="{% url "password_change" %}">change your password</a>
-				or <a href="{% url "logout" %}">logout</a>.</p>
-			</div>
-		</div>
-          <div class="row">
-            <!-- Meal request feed -->
-            <div class="col-md-6 RequestFeed">
-              <p>Request Feed</p>
-      				{% if meal_request %}
-      		    <ul>
-                {% for r in meal_request %}
-                  <li><a href="{% url 'meal_requests' username=r.user.username|cut:'.' meal_request_name=r.mealRequestName|cut:' ' %}">{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|timesince }} ago. </a></li>
-      		      {% endfor %}
-      		    </ul>
-      		    {% endif %}
-            </div>
-            <!-- Post a meal form -->
-            <div class="col-md-6 MealFeed">
-              <div class ="CreateMealForm">
-                <p>Post a Meal:</p>
-                <form method="post" action="." enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{ meal_form.as_p }}
-                  <button type="submit">Submit</button>
-                </form>
-              </div>
-            </div>
-          </div>
-          {% endif %}
+  			<div style="text-align:center">
+  				<h4>Welcome {{ user.first_name|title }}!<h4>
+  				<p> You can
+            <a href="{% url "edit" %}">edit your profile</a> or
+            <a href="{% url "password_change" %}">change your password</a> or
+            <a href="{% url "logout" %}">logout</a>.
+          </p>
+  			</div>
+		  </div>
 
-          {% if request.user.profile.user_type == "M" %}
-		  <div class="row">
-			<div class="col-md-12">
-				<h1 style="text-align:center">Mouth Hub</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div style="text-align:center">
-				<h4>Welcome {{ user.first_name|title }}!<h4>
-				<p> You can
-				<a href="{% url "edit" %}">edit your profile</a>
-				or <a href="{% url "password_change" %}">change your password</a>
-				or <a href="{% url "logout" %}">logout</a>.</p>
-			</div>
-		</div>
-          <div class="row">
-            <!--Meal Feed-->
-            <div class="col-md-6 MealFeed">
-      				<p>Meal Feed</p>
-      				{% if meal %}
-      		    <ul>
-
-                {% for m in meal %}
-      		        <li><a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.user.username }} posted {{ m.mealname }} {{ m.date_available|timesince }} ago. </a></li>
-      		      {% endfor %}
-      		    </ul>
-      		    {% endif %}
-      			</div>
-            <!-- Post a meal request form -->
-            <div class="col-md-6 MealFeed">
-              <div class ="MealRequestForm">
-                <p>Post a Meal Request:</p>
-                <form method="post" action="." enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{ meal_request_form.as_p }}
-                  <button type="submit">Submit</button>
-                </form>
-              </div>
-            </div>
+      <div class="row">
+        <!-- Meal request feed -->
+        <div class="col-md-6 RequestFeed">
+          <p>Request Feed</p>
+  				{% if meal_request %}
+  		    <ul>
+            {% for r in meal_request %}
+              <li><a href="{% url 'meal_requests' username=r.user.username|cut:'.' meal_request_name=r.mealRequestName|cut:' ' %}">{{ r.user.username }} requested {{ r.mealRequestName }} on {{ r.date_requested|timesince }} ago. </a></li>
+  		      {% endfor %}
+  		    </ul>
+  		    {% endif %}
+        </div>
+        <!-- Post a meal form -->
+        <div class="col-md-6 RequestFeed">
+          <div class ="CreateMealForm">
+            <p>Post a Meal:</p>
+            <form method="post" action="." enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ meal_form.as_p }}
+              <button type="submit">Submit</button>
+            </form>
           </div>
-          {% endif %}
-      	</div>
-    	</div>
+        </div>
+      </div>
       {% endif %}
-  	</div>
+
+      <!-- Mouth Hub -->
+      {% if request.user.profile.user_type == "M" %}
+		  <div class="row">
+  			<div class="col-md-12">
+  				<h1 style="text-align:center">Mouth Hub</h1>
+  			</div>
+		  </div>
+  		<div class="row">
+  			<div style="text-align:center">
+  				<h4>Welcome {{ user.first_name|title }}!<h4>
+  				<p> You can
+  				<a href="{% url "edit" %}">edit your profile</a> or
+          <a href="{% url "password_change" %}">change your password</a> or
+          <a href="{% url "logout" %}">logout</a>.</p>
+  			</div>
+  		</div>
+      <div class="row">
+        <!--Meal Feed-->
+        <div class="col-md-6 MealFeed">
+  				<p>Meal Feed</p>
+  				{% if meal %}
+  		    <ul>
+            {% for m in meal %}
+  		        <li><a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.user.username }} posted {{ m.mealname }} {{ m.date_available|timesince }} ago. </a></li>
+  		      {% endfor %}
+  		    </ul>
+  		    {% endif %}
+  			</div>
+        <!-- Post a meal request form -->
+        <div class="col-md-6 MealFeed">
+          <div class ="MealRequestForm">
+            <p>Post a Meal Request:</p>
+            <form method="post" action="." enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ meal_request_form.as_p }}
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% endif %}
+    </div>
   </body>
 </html>
 {% endblock %}
