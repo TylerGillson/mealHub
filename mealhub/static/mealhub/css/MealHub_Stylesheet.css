@@ -22,25 +22,25 @@ body footer {
 }
 
 /*These are defined in the html body pages to set backgrounds*/
-#login{
+#login {
 	background-image:url("../media/city-users-banner.png");
 }
-#edit{
+#edit {
 	background-image:url("../media/city-users-banner.png");
 }
-#register{
+#register {
 	background-image:url("../media/ethiopian-platter.jpg");
 }
-#UserHub{
+#UserHub {
 	background-image:url("../media/indian-dishes.jpg");
 }
-#about{
+#about {
 	background-image:url("../media/peer-to-peer-background.png");
 }
-#homePage{
+#homePage {
 	background-image:url("../media/medium-veggies.jpg");
 }
-#mealView{
+#mealView {
 	background-image:url("../media/ethiopian-platter.jpg");
 }
 

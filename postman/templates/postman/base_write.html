@@ -7,7 +7,7 @@
 {% endif %}
 {{ form.media }}{# for ajax_selects (v1.3.6 at least) #}
 {% endblock %}
-{% block content %}
+{% block postman_content %}
 <div id="postman">
 <h1>{% block pm_write_title %}{% endblock %}</h1>
 <form action="{% if next_url %}?next={{ next_url|urlencode }}{% endif %}" method="post">{% csrf_token %}

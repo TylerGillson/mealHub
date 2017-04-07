@@ -3,6 +3,49 @@
 	Called from templates/postman/base.html.
 	Make your own design in <settings.STATIC_ROOT>/postman/css/postman.css
 */
+
+body {
+	background-position: center center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+  background-image:url("../media/peer-to-peer-background.png");
+}
+
+.outer {
+  position: relative;
+  left: 50%;
+  float: left;
+}
+.content {
+  background: rgba(255,255,255,.9);
+  margin-top: 130px;
+  position: relative;
+  left: -50%;
+	float: left;
+  padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+#postman_menu {
+  position: fixed;
+  left: 32%;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,.9);
+  font-size: 16px;
+}
+#postman_menu li {
+  display: inline;
+  list-style: none;
+  margin-right: 10px;
+}
+#pm_messages thead tr th {
+  margin-right: 10px;
+}
+
 .pm_message.pm_deleted {
  text-decoration: line-through;
 }
