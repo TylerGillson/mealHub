@@ -11,6 +11,16 @@ body {
 	width: 100%;
 }
 
+body footer {
+  position: fixed;
+  height: 30px;
+  left: 43%;
+  bottom: 0;
+  margin-bottom: 10px;
+  background: rgba(255,255,255,.6);
+  padding: 2px;
+}
+
 /*These are defined in the html body pages to set backgrounds*/
 #login{
 	background-image:url("../media/city-users-banner.png");
@@ -70,6 +80,11 @@ body {
 	padding-top: 21px;
 }
 
+.MealFeedHome{
+	border:2px solid black;
+	border-radius:2px;
+  margin-bottom: 12px;
+}
 .MealFeed{
 	border:2px solid black;
 	border-radius:2px;
@@ -81,6 +96,10 @@ body {
   left: 40%;
   margin-top: 10px;
   font-size: 20px;
+}
+.RequestFeedHome{
+	border:2px solid black;
+	border-radius:2px;
 }
 .RequestFeed{
 	border:2px solid black;
