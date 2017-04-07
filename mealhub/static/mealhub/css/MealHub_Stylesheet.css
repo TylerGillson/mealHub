@@ -73,6 +73,8 @@ body {
 .MealFeed{
 	border:2px solid black;
 	border-radius:2px;
+  height: 290px;
+  margin-bottom: 15px;
 }
 .MealFeed p {
   position: relative;
@@ -83,6 +85,8 @@ body {
 .RequestFeed{
 	border:2px solid black;
 	border-radius:2px;
+  height: 349px;
+  margin-bottom: 15px;
 }
 .RequestFeed p {
   position: relative;

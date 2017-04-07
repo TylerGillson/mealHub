@@ -15,7 +15,7 @@
     <div class="container">
 
       {% if request.user.is_authenticated %}
-      
+
       <!--Chef Hub -->
       {% if request.user.profile.user_type == "C" %}
 		    <div class="row">
@@ -28,8 +28,8 @@
   			<div style="text-align:center">
   				<h4>Welcome {{ user.first_name|title }}!<h4>
   				<p> You can
-            <a href="{% url "edit" %}">edit your profile</a>or
-            <a href="{% url "password_change" %}">change your password</a>or
+            <a href="{% url "edit" %}">edit your profile</a> or
+            <a href="{% url "password_change" %}">change your password</a> or
             <a href="{% url "logout" %}">logout</a>.
           </p>
   			</div>
@@ -48,7 +48,7 @@
   		    {% endif %}
         </div>
         <!-- Post a meal form -->
-        <div class="col-md-6 MealFeed">
+        <div class="col-md-6 RequestFeed">
           <div class ="CreateMealForm">
             <p>Post a Meal:</p>
             <form method="post" action="." enctype="multipart/form-data">
@@ -72,9 +72,9 @@
   			<div style="text-align:center">
   				<h4>Welcome {{ user.first_name|title }}!<h4>
   				<p> You can
-  				<a href="{% url "edit" %}">edit your profile</a>
-  				or <a href="{% url "password_change" %}">change your password</a>
-  				or <a href="{% url "logout" %}">logout</a>.</p>
+  				<a href="{% url "edit" %}">edit your profile</a> or
+          <a href="{% url "password_change" %}">change your password</a> or
+          <a href="{% url "logout" %}">logout</a>.</p>
   			</div>
   		</div>
       <div class="row">
