@@ -85,6 +85,12 @@ body footer {
 	border-radius:2px;
   margin-bottom: 12px;
 }
+.MealFeedHome p {
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  font-size: 20px;
+}
 .MealFeed{
 	border:2px solid black;
 	border-radius:2px;
@@ -97,9 +103,16 @@ body footer {
   margin-top: 10px;
   font-size: 20px;
 }
+
 .RequestFeedHome{
 	border:2px solid black;
 	border-radius:2px;
+}
+.RequestFeedHome p {
+  position: relative;
+  left: 40%;
+  margin-top: 10px;
+  font-size: 20px;
 }
 .RequestFeed{
 	border:2px solid black;
