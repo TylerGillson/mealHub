@@ -28,6 +28,9 @@ def register(request):
             new_user.save()
             profile = Profile.objects.create(user=new_user)
             profile.user_type = profile_form.cleaned_data['user_type']
+            profile.address = profile_form.cleaned_data['address']
+            profile.city = profile_form.cleaned_data['city']
+            profile.state = profile_form.cleaned_data['state']
             profile.zip_code = profile_form.cleaned_data['zip_code']
             profile.save()
             return render(request, 'mealhub/register_done.html', {'new_user': new_user})
@@ -106,6 +109,7 @@ def UserHubView(request):
                 #FIXME -- need to figure out date widget, otherwise form erros for daysss
                 #new_meal.date_available = meal_form.cleaned_data['date_available']
                 new_meal.servings_available = meal_form.cleaned_data['servings_available']
+                new_meal.ingredients = meal_form.cleaned_data['ingredients']
                 new_meal.photo = meal_form.cleaned_data['photo']
                 new_meal.save()
                 messages.success(request, new_meal.mealname + ' Posted!')
