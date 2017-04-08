@@ -48,17 +48,30 @@ body {
 #pm_byModes {
   margin-bottom: 10px;
 }
-#pm_messages table, th, td {
+.pm_messages table, th, td {
   border: 1px solid black;
+}
+.pm_messages table {
   width: 100%;
 }
-#pm_messages th {
+.pm_messages th:first-child, td:first-child {
+  width: 10%;
+}
+.pm_messages th, td {
   padding: 5px;
   text-align: center;
+  width: 30%;
 }
-#pm_messages td {
+.pm_messages td {
   padding: 7px;
-  text-align: center;
+}
+
+.write_table table, th, td {
+  --border-style: none;
+  --text-align: left;
+}
+.write_table th, td, tr {
+  padding: 5px;
 }
 
 .button {

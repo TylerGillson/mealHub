@@ -189,10 +189,10 @@ class ComposeMixin(NamespaceMixin, object):
         if hasattr(self, 'parent'):  # only in the ReplyView case
             params['parent'] = self.parent
         is_successful = form.save(**params)
-        if is_successful:
-            messages.success(self.request, _("Message successfully sent."), fail_silently=True)
-        else:
-            messages.warning(self.request, _("Message rejected for at least one recipient."), fail_silently=True)
+        #if is_successful:
+        #    messages.success(self.request, _("Message successfully sent."), fail_silently=True)
+        #else:
+        #    messages.warning(self.request, _("Message rejected for at least one recipient."), fail_silently=True)
         return redirect(self.get_success_url())
 
     def get_context_data(self, **kwargs):
@@ -407,10 +407,10 @@ class UpdateMessageMixin(object):
             user = request.user
             filter = Q(pk__in=pks) | Q(thread__in=tpks)
             self._action(user, filter)
-            messages.success(request, self.success_msg, fail_silently=True)
+            #messages.success(request, self.success_msg, fail_silently=True)
             return redirect(request.GET.get('next') or self.success_url or next_url)
         else:
-            messages.warning(request, _("Select at least one object."), fail_silently=True)
+            #messages.warning(request, _("Select at least one object."), fail_silently=True)
             return redirect(next_url)
 
 
