@@ -48,16 +48,16 @@ body {
 #pm_byModes {
   margin-bottom: 10px;
 }
-.pm_messages table, th, td {
+.pm_messages table, .pm_messages th, .pm_messages td {
   border: 1px solid black;
 }
 .pm_messages table {
   width: 100%;
 }
-.pm_messages th:first-child, td:first-child {
+.pm_messages th:first-child, .pm_messages td:first-child {
   width: 10%;
 }
-.pm_messages th, td {
+.pm_messages th, .pm_messages td {
   padding: 5px;
   text-align: center;
   width: 30%;
@@ -66,11 +66,7 @@ body {
   padding: 7px;
 }
 
-.write_table table, th, td {
-  --border-style: none;
-  --text-align: left;
-}
-.write_table th, td, tr {
+.write_table th, .write_table td, .write_table tr {
   padding: 5px;
 }
 
