@@ -61,6 +61,7 @@ body footer {
 	padding-bottom: 10px;
   border: 2px solid black;
 }
+
 .messages {
 	list-style: none;
 	font-size: 20px;
@@ -72,7 +73,6 @@ body footer {
 	left: 35%;
   margin-top: 10px;
 }
-
 .messages li {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -83,19 +83,13 @@ body footer {
 	padding-bottom: 21px;
 	padding-top: 21px;
 }
-/*
-.MealFeedHome{
-	border:2px solid black;
-	border-radius:2px;
-  margin-bottom: 12px;
-}*/
+
 .MealFeedHome p {
   position: relative;
   left: 40%;
   margin-top: 10px;
   font-size: 20px;
 }
-
 .MealFeedHome a{
   margin-left: 10px;
 }
@@ -122,7 +116,6 @@ body footer {
   width: 50px;
   height: 50px;
 }
-
 .MealFeedHome li p{
   position:relative;
   left: 0%;
@@ -144,10 +137,6 @@ body footer {
   font-size: 20px;
 }
 
-/*.RequestFeedHome{
-	border:2px solid black;
-	border-radius:2px;
-}*/
 .RequestFeedHome ul{
   margin-left: 10%;
   width: 75%;
@@ -175,7 +164,6 @@ body footer {
   position: relative;
   margin-top: 0px;
 }
-
 .RequestFeedHome li p{
   position:relative;
   left: 0%;
@@ -227,6 +215,15 @@ body footer {
   left: 40%;
   margin-top: 10px;
   margin-bottom: 40px;
+}
+
+#register_table td {
+  padding: 2px;
+}
+.register_button {
+  position: relative;
+  margin-top: 10px;
+  left: 25%;
 }
 
 .google {

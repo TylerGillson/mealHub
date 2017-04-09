@@ -24,9 +24,11 @@
       	<div class="col-md-6 RegisterForm">
       		<form method="post" action=".">
             {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <button type="submit">Register</button>
+            <table id="register_table">
+              {{ user_form.as_table }}
+              {{ profile_form.as_table }}
+            </table>
+            <button type="submit" class="register_button">Register</button>
           </form>
       	</div>
     		<div class="col-md-3">
