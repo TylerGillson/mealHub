@@ -20,7 +20,7 @@
 			      {% for m in meal %}
 						<li>
 							<img src="{{ m.photo.url }}" alt="photo">
-							<a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.mealname }}</a>
+							<a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.mealname|title }}</a>
 							 <p>Posted by {{ m.user.username }} {{ m.date_posted|timesince }} ago.</p>
 						</li>
 			      {% endfor %}
@@ -32,7 +32,7 @@
 					{% if meal_request %}
 			    <ul>
 			      {% for r in meal_request %}
-							<li><a href="{% url 'meal_requests' username=r.user.username|cut:'.' meal_request_name=r.mealRequestName|cut:' ' %}">{{ r.mealRequestName }} </a>
+							<li><a href="{% url 'meal_requests' username=r.user.username|cut:'.' meal_request_name=r.mealRequestName|cut:' ' %}">{{ r.mealRequestName|title }} </a>
 							<p>Requested by {{ r.user.username }} {{ r.date_requested|timesince }} ago.</p>
 							</li>
 						{% endfor %}
