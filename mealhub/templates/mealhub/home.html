@@ -65,17 +65,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-		<!-- <div class="row">
-			<div class="col-md-6 MealFeed">
-				<p>Meal Feed</p>
-				{% if meal %}
-		    <ul>
-		      {% for m in meal %}
-						<li><a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.user.username }} posted {{ m.mealname }} on {{ m.date_available|date:"m/d/y" }} at {{ m.date_available|date:"g:i a" }}</a></li>
-		      {% endfor %}
-		    </ul>
-		    {% endif %}
-			</div> -->
 			<div class="row">
 				<div class="col-md-6 MealFeedHome">
 					<p>Meal Feed</p>
