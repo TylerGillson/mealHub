@@ -62,6 +62,13 @@ body footer {
   border: 2px solid black;
 }
 
+#homePage .homePageOuter {
+  position: absolute;
+  margin-top: -50px;
+  float: left;
+  left: 50%
+}
+
 .messages {
 	list-style: none;
 	font-size: 20px;

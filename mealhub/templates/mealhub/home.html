@@ -19,7 +19,7 @@
     <link href="{% static 'mealhub/css/MealHub_Stylesheet.css' %}" rel="stylesheet">
 </head>
 <body id = "homePage">
-	<div id="outer">
+	<div class="homePageOuter">
 	<div id="content">
 	<div class="container">
 		<div class="row">
@@ -52,6 +52,7 @@
            {% endif %}
 			     <li><a href="{% url "edit" %}">Settings</a></li>
            <li><a href="{% url "postman:inbox" %}">My Messages</a></li>
+           <li><a href="{% url "search" %}">My Area</a></li>
 			     <li><a href="{% url "logout" %}">Logout</a></li>
 
 			<!--this line is last (if not logged in) -->
