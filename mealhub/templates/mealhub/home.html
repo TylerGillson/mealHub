@@ -55,7 +55,7 @@
 			     <li><a href="{% url "logout" %}">Logout</a></li>
 
 			<!--this line is last (if not logged in) -->
-			{% else %} 
+			{% else %}
 			<li><a href="{% url "about" %}">About</a></li>
 			<li><a href="{% url "login" %}">Login</a></li>
 			<li><a href="{% url "register" %}">Register</a></li>
@@ -65,7 +65,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-6 MealFeed">
 				<p>Meal Feed</p>
 				{% if meal %}
@@ -75,8 +75,7 @@
 		      {% endfor %}
 		    </ul>
 		    {% endif %}
-]
-			</div>
+			</div> -->
 			<div class="row">
 				<div class="col-md-6 MealFeedHome">
 					<p>Meal Feed</p>
