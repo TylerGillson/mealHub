@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, Meal, MealRequest
+from .models import Profile, Meal, MealRequest, Review
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.admin import widgets
@@ -79,4 +79,13 @@ class CreateMealForm(forms.ModelForm):
             'mealname': _('Meal Name'),
             'mealdesc': _('Meal Description'),
             'servings_available': _('Servings Available'),
+        }
+
+class CreateReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ('review_rating', 'review_text')
+        labels = {
+            'review_rating': _('Review Rating'),
+            'review_text': _('Review Text'),
         }

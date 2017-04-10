@@ -10,7 +10,6 @@ TYPE_CHOICES = (
 )
 
 RATING_VALUE = (
-    (0, "No Stars"),
     (1, "One Star"),
     (2, "Two Stars"),
     (3, "Three Stars"),

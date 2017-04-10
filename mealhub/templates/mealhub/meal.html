@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Meal Name{% endblock %}
 {% block content %}
 <!DOCTYPE html>
@@ -40,7 +41,13 @@
 				<h5 style="text-align:center;">overall: {{ meal.meal_rating }}</h5>
 				<p class="ratelist">user rating list here</p>
 				<h2>Rate this Meal</h2>
-				<p>rating form here</p>
+				<form method="post" action="." enctype="multipart/form-data">
+					{% csrf_token %}
+					<table class="review_table">
+						{{ review_form.as_table }}
+					</table>
+					<button type="submit">Submit</button>
+				</form>
 			</div>
 		</div>
 	</div>
