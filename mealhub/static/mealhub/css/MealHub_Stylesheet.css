@@ -216,6 +216,22 @@ body footer {
   margin-top: 10px;
   margin-bottom: 40px;
 }
+.homeNavIn{
+	width:50%;
+	left:25%;
+}
+.homeNavOut{
+	width:35%;
+	left:32.5%;
+}
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+    display:inline-block;
+    float: none;
+}
 
 #register_table td {
   padding: 2px;
