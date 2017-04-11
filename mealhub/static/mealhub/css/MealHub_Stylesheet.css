@@ -386,6 +386,31 @@ body footer {
   max-width: 330px;
   overflow: hidden;
 }
+#message_the_chef {
+  position: relative;
+  left: 45%;
+}
+.meal_image {
+  border: 2px solid black;
+  float: left;
+  margin-top: 5%;
+  margin-right: 10%;
+}
+.MealView ul {
+  list-style: none;
+}
+.MealView li {
+  margin: 5px 5px 0px 0px;
+}
+.MealView .meal_ingredients {
+  height: 200px;
+  width: 300px;
+  overflow-y: scroll;
+}
+.MealView .meal_ingredients li {
+  list-style: square;
+  margin: 0;
+}
 
 /* SOCIAL AUTHENTICATION BUTTONS */
 .google {

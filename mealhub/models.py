@@ -33,7 +33,7 @@ class Profile(models.Model):
 class Meal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mealname = models.CharField(max_length=50)
-    mealdesc = models.CharField(max_length=200)
+    mealdesc = models.CharField(max_length=180)
     meal_rating = models.IntegerField(choices=RATING_VALUE, default=0)
     date_posted = models.DateTimeField(default=timezone.now)
     servings_available = models.IntegerField(null=True)
