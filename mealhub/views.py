@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm, CreateMealForm, MealRequestForm, CreateReviewForm
 from .models import Profile, Meal, MealRequest, Review
+from operator import attrgetter
 
 def home(request):
     meal = Meal.objects.order_by('-date_posted')
@@ -152,11 +153,15 @@ def meals(request, username, mealname):
     meals = Meal.objects.order_by('-date_posted')
     meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','') == mealname]
     meal = meal[0]
+    all_reviews = Review.objects.all()
+    reviews = [x for x in all_reviews if x.meal==meal]
+    print(reviews)
+    reviews = sorted(reviews, key=attrgetter('review_rating'), reverse=True)
     if request.method == 'POST':
         if request.user.is_authenticated() == False:
             review_form = CreateReviewForm()
             messages.error(request, 'You must be logged in!')
-            return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form})
+            return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form, 'reviews': reviews})
 
         review_form = CreateReviewForm(request.POST, request.FILES)
         if review_form.is_valid():
@@ -167,14 +172,14 @@ def meals(request, username, mealname):
             new_review.save()
             messages.success(request, 'Review Posted!')
             review_form = CreateReviewForm()
-            return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form})
+            return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form, 'reviews': reviews})
         else:
             review_form = CreateReviewForm()
             messages.error(request, 'Create a Review Error')
-            return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form})
+            return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form, 'reviews': reviews})
     else:
         review_form = CreateReviewForm()
-        return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form})
+        return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form, 'reviews': reviews})
 
 def meal_requests(request, username, meal_request_name):
     meal_requests = MealRequest.objects.order_by('-date_requested')
