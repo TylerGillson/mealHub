@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}Meal Name{% endblock %}
 {% block content %}
+{% load filters %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,23 +31,41 @@
 				<div>
 					<ul>
 					<p> {{ meal.mealname }} </p>
-					<!-- <p> {{ meal.photo.url }}</p> -->
 					<img src="{{ meal.photo.url }}" alt="photo" style="width:200px;height:200px;">
 					</ul>
 				</div>
 				{% endif %}
 			</div>
 			<div class="col-md-6 MealRatings">
-				<h4 style="text-align:center;">Ratings</h4>
-				<h5 style="text-align:center;">overall: {{ meal.meal_rating }}</h5>
-				<p class="ratelist">user rating list here</p>
+				<h2 style="text-align:center;">Ratings</h2>
+				<h4 style="text-align:left;">Overall: {% if reviews %}
+					{% for i in reviews|review_avg_whole|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in reviews|review_avg_part|times %}<img src="{% static 'mealhub/icons/star-h.png' %}" alt="star" width="20px" height="20px">{% endfor %}
+					{% else %}{{ 0 }}{% endif %}</h4>
+				<div class="has_reviews_table_wrapper">
+					<table class="has_reviews_table">
+						<tr>
+							<th>Reviewed By</th>
+							<th>Review Text</th>
+							<th>Review Rating</th>
+						</tr>
+					{% if reviews %}
+						{% for r in reviews %}
+							<tr>
+								<td>{{ r.reviewed_by }}</td>
+								<td>{{ r.review_text }}</td>
+								<td>{% for i in r.review_rating|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in r.review_rating|empty_stars %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="20px" height="20px">{% endfor %}</td>
+							</tr>
+						{% endfor %}
+					{% endif %}
+					</table>
+				</div>
 				<h2>Rate this Meal</h2>
 				<form method="post" action="." enctype="multipart/form-data">
 					{% csrf_token %}
 					<table class="review_table">
 						{{ review_form.as_table }}
 					</table>
-					<button type="submit">Submit</button>
+					<button type="submit" class="review_button">Submit</button>
 				</form>
 			</div>
 		</div>

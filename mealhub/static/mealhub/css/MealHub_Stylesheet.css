@@ -62,13 +62,30 @@ body footer {
   border: 2px solid black;
 }
 
+/* HOME PAGE */
 #homePage .homePageOuter {
   position: absolute;
   margin-top: -50px;
   float: left;
   left: 50%
 }
+.homeNavIn{
+	width:50%;
+	left:25%;
+}
+.homeNavOut{
+	width:35%;
+	left:32.5%;
+}
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+.navbar.center .navbar-inner .nav {
+    display:inline-block;
+    float: none;
+}
 
+/* USER MESSAGES */
 .messages {
 	list-style: none;
 	font-size: 20px;
@@ -85,12 +102,7 @@ body footer {
   padding-bottom: 5px;
 }
 
-/*feeds and forms formattings */
-.RegisterForm{
-	padding-bottom: 21px;
-	padding-top: 21px;
-}
-
+/* MEAL & MEAL REQUEST FEEDS */
 .MealFeedHome p {
   position: relative;
   left: 40%;
@@ -177,6 +189,7 @@ body footer {
   margin-top: 2px;
   font-size: 13px;
 }
+
 .RequestFeed{
 	border:2px solid black;
 	border-radius:2px;
@@ -190,6 +203,30 @@ body footer {
   font-size: 20px;
 }
 
+/* REGISTER FORM */
+.RegisterForm{
+	padding-bottom: 21px;
+	padding-top: 21px;
+}
+#register_table td {
+  padding: 2px;
+}
+.register_button {
+  position: relative;
+  margin-top: 10px;
+  left: 25%;
+}
+
+/* CREATE_REVIEW FORM */
+.review_button {
+  position: relative;
+  left: 21%;
+}
+.review_text {
+  height: 60px;
+}
+
+/* CREATE MEAL FORM */
 .CreateMealForm {
   position: relative;
   margin-top: 10px;
@@ -207,6 +244,7 @@ body footer {
   margin-bottom: 10px;
 }
 
+/* CREATE MEAL REQUEST FORM */
 .MealRequestForm {
   position: relative;
   margin-top: 10px;
@@ -223,32 +261,23 @@ body footer {
   margin-top: 10px;
   margin-bottom: 40px;
 }
-.homeNavIn{
-	width:50%;
-	left:25%;
+
+/* MEAL PAGE */
+.has_reviews_table_wrapper {
+  overflow-y: scroll;
+  height: 200px;
 }
-.homeNavOut{
-	width:35%;
-	left:32.5%;
+.has_reviews_table table, .has_reviews_table th, .has_reviews_table tr, .has_reviews_table td {
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
 }
-.navbar.center .navbar-inner {
-    text-align: center;
+.has_reviews_table td {
+  max-width: 330px;
+  overflow: hidden;
 }
 
-.navbar.center .navbar-inner .nav {
-    display:inline-block;
-    float: none;
-}
-
-#register_table td {
-  padding: 2px;
-}
-.register_button {
-  position: relative;
-  margin-top: 10px;
-  left: 25%;
-}
-
+/* SOCIAL AUTHENTICATION BUTTONS */
 .google {
   background-color: white;
   padding: 8px;
@@ -284,6 +313,7 @@ body footer {
   color: black;
 }
 
+/* LINK --> BUTTON STYLING */
 .button {
   text-decoration: none;
   background-color: #EEEEEE;
@@ -298,6 +328,7 @@ body footer {
   text-decoration: none;
   color: black;
 }
-/*This is for phones*/
+
+/* This is for phones */
 @media screen and (max-width:600px){
 }

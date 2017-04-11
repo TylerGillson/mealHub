@@ -89,3 +89,6 @@ class CreateReviewForm(forms.ModelForm):
             'review_rating': _('Review Rating'),
             'review_text': _('Review Text'),
         }
+        widgets = {
+            'review_text': forms.Textarea(attrs={'class': 'review_text'}),
+        }
