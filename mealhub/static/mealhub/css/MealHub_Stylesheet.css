@@ -152,8 +152,8 @@ body footer {
 .MealFeed {
 	/*border:2px solid black;*/
 	border-radius:2px;
-  height: 290px;
-  margin-bottom: 15px;
+  height: 460px;
+  overflow: scroll;
 }
 .MealFeed p {
   position: relative;
@@ -239,8 +239,9 @@ body footer {
 .RequestFeed{
 	/*border:2px solid black;*/
 	border-radius:2px;
-  height: 349px;
-  margin-bottom: 15px;
+  height: 460px;
+  margin-bottom: 10px;
+  overflow: scroll;
 }
 .RequestFeed p {
   position: relative;
@@ -302,7 +303,7 @@ body footer {
   background: rgba(255,255,255,.3);
   border-radius: 25px 50px;
   border: 2px solid #000000;
-  padding-bottom: 20%;
+  padding-bottom: 11%;
   /*border: 1px solid black;*/
 }
 .CreateMealForm p:first-child {
