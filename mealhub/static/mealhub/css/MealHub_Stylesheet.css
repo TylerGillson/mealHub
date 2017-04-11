@@ -102,12 +102,7 @@ body footer {
   padding-bottom: 5px;
 }
 
-<<<<<<< HEAD
-/*feeds and forms formattings */
-.RegisterForm{
-	padding-bottom: 21px;
-	padding-top: 21px;
-}
+/* MEAL & MEAL REQUEST FEEDS */
 .MealFeedHome{
 	/*border:2px solid black;*/
 	border-radius:2px;
@@ -115,12 +110,7 @@ body footer {
   margin-bottom: 15px;
   overflow: scroll;
 }
-
 .meal_feed_p {
-=======
-/* MEAL & MEAL REQUEST FEEDS */
-.MealFeedHome p {
->>>>>>> tyler-master
   position: relative;
   left: 43%;
   font-size: 20px;
@@ -159,7 +149,7 @@ body footer {
   font-size: 13px;
 }
 
-.MealFeed{
+.MealFeed {
 	/*border:2px solid black;*/
 	border-radius:2px;
   height: 290px;

@@ -155,7 +155,6 @@ def meals(request, username, mealname):
     meal = meal[0]
     all_reviews = Review.objects.all()
     reviews = [x for x in all_reviews if x.meal==meal]
-    print(reviews)
     reviews = sorted(reviews, key=attrgetter('review_rating'), reverse=True)
     if request.method == 'POST':
         if request.user.is_authenticated() == False:
