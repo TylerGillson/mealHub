@@ -404,7 +404,7 @@ body footer {
   margin: 5px 5px 0px 0px;
 }
 .MealView .meal_ingredients {
-  height: 200px;
+  height: 180px;
   width: 300px;
   overflow-y: scroll;
 }

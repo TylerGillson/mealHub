@@ -23,7 +23,7 @@
 					<li><strong>Posted:</strong> {{ meal.date_posted|timesince }} ago.</li>
 					<li><strong>Servings:</strong> {{ meal.servings_available }} </li>
 					<li><strong>Description:</strong> {{ meal.mealdesc }} </li>
-					<li style="position:relative; left:42%;"><strong>Ingredients:</strong><br>
+					<li style="position:fixed; left:25.5%;"><strong>Ingredients:</strong><br>
 						<ul class="meal_ingredients">
 							{% for i in ingredients %}
 								<li>{{ i }}</li>
