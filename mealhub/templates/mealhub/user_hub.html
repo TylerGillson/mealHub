@@ -10,7 +10,7 @@
     <title>User Hub</title>
   </head>
   <body id="UserHub">
-    <div class="container">
+    <div class="container" style="padding-bottom: 160px;">
 
       {% if request.user.is_authenticated %}
 
@@ -47,8 +47,9 @@
         </div>
         <!-- Post a meal form -->
         <div class="col-md-6 RequestFeed">
+          <p>Post a Meal:</p>
           <div class ="CreateMealForm">
-            <p>Post a Meal:</p>
+
             <form method="post" action="." enctype="multipart/form-data">
               {% csrf_token %}
               <table id="meal_table">
@@ -56,6 +57,19 @@
               </table>
               <button type="submit">Submit</button>
             </form>
+
+            <!-- Post a previous meal (possibility) -->
+            <!-- <p>Post a meal again</p>
+            <form action="." style="margin-left: 40%;">
+              <input list="previous_meals">
+                <datalist id="previous_meals">
+                  {% for m in previous_meals %}
+                    <option value="{{ m.mealname }}">
+                  {% endfor %}
+                </datalist>
+            </form> -->
+
+
           </div>
         </div>
       </div>
@@ -91,8 +105,8 @@
   			</div>
         <!-- Post a meal request form -->
         <div class="col-md-6 MealFeed">
-          <div class ="MealRequestForm">
             <p>Post a Meal Request:</p>
+          <div class ="MealRequestForm">
             <form method="post" action="." enctype="multipart/form-data">
               {% csrf_token %}
               <table id="request_table">

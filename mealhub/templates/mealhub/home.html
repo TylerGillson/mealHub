@@ -67,8 +67,13 @@
       </div>
     </nav>
 			<div class="row">
+				<div class="col-md-6">
+				<p class="meal_feed_p">Meal Feed</p>
+			</div>
+			<div class="col-md-6">
+				<p class="request_feed_p">Request Feed</p>
+			</div>
 				<div class="col-md-6 MealFeedHome">
-					<p>Meal Feed</p>
 					{% if meal %}
 			    <ul>
 			      {% for m in meal %}
@@ -82,7 +87,6 @@
 			    {% endif %}
 				</div>
 				<div class="col-md-6 RequestFeedHome">
-					<p>Request Feed</p>
 					{% if meal_request %}
 			    <ul>
 			      {% for r in meal_request %}

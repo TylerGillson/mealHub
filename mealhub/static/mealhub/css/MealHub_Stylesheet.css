@@ -15,7 +15,7 @@ body footer {
   position: absolute;
   height: 30px;
   left: 43%;
-  bottom: 0;
+  bottom: -55px;
   margin-bottom: 10px;
   background: rgba(255,255,255,.6);
   padding: 2px;
@@ -58,7 +58,7 @@ body footer {
 	float: left;
 	padding-right: 20px;
 	padding-left: 20px;
-	padding-bottom: 160px;
+	padding-bottom: 10px;
   border: 2px solid black;
 }
 
@@ -90,11 +90,17 @@ body footer {
 	padding-bottom: 21px;
 	padding-top: 21px;
 }
+.MealFeedHome{
+	/*border:2px solid black;*/
+	border-radius:2px;
+  height: 450px;
+  margin-bottom: 15px;
+  overflow: scroll;
+}
 
-.MealFeedHome p {
+.meal_feed_p {
   position: relative;
-  left: 40%;
-  margin-top: 10px;
+  left: 43%;
   font-size: 20px;
 }
 .MealFeedHome a{
@@ -172,13 +178,24 @@ body footer {
   margin-top: -20px;
   font-size: 13px;
 }
-
+.request_feed_p {
+  position: relative;
+  left: 44%;
+  font-size: 20px;
+}
+.RequestFeedHome{
+	/*border:2px solid black;*/
+	border-radius:2px;
+  height: 450px;
+  margin-bottom: 15px;
+  overflow: scroll;
+}
 .RequestFeedHome ul{
   margin-left: 10%;
   width: 75%;
 }
 .RequestFeedHome p {
-  position: relative;
+  position: fixed;
   left: 40%;
   margin-top: 10px;
   font-size: 20px;
@@ -247,7 +264,8 @@ body footer {
   margin-top: 10px;
   background: rgba(255,255,255,.3);
   border-radius: 25px 50px;
-  padding-bottom: 22%;
+  border: 2px solid #000000;
+  padding-bottom: 20%;
   /*border: 1px solid black;*/
 }
 .CreateMealForm p:first-child {
@@ -279,7 +297,8 @@ body footer {
   margin-top: 10px;
   background: rgba(255,255,255,.3);
   border-radius: 25px 50px;
-  padding-bottom: 19%;
+  border: 2px solid #000000;
+  padding-bottom: 16%;
 }
 .MealRequestForm p:first-child {
   position: relative;

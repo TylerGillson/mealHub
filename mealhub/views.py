@@ -9,8 +9,8 @@ from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditF
 from .models import Profile, Meal, MealRequest, Review
 
 def home(request):
-    meal = Meal.objects.order_by('-date_posted')[0:10]
-    meal_request = MealRequest.objects.order_by('-date_requested')[0:10]
+    meal = Meal.objects.order_by('-date_posted')
+    meal_request = MealRequest.objects.order_by('-date_requested')
     context = {'meal': meal,'meal_request': meal_request,'section':'home'}
     return render(request,'mealhub/home.html', context)
 
@@ -99,6 +99,8 @@ def UserHubView(request):
     meal = Meal.objects.order_by('-date_posted')[0:10]
     meal_request = MealRequest.objects.order_by('-date_requested')[0:10]
     if request.user.profile.user_type == 'C':
+        previous_meals = [x for x in Meal.objects.all() if x.user.username == request.user.username]
+        print(previous_meals)
         if request.method == 'POST':
             meal_form = CreateMealForm(request.POST, request.FILES)
             if meal_form.is_valid():
@@ -112,15 +114,15 @@ def UserHubView(request):
                 new_meal.save()
                 messages.success(request, new_meal.mealname + ' Posted!')
                 meal_form = CreateMealForm()
-                return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form, 'meal_request': meal_request})
+                return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form, 'meal_request': meal_request, 'previous_meals': previous_meals})
             else:
                 meal_form = CreateMealForm()
                 messages.error(request, 'Create a meal Error')
-                return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form, 'meal_request': meal_request})
+                return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form, 'meal_request': meal_request, 'previous_meals': previous_meals})
 
         else:
             meal_form = CreateMealForm()
-            return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form, 'meal_request': meal_request})
+            return render(request, 'mealhub/user_hub.html', {'meal_form': meal_form, 'meal_request': meal_request, 'previous_meals': previous_meals})
 
     elif request.user.profile.user_type == 'M':
         if request.method == 'POST':
