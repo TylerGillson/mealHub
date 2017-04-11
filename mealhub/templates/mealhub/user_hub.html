@@ -51,7 +51,9 @@
             <p>Post a Meal:</p>
             <form method="post" action="." enctype="multipart/form-data">
               {% csrf_token %}
-              {{ meal_form.as_p }}
+              <table id="meal_table">
+              {{ meal_form.as_table }}
+              </table>
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -93,7 +95,9 @@
             <p>Post a Meal Request:</p>
             <form method="post" action="." enctype="multipart/form-data">
               {% csrf_token %}
-              {{ meal_request_form.as_p }}
+              <table id="request_table">
+              {{ meal_request_form.as_table }}
+            </table>
               <button type="submit">Submit</button>
             </form>
           </div>

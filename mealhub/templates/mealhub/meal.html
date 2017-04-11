@@ -16,7 +16,7 @@
 			<div class="col-md-6 MealView">
 				<h4 style="text-align:center;">meal info placeholder</h4>
 				<!-- MESSAGE THE CHEF BUTTON -->
-				<a href="{% url "postman:write" meal.user.username %}" class="button">Message this Chef</a>
+				<a href="{% url "postman:write" meal.user.username %}" class="button">Message {{ meal.user.username }}</a>
 				<ul>
 					<li>posted: {{ meal.date_posted|timesince }} ago.</li>
 					<li>servings:{{ meal.servings_available }} </li>
@@ -41,6 +41,13 @@
 				<h5 style="text-align:center;">overall: {{ meal.meal_rating }}</h5>
 				<p class="ratelist">user rating list here</p>
 				<h2>Rate this Meal</h2>
+
+				<input type="radio"  name="star">
+				<input type="radio"  name="star">
+				<input type="radio"  name="star">
+				<input type="radio"  name="star">
+				<input type="radio"  name="star">
+
 				<form method="post" action="." enctype="multipart/form-data">
 					{% csrf_token %}
 					<table class="review_table">

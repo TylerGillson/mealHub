@@ -58,7 +58,7 @@ body footer {
 	float: left;
 	padding-right: 20px;
 	padding-left: 20px;
-	padding-bottom: 10px;
+	padding-bottom: 160px;
   border: 2px solid black;
 }
 
@@ -132,7 +132,7 @@ body footer {
 }
 
 .MealFeed{
-	border:2px solid black;
+	/*border:2px solid black;*/
 	border-radius:2px;
   height: 290px;
   margin-bottom: 15px;
@@ -142,6 +142,35 @@ body footer {
   left: 40%;
   margin-top: 10px;
   font-size: 20px;
+}
+
+.MealFeed li{
+  border-radius: 25px 50px;
+  border: 2px solid #000000;
+  background: rgba(255,255,255,.3);
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-left: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.MealFeed li img{
+  position: relative;
+  border-radius: 10px 5px 15px 27px;
+  border: 1px solid #000000;
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+}
+.MealFeed li p{
+  position:relative;
+  left: 0%;
+  margin-left: 65px;
+  margin-top: -20px;
+  font-size: 13px;
 }
 
 .RequestFeedHome ul{
@@ -178,7 +207,7 @@ body footer {
   font-size: 13px;
 }
 .RequestFeed{
-	border:2px solid black;
+	/*border:2px solid black;*/
 	border-radius:2px;
   height: 349px;
   margin-bottom: 15px;
@@ -189,39 +218,90 @@ body footer {
   margin-top: 10px;
   font-size: 20px;
 }
+.RequestFeed li{
+  border-radius: 25px 50px;
+  border: 2px solid #000000;
+  background: rgba(255,255,255,.3);
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-left: 35px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.RequestFeed li a{
+  position: relative;
+  margin-top: 0px;
+}
+.RequestFeed li p{
+  position:relative;
+  left: 0%;
+  margin-top: 2px;
+  font-size: 13px;
+}
 
 .CreateMealForm {
   position: relative;
   margin-top: 10px;
-  right: 30%;
+  background: rgba(255,255,255,.3);
+  border-radius: 25px 50px;
+  padding-bottom: 22%;
+  /*border: 1px solid black;*/
 }
 .CreateMealForm p:first-child {
   position: relative;
-  left: 60%;
+  left: 40%;
   margin-bottom: 15px;
 }
 .CreateMealForm button {
   position: relative;
-  left: 40%;
+  left: 44%;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.CreateMealForm table{
+  position: relative;
+  margin-left: 10%;
+  margin-top: 15%;
+}
+.CreateMealForm table th{
+  width: 100%;
+}
+
+#meal_table td {
+  padding: 8px;
 }
 
 .MealRequestForm {
   position: relative;
   margin-top: 10px;
-  right: 30%;
+  background: rgba(255,255,255,.3);
+  border-radius: 25px 50px;
+  padding-bottom: 19%;
 }
 .MealRequestForm p:first-child {
   position: relative;
-  left: 60%;
+  left: 35%;
   margin-bottom: 30px;
 }
 .MealRequestForm button {
   position: relative;
-  left: 40%;
+  left: 48%;
   margin-top: 10px;
   margin-bottom: 40px;
+}
+.MealRequestForm table{
+  position: relative;
+  margin-left: 10%;
+  margin-top: 15%;
+}
+.MealRequestForm table th{
+  width: 50%;
+}
+#request_table td {
+  padding: 8px;
 }
 .homeNavIn{
 	width:50%;
@@ -301,3 +381,5 @@ body footer {
 /*This is for phones*/
 @media screen and (max-width:600px){
 }
+
+/* Star buttons */
