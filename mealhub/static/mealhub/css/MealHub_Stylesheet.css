@@ -434,6 +434,7 @@ body footer {
 .has_reviews_table_wrapper {
   overflow-y: scroll;
   height: 200px;
+  margin-bottom: 5px;
 }
 .has_reviews_table table, .has_reviews_table th, .has_reviews_table tr, .has_reviews_table td {
   padding: 5px;
