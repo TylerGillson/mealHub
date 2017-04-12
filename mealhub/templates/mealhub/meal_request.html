@@ -5,16 +5,17 @@
 {% block content %}
 <!DOCTYPE html>
 <html>
-  <body>
+  <body id="mealRequestPage">
   {% if meal_request %}
-    <div>
+    <div class="meal_request_data">
       <ul>
-        <h1> {{ meal_request.mealRequestName }} </h1>
-        <p> {{ meal_request.servings_requested }}</p>
-        <p> {{ meal_request.other }}</p>
+        <h1>{{ meal_request.mealRequestName|title }}</h1>
+        <p style="margin-top:25px;"><strong>Mouth:</strong> {{ meal_request.user.username }}</p>
+        <p><strong>Servings Requested:</strong> {{ meal_request.servings_requested }}</p>
+        <p style="margin-bottom:20px;"><strong>Other:</strong> {{ meal_request.other }}</p>
       </ul>
       <!-- MESSAGE THE MOUTH BUTTON -->
-      <a href="{% url "postman:write" meal_request.user.username %}" class="button">Message {{ meal_request.user.username }}</a>
+      <a style="margin-left:14%;" href="{% url "postman:write" meal_request.user.username %}" class="button">Message this Mouth</a>
     </div>
   {% endif %}
   </body>

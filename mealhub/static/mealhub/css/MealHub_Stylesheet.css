@@ -43,7 +43,9 @@ body footer {
 #mealView {
 	background-image:url("../media/ethiopian-platter.jpg");
 }
-
+#mealRequestPage {
+  background-image:url("../media/ethiopian-platter.jpg");
+}
 /*These are part of and have to deal with base.html*/
 #outer {
   position: relative;
@@ -412,6 +414,13 @@ body footer {
 .meal_ingredients li {
   list-style: square;
   margin: 0;
+}
+
+/* MEAL REQUEST PAGE */
+.meal_request_data {
+  text-align: left;
+  margin-right: 30px;
+  margin-bottom: 20px;
 }
 
 /* SOCIAL AUTHENTICATION BUTTONS */

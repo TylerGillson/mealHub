@@ -4,9 +4,6 @@ TO DO:
   - Auto-populate top ten results based on first 4 zip code numbers
   - Make geocoder map auto-drop a pin at the ADDRESS of each of the results
 
-2. Populate meals with ingredients
-3. Create default image for 'meals/None/noimg.jpg'... i.e. create mealhub logo
-4. Re-style meal feeds:
-  - small meal photo
-  - two lines of text
-5. Create reviews for meals
+2. Input test data:
+  - Populate meals with ingredients
+  - Create reviews for meals
