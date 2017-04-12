@@ -13,12 +13,13 @@ body {
 
 body footer {
   position: absolute;
+  border-radius: 25px 50px;
   height: 30px;
   left: 43%;
   bottom: -55px;
   margin-bottom: 10px;
-  background: rgba(255,255,255,.6);
-  padding: 2px;
+  background: rgba(255,255,255,.8);
+  padding: 3px;
 }
 
 /*These are defined in the html body pages to set backgrounds*/
