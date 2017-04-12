@@ -35,6 +35,7 @@ body footer {
 }
 #UserHub {
 	background-image:url("../media/indian-dishes.jpg");
+	padding-bottom:10px;
 }
 #about {
 	background-image:url("../media/peer-to-peer-background.png");
@@ -123,13 +124,13 @@ body footer {
 	border-radius:2px;
   height: 380px;
   margin-bottom: 15px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .RequestFeedHome{
 	border-radius:2px;
   height: 380px;
   margin-bottom: 15px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .MealFeedHome p {
@@ -228,13 +229,13 @@ body footer {
 .MealFeed {
 	border-radius:2px;
   height: 425px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .RequestFeed{
 	border-radius:2px;
   height: 420px;
   margin-bottom: 5  px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .MealFeed p {
