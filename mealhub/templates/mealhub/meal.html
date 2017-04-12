@@ -36,7 +36,8 @@
 				<h2 style="text-align:center;">Ratings</h2>
 				<h4 style="text-align:left;">Overall: {% if reviews %}
 					{% for i in reviews|review_avg_whole|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in reviews|review_avg_part|times %}<img src="{% static 'mealhub/icons/star-h.png' %}" alt="star" width="20px" height="20px">{% endfor %}
-					{% else %}{{ 0 }}{% endif %}</h4>
+					{% else %}{% for i in 5|times %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="20px" height="20px">{% endfor %}
+					{% endif %}</h4>
 				<div class="has_reviews_table_wrapper">
 					<table class="has_reviews_table">
 						<tr>
