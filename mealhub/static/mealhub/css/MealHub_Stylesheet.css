@@ -43,7 +43,9 @@ body footer {
 #mealView {
 	background-image:url("../media/ethiopian-platter.jpg");
 }
-
+#mealRequestPage {
+  background-image:url("../media/ethiopian-platter.jpg");
+}
 /*These are part of and have to deal with base.html*/
 #outer {
   position: relative;
@@ -84,6 +86,18 @@ body footer {
     display:inline-block;
     float: none;
 }
+#meal_feed {
+  margin-top: -20px;
+  position: relative;
+  left: 18%;
+  font-size: 20px;
+}
+#request_feed {
+  margin-top: -20px;
+  position: relative;
+  left: 16%;
+  font-size: 20px;
+}
 
 /* USER MESSAGES */
 .messages {
@@ -106,14 +120,9 @@ body footer {
 .MealFeedHome{
 	/*border:2px solid black;*/
 	border-radius:2px;
-  height: 450px;
+  height: 380px;
   margin-bottom: 15px;
   overflow: scroll;
-}
-.meal_feed_p {
-  position: relative;
-  left: 43%;
-  font-size: 20px;
 }
 .MealFeedHome a{
   margin-left: 10px;
@@ -194,6 +203,7 @@ body footer {
   margin-top: -20px;
   font-size: 13px;
 }
+<<<<<<< HEAD
 
 .MealFeed li a:hover, a:focus{
   color: blue;
@@ -210,10 +220,12 @@ body footer {
   left: 44%;
   font-size: 20px;
 }
+=======
+>>>>>>> 9388636f1264c34872ea5438ee01bb1353d80c1a
 .RequestFeedHome{
 	/*border:2px solid black;*/
 	border-radius:2px;
-  height: 450px;
+  height: 380px;
   margin-bottom: 15px;
   overflow: scroll;
 }
@@ -428,14 +440,22 @@ body footer {
 .MealView li {
   margin: 5px 5px 0px 0px;
 }
-.MealView .meal_ingredients {
+.meal_ingredients {
+  float: right;
   height: 180px;
   width: 300px;
   overflow-y: scroll;
 }
-.MealView .meal_ingredients li {
+.meal_ingredients li {
   list-style: square;
   margin: 0;
+}
+
+/* MEAL REQUEST PAGE */
+.meal_request_data {
+  text-align: left;
+  margin-right: 30px;
+  margin-bottom: 20px;
 }
 
 /* SOCIAL AUTHENTICATION BUTTONS */
