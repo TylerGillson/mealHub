@@ -203,7 +203,7 @@ body footer {
   margin-top: -20px;
   font-size: 13px;
 }
-<<<<<<< HEAD
+
 
 .MealFeed li a:hover, a:focus{
   color: blue;
@@ -215,13 +215,8 @@ body footer {
   font-size: 20px;
   padding-left: 35%;
 }
-.request_feed_p {
-  position: relative;
-  left: 44%;
-  font-size: 20px;
-}
-=======
->>>>>>> 9388636f1264c34872ea5438ee01bb1353d80c1a
+
+
 .RequestFeedHome{
 	/*border:2px solid black;*/
 	border-radius:2px;
