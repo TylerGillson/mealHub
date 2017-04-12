@@ -403,12 +403,13 @@ body footer {
 .MealView li {
   margin: 5px 5px 0px 0px;
 }
-.MealView .meal_ingredients {
+.meal_ingredients {
+  float: right;
   height: 180px;
   width: 300px;
   overflow-y: scroll;
 }
-.MealView .meal_ingredients li {
+.meal_ingredients li {
   list-style: square;
   margin: 0;
 }

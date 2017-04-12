@@ -14,7 +14,7 @@
         <p> {{ meal_request.other }}</p>
       </ul>
       <!-- MESSAGE THE MOUTH BUTTON -->
-      <a href="{% url "postman:write" meal_request.user.username %}" class="button">Message this Mouth</a>
+      <a href="{% url "postman:write" meal_request.user.username %}" class="button">Message {{ meal_request.user.username }}</a>
     </div>
   {% endif %}
   </body>

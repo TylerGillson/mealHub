@@ -13,17 +13,18 @@
 		<div class="row">
 			<h1 style="text-align:center">{{ meal.mealname }}</h1>
 			<!-- MESSAGE THE CHEF BUTTON -->
-			<a id="message_the_chef" href="{% url "postman:write" meal.user.username %}" class="button">Message {{ meal.user.username }}</a>
+			<a id="message_the_chef" href="{% url "postman:write" meal.user.username %}" class="button">Message this Chef</a>
 		</div>
 		<div class="row">
 			<div class="col-md-6 MealView">
 				<img class="meal_image" src="{{ meal.photo.url }}" alt="photo" style="width:200px;height:200px;">
-				<h2 style="text-align:center; margin-top:5%;">Meal Info</h2>
+				<h2 style="text-align:center; margin-top:4%;">Meal Info</h2>
 				<ul>
 					<li><strong>Posted:</strong> {{ meal.date_posted|timesince }} ago.</li>
+					<li><strong>Chef:</strong> {{ meal.user.username }}</li>
 					<li><strong>Servings:</strong> {{ meal.servings_available }} </li>
 					<li><strong>Description:</strong> {{ meal.mealdesc }} </li>
-					<li style="position:fixed; left:25.5%;"><strong>Ingredients:</strong><br>
+					<li style="float:left; margin-top:20px;"><strong>Ingredients:</strong>
 						<ul class="meal_ingredients">
 							{% for i in ingredients %}
 								<li>{{ i }}</li>
