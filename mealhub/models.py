@@ -38,7 +38,7 @@ class Meal(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     servings_available = models.IntegerField(null=True)
     ingredients = models.CharField(max_length=2000, null=True)
-    photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True, default='meals/None/noimg.jpg')
+    photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True, default='meals/None/chef_hat.jpg')
 
     def __str__(self):
         return self.mealname

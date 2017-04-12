@@ -7,7 +7,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm, CreateMealForm, MealRequestForm, CreateReviewForm
 from .models import Profile, Meal, MealRequest, Review
-from operator import attrgetter
 
 def home(request):
     meal = Meal.objects.order_by('-date_posted')
@@ -153,10 +152,13 @@ def meals(request, username, mealname):
     meals = Meal.objects.order_by('-date_posted')
     meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','') == mealname]
     meal = meal[0]
-    ingredients = meal.ingredients.split(',')
-    all_reviews = Review.objects.all()
+    try:
+        ingredients = meal.ingredients.split(',')
+    except:
+        ingredients = ''
+        pass
+    all_reviews = Review.objects.order_by('-review_rating')
     reviews = [x for x in all_reviews if x.meal==meal]
-    reviews = sorted(reviews, key=attrgetter('review_rating'), reverse=True)
     if request.method == 'POST':
         if request.user.is_authenticated() == False:
             review_form = CreateReviewForm()
