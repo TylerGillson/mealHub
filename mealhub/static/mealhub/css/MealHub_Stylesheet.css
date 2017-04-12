@@ -86,6 +86,18 @@ body footer {
     display:inline-block;
     float: none;
 }
+#meal_feed {
+  margin-top: -20px;
+  position: relative;
+  left: 18%;
+  font-size: 20px;
+}
+#request_feed {
+  margin-top: -20px;
+  position: relative;
+  left: 16%;
+  font-size: 20px;
+}
 
 /* USER MESSAGES */
 .messages {
@@ -108,14 +120,9 @@ body footer {
 .MealFeedHome{
 	/*border:2px solid black;*/
 	border-radius:2px;
-  height: 450px;
+  height: 380px;
   margin-bottom: 15px;
   overflow: scroll;
-}
-.meal_feed_p {
-  position: relative;
-  left: 43%;
-  font-size: 20px;
 }
 .MealFeedHome a{
   margin-left: 10px;
@@ -192,15 +199,10 @@ body footer {
   margin-top: -20px;
   font-size: 13px;
 }
-.request_feed_p {
-  position: relative;
-  left: 44%;
-  font-size: 20px;
-}
 .RequestFeedHome{
 	/*border:2px solid black;*/
 	border-radius:2px;
-  height: 450px;
+  height: 380px;
   margin-bottom: 15px;
   overflow: scroll;
 }
