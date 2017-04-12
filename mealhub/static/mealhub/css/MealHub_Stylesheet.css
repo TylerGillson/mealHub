@@ -203,8 +203,6 @@ body footer {
   margin-top: -20px;
   font-size: 13px;
 }
-
-
 .MealFeed li a:hover, a:focus{
   color: blue;
   font-size: 20px;
@@ -215,7 +213,6 @@ body footer {
   font-size: 20px;
   padding-left: 35%;
 }
-
 
 .RequestFeedHome{
 	/*border:2px solid black;*/
