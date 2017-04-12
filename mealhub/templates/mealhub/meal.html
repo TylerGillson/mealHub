@@ -34,30 +34,8 @@
 				</ul>
 			</div>
 			<div class="col-md-6 MealRatings">
-				<h2 style="text-align:center;">Ratings</h2>
-				<h4 style="text-align:left;">Overall: {% if reviews %}
-					{% for i in reviews|review_avg_whole|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in reviews|review_avg_part|times %}<img src="{% static 'mealhub/icons/star-h.png' %}" alt="star" width="20px" height="20px">{% endfor %}
-					{% else %}{% for i in 5|times %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="20px" height="20px">{% endfor %}
-					{% endif %}</h4>
-				<div class="has_reviews_table_wrapper">
-					<table class="has_reviews_table">
-						<tr>
-							<th>Reviewed By</th>
-							<th>Review Text</th>
-							<th>Review Rating</th>
-						</tr>
-					{% if reviews %}
-						{% for r in reviews %}
-							<tr>
-								<td>{{ r.reviewed_by }}</td>
-								<td>{{ r.review_text }}</td>
-								<td>{% for i in r.review_rating|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in r.review_rating|empty_stars %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="20px" height="20px">{% endfor %}</td>
-							</tr>
-						{% endfor %}
-					{% endif %}
-					</table>
-				</div>
-				<h3>Rate this Meal</h3>
+				<h2 style="text-align:center;">Reviews</h2>
+				<h3 style="margin-top:-2px;">Add a Review:</h3>
 				<form method="post" action="." enctype="multipart/form-data">
 					{% csrf_token %}
 					<table class="review_table">
@@ -65,6 +43,30 @@
 					</table>
 					<button type="submit" class="review_button">Submit</button>
 				</form>
+				<h4 style="text-align:left;">Overall: {% if reviews %}
+					{% for i in reviews|review_avg_whole|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in reviews|review_avg_part|times %}<img src="{% static 'mealhub/icons/star-h.png' %}" alt="star" width="20px" height="20px">{% endfor %}
+					{% else %}{% for i in 5|times %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="20px" height="20px">{% endfor %}
+					{% endif %}</h4>
+				<div class="has_reviews_table_wrapper">
+					{% if reviews %}
+					<table class="has_reviews_table">
+						<tr>
+							<th>Reviewed By</th>
+							<th>Review Text</th>
+							<th>Review Rating</th>
+						</tr>
+						{% for r in reviews %}
+							<tr>
+								<td>{{ r.reviewed_by }}</td>
+								<td>{{ r.review_text }}</td>
+								<td>{% for i in r.review_rating|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in r.review_rating|empty_stars %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="20px" height="20px">{% endfor %}</td>
+							</tr>
+						{% endfor %}
+					{% else %}
+					<h4 style="margin-top:30px; text-align:center;">No reviews added . . .</h4>
+					{% endif %}
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
