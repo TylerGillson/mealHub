@@ -34,9 +34,14 @@
 		  </div>
 
       <div class="row">
+        <div class="col-md-6">
+          <h2 class="user_meal_feed_p">Request Feed</h2>
+        </div>
+        <div class="col-md-6">
+          <h2 class="user_meal_feed_p">Post a Meal:</h2>
+        </div>
         <!-- Meal request feed -->
         <div class="col-md-6 RequestFeed">
-          <p>Request Feed</p>
   				{% if meal_request %}
   		    <ul>
             {% for r in meal_request %}
@@ -50,7 +55,6 @@
         </div>
         <!-- Post a meal form -->
         <div class="col-md-6 RequestFeed">
-          <p>Post a Meal:</p>
           <div class ="CreateMealForm">
 
             <form method="post" action="." enctype="multipart/form-data">
@@ -94,10 +98,16 @@
           <a href="{% url "logout" %}">logout</a>.</p>
   			</div>
   		</div>
+      <div class="col-md-6">
+        <h2 class="user_meal_feed_p">Meal Feed</h2>
+      </div>
+      <div class="col-md-6">
+        <h2 class="user_meal_feed_p">Post a Meal Request:</h2>
+      </div>
       <div class="row">
         <!--Meal Feed-->
         <div class="col-md-6 MealFeed">
-  				<p>Meal Feed</p>
+
   				{% if meal %}
   		    <ul>
             {% for m in meal %}
@@ -112,7 +122,6 @@
   			</div>
         <!-- Post a meal request form -->
         <div class="col-md-6 MealFeed">
-            <p>Post a Meal Request:</p>
           <div class ="MealRequestForm">
             <form method="post" action="." enctype="multipart/form-data">
               {% csrf_token %}
