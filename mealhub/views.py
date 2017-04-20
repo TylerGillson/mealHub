@@ -89,7 +89,7 @@ def edit(request):
 def SearchView(request):
     meal = Meal.objects.order_by('-date_posted')
     meal_request = MealRequest.objects.order_by('-date_requested')
-    context = {'meal': meal,'meal_request': meal_request, }
+    context = {'meal': meal, 'meal_request': meal_request, }
     return render(request, 'mealhub/search.html', context)
 
 ### USERS ###

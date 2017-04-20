@@ -1,3 +1,4 @@
+{% load filters %}
 
 <!DOCTYPE html>
 <html>
@@ -56,8 +57,33 @@
         });
         var geocoder = new google.maps.Geocoder();
 
+        {% meal_request_addrs as meal_request_addrs %}
+        {% for meal_request_addr in meal_request_addrs %}
+          geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map);
+        {% endfor %}
+
+        {% meal_addrs as meal_addrs %}
+        {% for meal_addr in meal_addrs %}
+          geocodeCustomAddress("{{ meal_addr.0 }}", "{{ meal_addr.1 }}", geocoder, map);
+        {% endfor %}
+
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeCustomAddress(label, address, geocoder, resultsMap) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              label: label,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
         });
       }
 

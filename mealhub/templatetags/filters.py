@@ -1,4 +1,5 @@
 from django import template
+from mealhub.models import Profile, Meal, MealRequest
 
 register = template.Library()
 
@@ -30,3 +31,27 @@ def empty_stars(number):
 @register.filter(name='times')
 def times(number):
     return range(number)
+
+@register.assignment_tag
+def meal_addrs():
+    meals = Meal.objects.all()
+    profiles = Profile.objects.all()
+    meal_addrs = []
+    for meal in meals:
+        for p in profiles:
+            if meal.user == p.user and p.address is not None:
+                meal_addrs.append((p.user,p.address + " " + p.city + " " + p.state + " " + str(p.zip_code)))
+    meal_addrs = set(meal_addrs)
+    return meal_addrs
+
+@register.assignment_tag
+def meal_request_addrs():
+    meal_requests = MealRequest.objects.all()
+    profiles = Profile.objects.all()
+    meal_request_addrs = []
+    for meal_request in meal_requests:
+        for p in profiles:
+            if meal_request.user == p.user and p.address is not None:
+                meal_request_addrs.append((p.user,p.address + " " + p.city + " " + p.state + " " + str(p.zip_code)))
+    meal_request_addrs = set(meal_request_addrs)
+    return meal_request_addrs
