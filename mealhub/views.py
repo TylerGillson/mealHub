@@ -3,10 +3,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm, CreateMealForm, MealRequestForm, CreateReviewForm
 from .models import Profile, Meal, MealRequest, Review
+from social_django.models import UserSocialAuth
+
+
 
 def home(request):
     meal = Meal.objects.order_by('-date_posted')
@@ -74,6 +77,7 @@ def edit(request):
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, instance=request.user)#, data=request.POST)
         profile_form = ProfileEditForm(request.POST, instance=request.user.profile)#, data=request.POST, files=request.FILES)
+
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -82,7 +86,24 @@ def edit(request):
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
-        return render(request, 'mealhub/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+
+        try:
+            facebook_login = request.user.social_auth.get(provider='facebook')
+        except UserSocialAuth.DoesNotExist:
+            facebook_login = None
+
+        try:
+            google_login = request.user.social_auth.get(provider='google-oauth2')
+        except UserSocialAuth.DoesNotExist:
+            google_login = None
+
+        can_disconnect = (request.user.social_auth.count() > 1 or request.user.has_usable_password())
+
+        return render(request, 'mealhub/edit.html', {'user_form': user_form, 'profile_form': profile_form,
+                'google_login': google_login,
+                'facebook_login': facebook_login,
+                'can_disconnect': can_disconnect
+                })
 
 ### MEALS ###
 

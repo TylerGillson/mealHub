@@ -164,7 +164,21 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
+SOCIAL_AUTH_DISCONNECT_PIPELINE = (
+    # Verifies that the social association can be disconnected from the current
+    # user (ensure that the user login mechanism is not compromised by this
+    # disconnection).
+    'social_core.pipeline.disconnect.allowed_to_disconnect',
+	'social_core.pipeline.disconnect.get_entries',
+    'social_core.pipeline.disconnect.revoke_tokens',
+    'social_core.pipeline.disconnect.disconnect',
+)
+
 SOCIAL_AUTH_FACEBOOK_KEY = '691384897711430'
 SOCIAL_AUTH_FACEBOOK_SECRET = '7f4dd70a72e11c223586404eb23660f7'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '998542322949-o304qvpqni1iut1phdhf2dl71i6i3hik.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='FAOtS7yWYIdmTIUG64HHxYgh'
+
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/edit/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/edit/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = 	False
