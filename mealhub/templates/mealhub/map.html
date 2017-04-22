@@ -44,43 +44,50 @@
     </style>
   </head>
   <body>
+  
     <div id="floating-panel">
       <input id="address" type="textbox" value="enter a zip code">
       <input id="submit" type="button" value="Search">
     </div>
     <div id="map"></div>
     <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: 39.064, lng: -108.551}
+		function initMap() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 8,
+			center: {lat: 39.064, lng: -108.551}
         });
         var geocoder = new google.maps.Geocoder();
 
+		
         {% meal_request_addrs as meal_request_addrs %}
         {% for meal_request_addr in meal_request_addrs %}
-          geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map);
-        {% endfor %}
+			var newUrl = "meal-requests/"+"{{meal_request_addr.3}}"+"/"+"{{meal_request_addr.2}}";
+			geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map,newUrl);
+			
+		{% endfor %}
 
         {% meal_addrs as meal_addrs %}
         {% for meal_addr in meal_addrs %}
-          geocodeCustomAddress("{{ meal_addr.0 }}", "{{ meal_addr.1 }}", geocoder, map);
+			var newUrl = "meals/"+"{{meal_addr.3}}"+"/"+"{{meal_addr.2}}";
+			geocodeCustomAddress("{{ meal_addr.0 }}", "{{ meal_addr.1 }}", geocoder, map,newUrl);
         {% endfor %}
 
         document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
+			geocodeAddress(geocoder, map);
         });
       }
-
-      function geocodeCustomAddress(label, address, geocoder, resultsMap) {
+      function geocodeCustomAddress(label, address, geocoder, resultsMap,endUrl) {
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: resultsMap,
               label: label,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
             });
+			marker.addListener('click', function() {
+				window.location.href = (location.href).substr(0,(location.href).lastIndexOf('search')).concat(endUrl);
+			});
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
@@ -96,6 +103,7 @@
               map: resultsMap,
               position: results[0].geometry.location
             });
+
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
