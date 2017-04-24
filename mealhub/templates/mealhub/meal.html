@@ -59,7 +59,7 @@
 							<tr>
 								<td>{{ r.reviewed_by }}</td>
 								<td>{{ r.review_text }}</td>
-								<td>{% for i in r.review_rating|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="20px" height="20px">{% endfor %}{% for i in r.review_rating|empty_stars %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="20px" height="20px">{% endfor %}</td>
+								<td>{% for i in r.review_rating|times %}<img src="{% static 'mealhub/icons/star.png' %}" alt="star" width="18px" height="18px">{% endfor %}{% for i in r.review_rating|empty_stars %}<img src="{% static 'mealhub/icons/star-1.png' %}" alt="star" width="18px" height="18px">{% endfor %}</td>
 							</tr>
 						{% endfor %}
 					{% else %}

@@ -14,7 +14,7 @@ body {
 
 body footer {
   position: absolute;
-  border-radius: 25px 50px;
+  border-radius: 25px;
   height: 30px;
   left: 43%;
   bottom: -55px;
@@ -25,29 +25,30 @@ body footer {
 
 /*These are defined in the html body pages to set backgrounds*/
 #login {
-	background-image:url("../media/city-users-banner.png");
+	background-image:url("../media/Background.png");
 }
 #edit {
-	background-image:url("../media/city-users-banner.png");
+	background-image:url("../media/Background.png");
 }
 #register {
-	background-image:url("../media/ethiopian-platter.jpg");
+	background-image:url("../media/Background.png");
 }
 #UserHub {
-	background-image:url("../media/indian-dishes.jpg");
+	background-image:url("../media/Background.png");
 	padding-bottom:10px;
 }
 #about {
-	background-image:url("../media/peer-to-peer-background.png");
+	background-image:url("../media/Background.png");
 }
 #homePage {
-	background-image:url("../media/medium-veggies.jpg");
+	background-image:url("../media/Background.png");
+	padding-top:40px;
 }
 #mealView {
-	background-image:url("../media/ethiopian-platter.jpg");
+	background-image:url("../media/Background.png");
 }
 #mealRequestPage {
-  background-image:url("../media/ethiopian-platter.jpg");
+	background-image:url("../media/Background.png");
 }
 /*These are part of and have to deal with base.html*/
 #outer {
@@ -56,7 +57,7 @@ body footer {
   float: left;
 }
 #content {
-  background: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.6);
   margin-top: 80px;
   position: relative;
   left: -50%;
@@ -70,7 +71,7 @@ body footer {
 /* HOME PAGE */
 #homePage .homePageOuter {
   position: absolute;
-  margin-top: -50px;
+  margin-top: -40px;
   float: left;
   left: 50%
 }
@@ -121,13 +122,11 @@ body footer {
 
 /* HOME  FEEDS */
 .MealFeedHome{
-	border-radius:2px;
   height: 380px;
   margin-bottom: 15px;
   overflow-y: scroll;
 }
 .RequestFeedHome{
-	border-radius:2px;
   height: 380px;
   margin-bottom: 15px;
   overflow-y: scroll;
@@ -158,7 +157,6 @@ body footer {
   width: 90%;
 }
 .MealFeedHome li{
-  border-radius: 25px 50px;
   border: 2px solid #000000;
   background: rgba(255,255,255,.6);
   width: 100%;
@@ -169,7 +167,6 @@ body footer {
   padding-left: 13%;
 }
 .RequestFeedHome li{
-  border-radius: 25px 50px;
   border: 2px solid #000000;
   background: rgba(255,255,255,.6);
   width: 100%;
@@ -183,7 +180,6 @@ body footer {
 }
 .MealFeedHome li img{
   position: relative;
-  border-radius: 10px 5px 15px 27px;
   border: 1px solid #000000;
   margin-top: 10px;
   width: 50px;
@@ -227,12 +223,10 @@ body footer {
 
 /*USER HUB FEEDS*/
 .MealFeed {
-	border-radius:2px;
   height: 425px;
   overflow-y: scroll;
 }
 .RequestFeed{
-	border-radius:2px;
   height: 420px;
   margin-bottom: 5  px;
   overflow-y: scroll;
@@ -252,32 +246,30 @@ body footer {
 }
 
 .MealFeed li{
-  border-radius: 25px 50px;
   border: 2px solid #000000;
   background: rgba(255,255,255,.6);
   width: 80%;
   height: 100%;
   list-style: none;
-  margin-left: 6%;
+  margin-left: 7%;
   margin-top: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding-left: 10%;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .RequestFeed li{
-  border-radius: 25px 50px;
   border: 2px solid #000000;
   background: rgba(255,255,255,.6);
   width: 80%;
   height: 100%;
   list-style: none;
-  margin-left: 6%;
+  margin-left: 7%;
   margin-top: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding-left: 10%;
-  padding-top: 10px;
-  padding-bottom: 5px;
+  padding-top: 4px;
+  padding-bottom: 0px;
 }
 
 .RequestFeed li a{
@@ -291,7 +283,6 @@ body footer {
 
 .MealFeed li img{
   position: relative;
-  border-radius: 10px 5px 15px 27px;
   border: 1px solid #000000;
   margin-top: 10px;
   width: 50px;
@@ -360,7 +351,6 @@ body footer {
   position: relative;
   margin-top: 10px;
   background: rgba(255,255,255,.6);
-  border-radius: 25px 50px;
   border: 2px solid #000000;
   padding-bottom: 11%;
   /*border: 1px solid black;*/
@@ -394,7 +384,6 @@ body footer {
   position: relative;
   margin-top: 10px;
   background: rgba(255,255,255,.6);
-  border-radius: 25px 50px;
   border: 2px solid #000000;
   padding-bottom: 16%;
 }

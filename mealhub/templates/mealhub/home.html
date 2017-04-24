@@ -26,12 +26,8 @@
 			<h1 style="text-align:center">MealHub</h1>
 			<h4 style="text-align:center">A P2P home cooked meal exchange platform</h4>
 		</div>
-	{% if request.user.is_authenticated %}
-	<nav class="navbar navbar-inverse center homeNavIn">
-	{% else %}
-	<nav class="navbar navbar-inverse center homeNavOut">
-	{% endif %}
-      <div class="row">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -39,9 +35,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <a class="navbar-brand" href="{% url "home" %}">MealHub</a>
         </div>
       <div id="navbar" class="collapse navbar-collapse">
-    		<div class="navbar-inner">
           <ul class="nav navbar-nav">
       		  {% if request.user.is_authenticated %}
             {% if user.profile.user_type == "C" %}
@@ -61,40 +57,39 @@
       			<li><a href="{% url "register" %}">Register</a></li>
       		  {% endif %}
           </ul>
-    		</div>
       </div><!--/.nav-collapse -->
     </div>
     </nav>
-			<div class="row">
-				<div id="meal_feed" class="col-md-6">
+	<div class="row">
+		<div id="meal_feed" class="col-md-6">
           <h2>Meal Feed</h2>
-			  </div>
+		</div>
         <div id="request_feed" class="col-md-6">
           <h2>Request Feed</h2>
         </div>
-				<div class="col-md-6 MealFeedHome">
-					{% if meal %}
-			    <ul>
-			      {% for m in meal %}
-						<li>
-							<img src="{{ m.photo.url }}" alt="photo">
-							<a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.mealname|title }}</a>
-							 <p>Posted by {{ m.user.username }} {{ m.date_posted|timesince }} ago.</p>
-						</li>
-			      {% endfor %}
+		<div class="col-md-6 MealFeedHome">
+			{% if meal %}
+			   <ul>
+			    {% for m in meal %}
+					<li>
+						<img src="{{ m.photo.url }}" alt="photo">
+						<a href="{% url 'meals' username=m.user.username|cut:'.' mealname=m.mealname|cut:' ' %}">{{ m.mealname|title }}</a>
+						<p>Posted by {{ m.user.username }} {{ m.date_posted|timesince }} ago.</p>
+					</li>
+				{% endfor %}
 			    </ul>
-			    {% endif %}
-				</div>
-				<div class="col-md-6 RequestFeedHome">
-					{% if meal_request %}
+			{% endif %}
+		</div>
+		<div class="col-md-6 RequestFeedHome">
+			{% if meal_request %}
 			    <ul>
 			      {% for r in meal_request %}
-							<li><a href="{% url 'meal_requests' username=r.user.username|cut:'.' meal_request_name=r.mealRequestName|cut:' ' %}">{{ r.mealRequestName|title }} </a>
+						<li><a href="{% url 'meal_requests' username=r.user.username|cut:'.' meal_request_name=r.mealRequestName|cut:' ' %}">{{ r.mealRequestName|title }} </a>
 							<p>Requested by {{ r.user.username }} {{ r.date_requested|timesince }} ago.</p>
-							</li>
-						{% endfor %}
+						</li>
+					{% endfor %}
 			    </ul>
-			    {% endif %}
+			{% endif %}
 				</div>
 			</div>
 		<footer>

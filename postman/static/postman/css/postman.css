@@ -10,7 +10,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
-  background-image:url("../media/peer-to-peer-background.png");
+	background-image:url("../media/Background.png");
 }
 
 .outer {
@@ -22,8 +22,8 @@ body {
   position: relative;
   left: -50%;
   float: left;
-  background: rgba(255,255,255,.9);
-  margin-top: 150px;
+  background: rgba(255,255,255,.7);
+  margin-top: 0px;
   padding-right: 20px;
   padding-left: 20px;
   padding-bottom: 10px;
@@ -31,14 +31,20 @@ body {
   width: 600px;
 }
 
+
 #postman_menu {
-  position: fixed;
-  left: 28%;
+  position: relative;
+  left: 31.5%;
+  width: 572px;
+  border: 2px solid black;
+  height:42px;
   margin-top: 100px;
-  background: rgba(255,255,255,.9);
+  padding-top:6px;
+  background: rgba(255,255,255,.7);
   font-size: 20px;
   z-index: 100;
 }
+
 #postman_menu li {
   display: inline;
   list-style: none;
