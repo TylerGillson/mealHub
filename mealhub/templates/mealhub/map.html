@@ -15,7 +15,7 @@
         margin-top: 60px;
         height: 84%;
         width: 50%;
-		border:4px solid #999;
+        border: 1px solid #000000;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -32,7 +32,7 @@
         z-index: 5;
         background-color: #fff;
         padding: 5px;
-        border: 1px solid #999;
+        border: 1px solid #000000;
         text-align: middle;
         font-family: 'Roboto','sans-serif';
         line-height: 30px;
@@ -44,7 +44,7 @@
     </style>
   </head>
   <body>
-  
+
     <div id="floating-panel">
       <input id="address" type="textbox" value="enter a zip code">
       <input id="submit" type="button" value="Search">
@@ -58,12 +58,12 @@
         });
         var geocoder = new google.maps.Geocoder();
 
-		
+
         {% meal_request_addrs as meal_request_addrs %}
         {% for meal_request_addr in meal_request_addrs %}
 			var newUrl = "meal-requests/"+"{{meal_request_addr.3}}"+"/"+"{{meal_request_addr.2}}";
 			geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map,newUrl);
-			
+
 		{% endfor %}
 
         {% meal_addrs as meal_addrs %}

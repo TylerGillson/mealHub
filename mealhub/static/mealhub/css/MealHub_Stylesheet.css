@@ -17,7 +17,7 @@ body footer {
   border-radius: 25px;
   height: 30px;
   left: 43%;
-  bottom: -55px;
+  bottom: -25%;
   margin-bottom: 10px;
   background: rgba(255,255,255,.8);
   padding: 3px;
@@ -65,7 +65,7 @@ body footer {
 	padding-right: 20px;
 	padding-left: 20px;
 	padding-bottom: 10px;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 /* HOME PAGE */
@@ -101,6 +101,18 @@ body footer {
   position: relative;
   left: 16%;
   font-size: 20px;
+}
+
+/* EDIT PAGE*/
+#edit_table td, th {
+  padding: 2px;
+}
+#edit_table th {
+  left: 0;
+}
+#edit_table td {
+  left: 0;
+  padding-left: 1px;
 }
 
 /* USER MESSAGES */
@@ -157,7 +169,7 @@ body footer {
   width: 90%;
 }
 .MealFeedHome li{
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 100%;
   height: 100%;
@@ -167,7 +179,7 @@ body footer {
   padding-left: 13%;
 }
 .RequestFeedHome li{
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 100%;
   height: 100%;
@@ -246,7 +258,7 @@ body footer {
 }
 
 .MealFeed li{
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 80%;
   height: 100%;
@@ -259,7 +271,7 @@ body footer {
   padding-bottom: 0px;
 }
 .RequestFeed li{
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 80%;
   height: 100%;
@@ -328,13 +340,26 @@ body footer {
 	padding-bottom: 21px;
 	padding-top: 21px;
 }
+#register_table {
+  margin-top: 10%;
+}
+#register_table table, th, td, tr {
+  position: relative;
+  left: 22%;
+}
 #register_table td {
+  text-align: left;
   padding: 2px;
+  width: 70%;
+}
+#register_table th {
+  text-align: left;
+  width: 30%;
 }
 .register_button {
   position: relative;
   margin-top: 10px;
-  left: 25%;
+  left: 43.5%;
 }
 
 /* CREATE_REVIEW FORM */
@@ -351,7 +376,7 @@ body footer {
   position: relative;
   margin-top: 10px;
   background: rgba(255,255,255,.6);
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   padding-bottom: 11%;
   /*border: 1px solid black;*/
 }
@@ -384,7 +409,7 @@ body footer {
   position: relative;
   margin-top: 10px;
   background: rgba(255,255,255,.6);
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   padding-bottom: 16%;
 }
 .MealRequestForm p:first-child {
@@ -441,7 +466,7 @@ body footer {
   left: 45%;
 }
 .meal_image {
-  border: 2px solid black;
+  border: 1px solid black;
   float: left;
   margin-top: 5%;
   margin-right: 10%;

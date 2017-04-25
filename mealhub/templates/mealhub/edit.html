@@ -15,9 +15,11 @@
     <p>You can edit your account using the following form:</p>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ user_form.as_p }}
-      {{ profile_form.as_p }}
-      <button type="submit">Save Changes</button>
+      <table id="edit_table">
+        {{ user_form.as_table }}
+        {{ profile_form.as_table }}
+      </table>
+      <button type="submit" style="margin-top: 2%; margin-bottom: 2%;">Save Changes</button>
     </form>
 
     <p>Connected Social Accounts:</p>
@@ -26,14 +28,14 @@
     {% if can_disconnect %}
       <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
         {% csrf_token %}
-        <button type="submit">Disconnect from Facebook</button>
+        <button type="submit" class="button">Disconnect from Facebook</button>
       </form>
     {% else %}
       <li><button type="button" disabled>Disconnect from Facebook</button></li>
 
     {% endif %}
   {% else %}
-    <a href="{% url "social:begin" "facebook" %}">Connect to Facebook</a>
+    <a href="{% url "social:begin" "facebook" %}" class="button">Connect to Facebook</a>
   {% endif %}</p>
 
     {% if google_login %}
@@ -41,14 +43,14 @@
     {% if can_disconnect %}
       <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
         {% csrf_token %}
-        <button type="submit">Disconnect from Google</button>
+        <button type="submit" class="button">Disconnect from Google</button>
       </form>
     {% else %}
       <li><button type="button" disabled>Disconnect from Google</button></li>
 
     {% endif %}
   {% else %}
-    <a href="{% url "social:begin" "google-oauth2" %}">Connect to Google</a>
+    <a href="{% url "social:begin" "google-oauth2" %}" class="button">Connect to Google</a>
   {% endif %}
   </body>
 </html>
