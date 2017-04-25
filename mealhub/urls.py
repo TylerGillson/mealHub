@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^password-reset/complete/$', auth_views.password_reset_complete, name='password_reset_complete'),
 
     url(r'^register/$', views.register, name = 'register'),
+    url(r'^password/$', views.password, name='password'),
     url(r'^about/$', views.aboutUs, name='about'),
     url(r'^user_hub/$', views.UserHubView, name = 'user_hub'),
     url(r'^search/$', views.SearchView, name ='search'),

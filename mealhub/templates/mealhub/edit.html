@@ -19,39 +19,39 @@
         {{ user_form.as_table }}
         {{ profile_form.as_table }}
       </table>
-      <button type="submit" style="margin-top: 2%; margin-bottom: 2%;">Save Changes</button>
+      <button type="submit" style="margin-top: 2%; margin-bottom: 5%;">Save Changes</button>
     </form>
 
-    <p>Connected Social Accounts:</p>
+    <p><strong>Connected Social Accounts:</strong></p>
     {% if facebook_login %}
-    <p>Connected to Facebook as: <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
-    {% if can_disconnect %}
-      <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
+      <p>Connected to Facebook as: <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
+      {% if can_disconnect %}
+        <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
         {% csrf_token %}
-        <button type="submit" class="button">Disconnect from Facebook</button>
-      </form>
+        <button type="submit">Disconnect from Facebook</button>
+    </form>
+      {% else %}
+        <button type="button" disabled>Disconnect from Facebook</button>
+        <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
+      {% endif %}
     {% else %}
-      <li><button type="button" disabled>Disconnect from Facebook</button></li>
-
-    {% endif %}
-  {% else %}
-    <a href="{% url "social:begin" "facebook" %}" class="button">Connect to Facebook</a>
-  {% endif %}</p>
+      <a href="{% url "social:begin" "facebook" %}" class="button">Connect to Facebook</a>
+    {% endif %}</p>
 
     {% if google_login %}
-    <p>Connected to Google as: <a href="https://google.com/{{google_login.extra_data.id}}/" target="_blank">{{ google_login.extra_data.id }}</a></p>
-    {% if can_disconnect %}
-      <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
-        {% csrf_token %}
-        <button type="submit" class="button">Disconnect from Google</button>
-      </form>
+      <p>Connected to Google as: <a href="https://google.com/{{ google_login }}/" target="_blank">{{ google_login }}</a></p>
+      {% if can_disconnect %}
+        <form method="post" action="{% url 'social:disconnect' 'google-oauth2' %}">
+          {% csrf_token %}
+          <button type="submit">Disconnect from Google</button>
+        </form>
+      {% else %}
+        <button type="button" disabled>Disconnect from Google</button>
+        <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Google.</p>
+      {% endif %}
     {% else %}
-      <li><button type="button" disabled>Disconnect from Google</button></li>
-
+      <a href="{% url "social:begin" "google-oauth2" %}" class="button">Connect to Google</a>
     {% endif %}
-  {% else %}
-    <a href="{% url "social:begin" "google-oauth2" %}" class="button">Connect to Google</a>
-  {% endif %}
   </body>
 </html>
 {% endblock %}

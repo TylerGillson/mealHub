@@ -11,7 +11,8 @@
 <body id = "mealView">
 	<div class="container">
 		<div class="row">
-			<h1 style="text-align:center">{{ meal.mealname }}</h1>
+			<h1 style="text-align:center;">{{ meal.mealname }}</h1>
+			<br>
 			<!-- MESSAGE THE CHEF BUTTON -->
 			<a id="message_the_chef" href="{% url "postman:write" meal.user.username %}" class="button">Message this Chef</a>
 		</div>

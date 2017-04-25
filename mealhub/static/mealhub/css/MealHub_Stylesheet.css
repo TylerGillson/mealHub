@@ -1,5 +1,4 @@
 * {
-  --font-family: 'Alegreya', cursive;
   font-size: 16px;
 }
 
@@ -25,30 +24,30 @@ body footer {
 
 /*These are defined in the html body pages to set backgrounds*/
 #login {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 }
 #edit {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 }
 #register {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 }
 #UserHub {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 	padding-bottom:10px;
 }
 #about {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 }
 #homePage {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 	padding-top:40px;
 }
 #mealView {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 }
 #mealRequestPage {
-	background-image:url("../media/Background.png");
+	background-image:url("../media/whitebk22.jpg");
 }
 /*These are part of and have to deal with base.html*/
 #outer {
@@ -104,7 +103,7 @@ body footer {
 }
 
 /* EDIT PAGE*/
-#edit_table td, th {
+#edit_table td, #edit_table th {
   padding: 2px;
 }
 #edit_table th {
@@ -112,7 +111,7 @@ body footer {
 }
 #edit_table td {
   left: 0;
-  padding-left: 1px;
+  padding-left: 10%;
 }
 
 /* USER MESSAGES */
@@ -222,12 +221,12 @@ body footer {
 }
 .MealFeedHome li a:hover, a:focus{
   color: blue;
-  font-size: 20px;
+  font-size: 16.5px;
   text-decoration: none;
 }
 .RequestFeedHome li a:hover, a:focus{
   color: blue;
-  font-size: 20px;
+  font-size: 16.5px;
   text-decoration: none;
 }
 /* END  HOME  FEEDS */
@@ -317,12 +316,12 @@ body footer {
 
 .MealFeed li a:hover, a:focus{
   color: blue;
-  font-size: 20px;
+  font-size: 16.5px;
   text-decoration: none;
 }
 .RequestFeed li a:hover, a:focus{
   color: blue;
-  font-size: 20px;
+  font-size: 16.5px;
   text-decoration: none;
 }
 /*END USER HUB FEEDS*/
@@ -343,23 +342,25 @@ body footer {
 #register_table {
   margin-top: 10%;
 }
-#register_table table, th, td, tr {
+#register_table table, #register_table th, #register_table td, #register_table tr {
   position: relative;
-  left: 22%;
-}
-#register_table td {
-  text-align: left;
-  padding: 2px;
-  width: 70%;
+  left: 30%;
 }
 #register_table th {
   text-align: left;
-  width: 30%;
+  vertical-align: middle;
+  width: 45%;
+}
+#register_table td {
+  text-align: left;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 50%;
 }
 .register_button {
   position: relative;
   margin-top: 10px;
-  left: 43.5%;
+  left: 48%;
 }
 
 /* CREATE_REVIEW FORM */
@@ -378,7 +379,6 @@ body footer {
   background: rgba(255,255,255,.6);
   border: 1px solid #000000;
   padding-bottom: 11%;
-  /*border: 1px solid black;*/
 }
 .CreateMealForm p:first-child {
   position: relative;
@@ -463,12 +463,12 @@ body footer {
 }
 #message_the_chef {
   position: relative;
-  left: 45%;
+  left: 43.5%;
 }
 .meal_image {
   border: 1px solid black;
   float: left;
-  margin-top: 5%;
+  margin-top: 10%;
   margin-right: 10%;
 }
 .MealView ul {
@@ -497,6 +497,8 @@ body footer {
 
 /* SOCIAL AUTHENTICATION BUTTONS */
 .google {
+  position: relative;
+  left: 13%;
   background-color: white;
   padding: 8px;
   padding-right: 12px;
@@ -514,6 +516,8 @@ body footer {
   color: black;
 }
 .facebook {
+  position: relative;
+  left: 8.5%;
   background-color: white;
   padding: 8px;
   padding-right: 12px;

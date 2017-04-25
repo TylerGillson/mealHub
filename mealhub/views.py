@@ -5,17 +5,16 @@ from django.views import generic
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm, CreateMealForm, MealRequestForm, CreateReviewForm
+from .forms import UserRegistrationForm, UserEditForm, ProfileForm, ProfileEditForm, LoginForm, CreateMealForm, MealRequestForm, CreateReviewForm, PasswordForm
 from .models import Profile, Meal, MealRequest, Review
 from social_django.models import UserSocialAuth
-
-
 
 def home(request):
     meal = Meal.objects.order_by('-date_posted')
     meal_request = MealRequest.objects.order_by('-date_requested')
     context = {'meal': meal,'meal_request': meal_request,'section':'home'}
     return render(request,'mealhub/home.html', context)
+
 
 def register(request):
     if request.method == 'POST':
@@ -104,6 +103,20 @@ def edit(request):
                 'facebook_login': facebook_login,
                 'can_disconnect': can_disconnect
                 })
+
+@login_required
+def password(request):
+    if request.method == 'POST':
+        password_form = PasswordForm(request.POST, instance=request.user)
+
+        if password_form.is_valid():
+            request.user.set_password(password_form.cleaned_data['password'])
+            request.user.save()
+            messages.success(request, 'Your password was successfully updated!')
+            return HttpResponseRedirect(reverse('user_hub'))
+    else:
+        password_form = PasswordForm()
+        return render(request, 'mealhub/password.html', {'password_form': password_form})
 
 ### MEALS ###
 

@@ -53,62 +53,58 @@
     <script>
 		function initMap() {
 			var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 11,
-			center: {lat: 39.064, lng: -108.551}
-        });
-        var geocoder = new google.maps.Geocoder();
+			   zoom: 11,
+			   center: {lat: 39.064, lng: -108.551}
+      });
+      var geocoder = new google.maps.Geocoder();
 
+      {% meal_request_addrs as meal_request_addrs %}
+      {% for meal_request_addr in meal_request_addrs %}
+			   var newUrl = "meal-requests/"+"{{meal_request_addr.3}}"+"/"+"{{meal_request_addr.2}}";
+			   geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map,newUrl);
+		  {% endfor %}
 
-        {% meal_request_addrs as meal_request_addrs %}
-        {% for meal_request_addr in meal_request_addrs %}
-			var newUrl = "meal-requests/"+"{{meal_request_addr.3}}"+"/"+"{{meal_request_addr.2}}";
-			geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map,newUrl);
+      {% meal_addrs as meal_addrs %}
+      {% for meal_addr in meal_addrs %}
+			   var newUrl = "meals/"+"{{meal_addr.3}}"+"/"+"{{meal_addr.2}}";
+			   geocodeCustomAddress("{{ meal_addr.0 }}", "{{ meal_addr.1 }}", geocoder, map,newUrl);
+      {% endfor %}
 
-		{% endfor %}
+      document.getElementById('submit').addEventListener('click', function() {
+        geocodeAddress(geocoder, map);
+      });
+    }
 
-        {% meal_addrs as meal_addrs %}
-        {% for meal_addr in meal_addrs %}
-			var newUrl = "meals/"+"{{meal_addr.3}}"+"/"+"{{meal_addr.2}}";
-			geocodeCustomAddress("{{ meal_addr.0 }}", "{{ meal_addr.1 }}", geocoder, map,newUrl);
-        {% endfor %}
+    function geocodeCustomAddress(label, address, geocoder, resultsMap,endUrl) {
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status === 'OK') {
+          resultsMap.setCenter(results[0].geometry.location);
 
-        document.getElementById('submit').addEventListener('click', function() {
-			geocodeAddress(geocoder, map);
-        });
-      }
-      function geocodeCustomAddress(label, address, geocoder, resultsMap,endUrl) {
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              label: label,
-              position: results[0].geometry.location,
-            });
-			marker.addListener('click', function() {
-				window.location.href = (location.href).substr(0,(location.href).lastIndexOf('search')).concat(endUrl);
-			});
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            label: label,
+            position: results[0].geometry.location,
+          });
 
-      function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
+          marker.addListener('click', function() {
+            window.location.href = (location.href).substr(0,(location.href).lastIndexOf('search')).concat(endUrl);
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
 
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
+    function geocodeAddress(geocoder, resultsMap) {
+      var address = document.getElementById('address').value;
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status === 'OK') {
+          resultsMap.setCenter(results[0].geometry.location);
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8&callback=initMap">
