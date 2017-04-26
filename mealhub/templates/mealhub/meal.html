@@ -22,6 +22,7 @@
 				<h2 style="text-align:center; margin-top:4%;">Meal Info</h2>
 				<ul>
 					<li><strong>Posted:</strong> {{ meal.date_posted|timesince }} ago.</li>
+					<li><strong>Available:</strong> {{ meal.date_available }} {{ meal.time_available }}</li>
 					<li><strong>Chef:</strong> {{ meal.user.username }}</li>
 					<li><strong>Servings:</strong> {{ meal.servings_available }} </li>
 					<li><strong>Description:</strong> {{ meal.mealdesc }} </li>

@@ -11,6 +11,8 @@
       <ul>
         <h1>{{ meal_request.mealRequestName|title }}</h1>
         <p style="margin-top:25px;"><strong>Mouth:</strong> {{ meal_request.user.username }}</p>
+        <p><strong>Date Requested:</strong> {{ meal_request.requested_date }} </p>
+        <p><strong>Time Requested:</strong> {{ meal_request.requested_time }} </p>
         <p><strong>Servings Requested:</strong> {{ meal_request.servings_requested }}</p>
         <p style="margin-bottom:20px;"><strong>Other:</strong> {{ meal_request.other }}</p>
       </ul>
