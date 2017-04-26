@@ -459,7 +459,7 @@ body footer {
 }
 .has_reviews_table td {
   max-width: 330px;
-  overflow: hidden;
+  overflow-x: scroll;
 }
 #message_the_chef {
   position: relative;

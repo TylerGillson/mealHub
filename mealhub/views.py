@@ -120,10 +120,13 @@ def password(request):
 
 ### MEALS ###
 
+from django.conf import settings
+
 def SearchView(request):
     meal = Meal.objects.order_by('-date_posted')
     meal_request = MealRequest.objects.order_by('-date_requested')
-    context = {'meal': meal, 'meal_request': meal_request, }
+    settings.EASY_MAPS_USER = request.user.profile.user_type
+    context = {'meal': meal, 'meal_request': meal_request,}
     return render(request, 'mealhub/search.html', context)
 
 ### USERS ###

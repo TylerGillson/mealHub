@@ -58,17 +58,23 @@
       });
       var geocoder = new google.maps.Geocoder();
 
-      {% meal_request_addrs as meal_request_addrs %}
-      {% for meal_request_addr in meal_request_addrs %}
-			   var newUrl = "meal-requests/"+"{{meal_request_addr.3}}"+"/"+"{{meal_request_addr.2}}";
-			   geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map,newUrl);
-		  {% endfor %}
 
-      {% meal_addrs as meal_addrs %}
-      {% for meal_addr in meal_addrs %}
-			   var newUrl = "meals/"+"{{meal_addr.3}}"+"/"+"{{meal_addr.2}}";
-			   geocodeCustomAddress("{{ meal_addr.0 }}", "{{ meal_addr.1 }}", geocoder, map,newUrl);
-      {% endfor %}
+      {% user as user %}
+
+      {% if user == "C" %}
+        {% meal_request_addrs as meal_request_addrs %}
+        {% for meal_request_addr in meal_request_addrs %}
+  			   var newUrl = "meal-requests/"+"{{meal_request_addr.3}}"+"/"+"{{meal_request_addr.2}}";
+  			   geocodeCustomAddress("{{ meal_request_addr.0 }}", "{{ meal_request_addr.1 }}", geocoder, map,newUrl);
+  		  {% endfor %}
+
+      {% elif user == "M" %}
+        {% meal_addrs as meal_addrs %}
+        {% for meal_addr in meal_addrs %}
+  			   var newUrl = "meals/"+"{{meal_addr.3}}"+"/"+"{{meal_addr.2}}";
+  			   geocodeCustomAddress("{{ meal_addr.0 }}", "{{ meal_addr.1 }}", geocoder, map,newUrl);
+        {% endfor %}
+      {% endif %}
 
       document.getElementById('submit').addEventListener('click', function() {
         geocodeAddress(geocoder, map);

@@ -32,6 +32,12 @@ def empty_stars(number):
 def times(number):
     return range(number)
 
+from django.conf import settings
+@register.assignment_tag
+def user():
+    user = settings.EASY_MAPS_USER
+    return user
+
 @register.assignment_tag
 def meal_addrs():
     meals = Meal.objects.order_by('-id')
