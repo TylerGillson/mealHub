@@ -123,11 +123,14 @@ def password(request):
 from django.conf import settings
 
 def SearchView(request):
-    meal = Meal.objects.order_by('-date_posted')
-    meal_request = MealRequest.objects.order_by('-date_requested')
+    meals = Meal.objects.order_by('-date_posted')
+    meal = [x for x in meals if str(x.user.profile.zip_code)[0:4] == str(request.user.profile.zip_code)[0:4] ]
+    meal_requests = MealRequest.objects.order_by('-date_requested')
+    meal_request = [x for x in meal_requests if str(x.user.profile.zip_code)[0:4] == str(request.user.profile.zip_code)[0:4] ]
+
     settings.EASY_MAPS_USER = request.user.profile.user_type
     settings.EASY_MAPS_USER_ADDRESS = request.user.profile.address + " " + request.user.profile.city + " " + request.user.profile.state + " " + str(request.user.profile.zip_code)
-    print(settings.EASY_MAPS_USER_ADDRESS)
+
     context = {'meal': meal, 'meal_request': meal_request,}
     return render(request, 'mealhub/search.html', context)
 
@@ -135,8 +138,11 @@ def SearchView(request):
 
 @login_required
 def UserHubView(request):
-    meal = Meal.objects.order_by('-date_posted')[0:10]
-    meal_request = MealRequest.objects.order_by('-date_requested')[0:10]
+    meals = Meal.objects.order_by('-date_posted')
+    meal = [x for x in meals if str(x.user.profile.zip_code)[0:4] == str(request.user.profile.zip_code)[0:4] ]
+    meal_requests = MealRequest.objects.order_by('-date_requested')
+    meal_request = [x for x in meal_requests if str(x.user.profile.zip_code)[0:4] == str(request.user.profile.zip_code)[0:4] ]
+
     if request.user.profile.user_type == 'C':
         previous_meals = [x for x in Meal.objects.all() if x.user.username == request.user.username]
         print(previous_meals)
