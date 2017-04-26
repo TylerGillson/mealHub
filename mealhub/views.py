@@ -126,6 +126,7 @@ def SearchView(request):
     meal = Meal.objects.order_by('-date_posted')
     meal_request = MealRequest.objects.order_by('-date_requested')
     settings.EASY_MAPS_USER = request.user.profile.user_type
+    settings.EASY_MAPS_USER_ADDRESS = request.user.profile.address + " " + request.user.profile.city + " " + request.user.profile.state + " " + str(request.user.profile.zip_code)
     context = {'meal': meal, 'meal_request': meal_request,}
     return render(request, 'mealhub/search.html', context)
 

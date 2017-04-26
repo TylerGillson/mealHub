@@ -39,6 +39,11 @@ def user():
     return user
 
 @register.assignment_tag
+def user_address():
+    user_address = settings.EASY_MAPS_USER_ADDRESS
+    return user_address
+
+@register.assignment_tag
 def meal_addrs():
     meals = Meal.objects.order_by('-id')
     profiles = Profile.objects.all()
