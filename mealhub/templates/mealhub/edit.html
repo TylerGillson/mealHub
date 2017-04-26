@@ -24,7 +24,7 @@
 
     <p><strong>Connected Social Accounts:</strong></p>
     {% if facebook_login %}
-      <p>Connected to Facebook as: <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
+      <p>Connected to Facebook as: <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login }}</a></p>
       {% if can_disconnect %}
         <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
         {% csrf_token %}
@@ -35,7 +35,10 @@
         <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
       {% endif %}
     {% else %}
-      <a href="{% url "social:begin" "facebook" %}" class="button">Connect to Facebook</a>
+      <span class="facebook" style="position: relative; left: 0;">
+        <img src="/static/mealhub/icons/facebook.png" alt="facebook_icon" height="42" width="42">
+        <li><a href="{% url "social:begin" "facebook" %}">Connect to Facebook</a></li>
+      </span>
     {% endif %}</p>
 
     {% if google_login %}
@@ -50,7 +53,10 @@
         <p style="color: red">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Google.</p>
       {% endif %}
     {% else %}
-      <a href="{% url "social:begin" "google-oauth2" %}" class="button">Connect to Google</a>
+      <span class="google" style="position: relative; left: 0;">
+        <img src="/static/mealhub/icons/google.png" alt="google_icon" height="42" width="42">
+        <li><a href="{% url "social:begin" "google-oauth2" %}">Connect to Google</a></li>
+      </span>
     {% endif %}
   </body>
 </html>
