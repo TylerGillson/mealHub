@@ -132,6 +132,8 @@ def UserHubView(request):
                 new_meal.servings_available = meal_form.cleaned_data['servings_available']
                 new_meal.ingredients = meal_form.cleaned_data['ingredients']
                 new_meal.photo = meal_form.cleaned_data['photo']
+                new_meal.date_available = meal_form.cleaned_data['date_available']
+                new_meal.time_available =meal_form.cleaned_data['time_available']
                 new_meal.save()
                 messages.success(request, new_meal.mealname + ' Posted!')
                 meal_form = CreateMealForm()
@@ -153,6 +155,8 @@ def UserHubView(request):
                 new_request = MealRequest.objects.create(user=request.user)
                 new_request.mealRequestName = meal_request_form.cleaned_data['mealRequestName']
                 new_request.servings_requested = meal_request_form.cleaned_data['servings_requested']
+                new_request.requested_date = meal_request_form.cleaned_data['requested_date']
+                new_request.requested_time = meal_request_form.cleaned_data['requested_time']
                 new_request.other = meal_request_form.cleaned_data['other']
                 new_request.save()
                 messages.success(request, new_request.mealRequestName + ' Requested!')
