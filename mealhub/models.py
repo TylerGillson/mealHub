@@ -36,6 +36,8 @@ class Meal(models.Model):
     mealdesc = models.CharField(max_length=180)
     meal_rating = models.IntegerField(choices=RATING_VALUE, default=0)
     date_posted = models.DateTimeField(default=timezone.now)
+    date_available = models.DateField(blank=True, null=True)
+    time_available = models.TimeField(blank=True, null=True)
     servings_available = models.IntegerField(null=True)
     ingredients = models.CharField(max_length=2000, null=True)
     photo = models.ImageField(upload_to='meals/%Y/%m/%d', blank=True, default='meals/None/chef_hat.jpg')
@@ -56,6 +58,8 @@ class MealRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     mealRequestName = models.CharField(max_length=50)
     date_requested = models.DateTimeField(default=timezone.now)
+    requested_date = models.DateField(blank=True, null=True)
+    requested_time = models.TimeField(blank=True, null=True)
     servings_requested = models.IntegerField(null=True)
     other = models.CharField(max_length=200)
 

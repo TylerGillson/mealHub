@@ -3,6 +3,7 @@ from .models import Profile, Meal, MealRequest, Review
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.admin import widgets
+from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 import datetime
 
 class UserRegistrationForm(forms.ModelForm):
@@ -77,21 +78,26 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 class MealRequestForm(forms.ModelForm):
+    requested_date = forms.DateField(label="Requested Date", widget=forms.DateInput(attrs={'type': 'date'}, format='%d-%m-%Y'))
+    requested_time= forms.TimeField(label="Requested Time", widget=forms.TimeInput(attrs={'type': 'time'}, format='%h:%m'))
     class Meta:
         model = MealRequest
-        fields = ('mealRequestName', 'servings_requested', 'other')
+        fields = ('mealRequestName', 'servings_requested','requested_date', 'requested_time', 'other')
         labels = {
             'mealRequestName': _('Meal Requested'),
-            'servings_requested': _('Servings Requested')
+            'servings_requested': _('Servings Requested'),
+            'requested_time': _('Requested Time'),
         }
         help_texts = {
             'other': _("ex: I'm allergic to peanuts.")
         }
 
 class CreateMealForm(forms.ModelForm):
+    date_available = forms.DateField(label="Date Available", widget=forms.DateInput(attrs={'type': 'date'}, format='%m/%d/%Y'))
+    time_available = forms.TimeField(label ="Time Available", widget=forms.TimeInput(attrs={'type': 'time'}, format='%H:%M'))
     class Meta:
         model = Meal
-        fields = ('mealname', 'mealdesc', 'servings_available', 'ingredients', 'photo')
+        fields = ('mealname', 'mealdesc', 'servings_available', 'ingredients','date_available','time_available', 'photo')
         labels = {
             'mealname': _('Meal Name'),
             'mealdesc': _('Meal Description'),
