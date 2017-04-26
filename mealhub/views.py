@@ -191,7 +191,7 @@ def UserHubView(request):
 
 def meals(request, username, mealname):
     meals = Meal.objects.order_by('-date_posted')
-    meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','') == mealname]
+    meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','').replace("'", "") == mealname]
     meal = meal[0]
     try:
         ingredients = meal.ingredients.split(',')
@@ -226,6 +226,6 @@ def meals(request, username, mealname):
 
 def meal_requests(request, username, meal_request_name):
     meal_requests = MealRequest.objects.order_by('-date_requested')
-    meal_request = [x for x in meal_requests if x.user.username.replace('.','') == username and x.mealRequestName.replace(' ','') == meal_request_name]
+    meal_request = [x for x in meal_requests if x.user.username.replace('.','') == username and x.mealRequestName.replace(' ','').replace("'","") == meal_request_name]
     meal_request = meal_request[0]
     return(render(request, 'mealhub/meal_request.html', {'meal_request':meal_request}))

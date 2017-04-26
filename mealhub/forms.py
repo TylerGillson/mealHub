@@ -3,7 +3,6 @@ from .models import Profile, Meal, MealRequest, Review
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.admin import widgets
-from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 import datetime
 
 class UserRegistrationForm(forms.ModelForm):

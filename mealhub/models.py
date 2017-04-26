@@ -61,7 +61,7 @@ class MealRequest(models.Model):
     requested_date = models.DateField(blank=True, null=True)
     requested_time = models.TimeField(blank=True, null=True)
     servings_requested = models.IntegerField(null=True)
-    other = models.CharField(max_length=200)
+    other = models.CharField(null=True, blank=True, max_length=200)
 
     def __str__(self):
         return self.mealRequestName

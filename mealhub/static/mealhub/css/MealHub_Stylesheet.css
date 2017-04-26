@@ -375,10 +375,10 @@ body footer {
 /* CREATE MEAL FORM */
 .CreateMealForm {
   position: relative;
-  margin-top: 10px;
+  margin-top: 5px;
   background: rgba(255,255,255,.6);
   border: 1px solid #000000;
-  padding-bottom: 11%;
+  padding-bottom: 3%;
 }
 .CreateMealForm p:first-child {
   position: relative;
@@ -389,12 +389,12 @@ body footer {
   position: relative;
   left: 44%;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .CreateMealForm table{
   position: relative;
   margin-left: 10%;
-  margin-top: 15%;
+  margin-top: 8%;
 }
 .CreateMealForm table th{
   width: 100%;
@@ -407,10 +407,10 @@ body footer {
 /* CREATE MEAL REQUEST FORM */
 .MealRequestForm {
   position: relative;
-  margin-top: 10px;
+  margin-top: 5px;
   background: rgba(255,255,255,.6);
   border: 1px solid #000000;
-  padding-bottom: 16%;
+  padding-bottom: 9%;
 }
 .MealRequestForm p:first-child {
   position: relative;
@@ -421,12 +421,12 @@ body footer {
   position: relative;
   left: 48%;
   margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .MealRequestForm table{
   position: relative;
   margin-left: 10%;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 .MealRequestForm table th{
   width: 50%;
