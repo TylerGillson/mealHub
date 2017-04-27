@@ -75,6 +75,17 @@ body footer {
   float: left;
   left: 50%
 }
+#navbar{
+  position: fixed;
+  left: 7.5%;
+}
+.navImg{
+  position:fixed;
+  max-width: 43px;
+  margin-top: -.85%;
+  left:4%;
+
+}
 .homeNavIn{
 	width:50%;
 	left:25%;
@@ -204,10 +215,12 @@ body footer {
 .MealFeedHome li a{
   position: relative;
   margin-top: 0px;
+  color: #1b7eb7;
 }
 .RequestFeedHome li a{
   position: relative;
   margin-top: 0px;
+  color: #1b7eb7;
 }
 
 .MealFeedHome li p{
@@ -224,12 +237,12 @@ body footer {
   font-size: 13px;
 }
 .MealFeedHome li a:hover, a:focus{
-  color: blue;
+  color: #1b7eb7;
   font-size: 16.5px;
   text-decoration: none;
 }
 .RequestFeedHome li a:hover, a:focus{
-  color: blue;
+  color: #1b7eb7;
   font-size: 16.5px;
   text-decoration: none;
 }
@@ -322,12 +335,12 @@ body footer {
 }
 
 .MealFeed li a:hover, a:focus{
-  color: blue;
+  color: #1b7eb7;
   font-size: 16.5px;
   text-decoration: none;
 }
 .RequestFeed li a:hover, a:focus{
-  color: blue;
+  color: #1b7eb7;
   font-size: 16.5px;
   text-decoration: none;
 }
@@ -455,12 +468,6 @@ body footer {
     text-align: center;
 }
 
-.navImg{
-  position:relative;
-  max-width: 50px;
-  margin-top: -30%;
-
-}
 
 /* MEAL PAGE */
 .has_reviews_table_wrapper {

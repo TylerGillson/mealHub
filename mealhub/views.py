@@ -112,8 +112,10 @@ def password(request):
         if password_form.is_valid():
             request.user.set_password(password_form.cleaned_data['password'])
             request.user.save()
-            messages.success(request, 'Your password was successfully updated!')
-            return HttpResponseRedirect(reverse('user_hub'))
+            user = authenticate(username=request.user.username, password=password_form.cleaned_data['password'])
+            login(request, user)
+            messages.success(request, 'Your password was set!')
+            return HttpResponseRedirect(reverse('edit'))
     else:
         password_form = PasswordForm()
         return render(request, 'mealhub/password.html', {'password_form': password_form})

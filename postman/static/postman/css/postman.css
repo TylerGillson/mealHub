@@ -3,7 +3,9 @@
 	Called from templates/postman/base.html.
 	Make your own design in <settings.STATIC_ROOT>/postman/css/postman.css
 */
-
+* {
+	font-size: 16px;
+}
 body {
 	background-position: center center;
 	background-attachment: fixed;
@@ -30,6 +32,17 @@ body {
 	border-radius: 10px;
   border: 1px solid black;
   width: 600px;
+}
+#navbar{
+  position: fixed;
+  left: 7.5%;
+}
+.navImg{
+  position:fixed;
+  max-width: 43px;
+  margin-top: -.85%;
+  left:4%;
+
 }
 
 
