@@ -56,6 +56,7 @@ body footer {
   float: left;
 }
 #content {
+  border-radius: 10px;
   background: rgba(255,255,255,.6);
   margin-top: 80px;
   position: relative;
@@ -168,6 +169,7 @@ body footer {
   width: 90%;
 }
 .MealFeedHome li{
+  border-radius: 10px;
   border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 100%;
@@ -178,6 +180,7 @@ body footer {
   padding-left: 13%;
 }
 .RequestFeedHome li{
+  border-radius: 10px;
   border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 100%;
@@ -257,6 +260,7 @@ body footer {
 }
 
 .MealFeed li{
+  border-radius: 10px;
   border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 80%;
@@ -270,6 +274,7 @@ body footer {
   padding-bottom: 0px;
 }
 .RequestFeed li{
+  border-radius: 10px;
   border: 1px solid #000000;
   background: rgba(255,255,255,.6);
   width: 80%;
@@ -374,6 +379,7 @@ body footer {
 
 /* CREATE MEAL FORM */
 .CreateMealForm {
+  border-radius: 10px;
   position: relative;
   margin-top: 5px;
   background: rgba(255,255,255,.6);
@@ -406,6 +412,7 @@ body footer {
 
 /* CREATE MEAL REQUEST FORM */
 .MealRequestForm {
+  border-radius: 10px;
   position: relative;
   margin-top: 5px;
   background: rgba(255,255,255,.6);
@@ -444,6 +451,13 @@ body footer {
 }
 .navbar.center .navbar-inner {
     text-align: center;
+}
+
+.navImg{
+  position:relative;
+  max-width: 50px;
+  margin-top: -30%;
+
 }
 
 /* MEAL PAGE */

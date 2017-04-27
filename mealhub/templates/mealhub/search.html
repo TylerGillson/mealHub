@@ -70,6 +70,7 @@
         font-size: 20px;
       }
       .RequestFeed li {
+        border-radius: 10px;
         border: 1px solid #000000;
         background: rgba(255,255,255,.8);
         width: 70%;
@@ -81,6 +82,7 @@
         padding-top: 1%;
       }
       .MealFeed li {
+        border-radius: 10px;
         border: 1px solid #000000;
         background: rgba(255,255,255,.8);
         width: 70%;
@@ -144,6 +146,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <a class="navbar-brand" href ="#">
+          <img class="navImg" style="position:relative; max-width: 50px; margin-top: -30%;" src="{% static 'mealhub/media/mealhubLogo.png' %}" alt="mealh hub logo">
+        </a>
           <a class="navbar-brand" href="{% url "home" %}">MealHub</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
@@ -167,7 +172,7 @@
 
       <!--Chef Feed -->
       {% if request.user.profile.user_type == "C" %}
-      <h1 style ="border: 1px solid #000000">Meals Requests in My Area</h1>
+      <h1 style ="border-radius: 10px; border: 1px solid #000000">Meals Requests in My Area</h1>
       <div class="RequestFeed">
       {% if meal_request %}
 
@@ -185,7 +190,7 @@
 
       <!--Mouth Feed -->
       {% if request.user.profile.user_type == "M" %}
-      <h1 style ="border: 1px solid #000000">Meals in My Area</h1>
+      <h1 style ="border-radius: 10px; border: 1px solid #000000">Meals in My Area</h1>
         <div class="MealFeed">
       {% if meal %}
       <ul>

@@ -23,7 +23,10 @@
 	<div id="content" style="border: None;">
 	<div class="container">
 		<div class="row">
-			<h1 style="text-align:center">MealHub</h1>
+			<!-- <h1 style="text-align:center">
+      <img style="position:relative; max-width: 50px;" src="{% static 'mealhub/media/mealhubLogo.png' %}" alt="mealh hub logo">
+    MealHub</h1> -->
+    <img style="position:relative;width:100%;margin-left:20%;margin-top: -2%;border-radius:30px; max-width: 700px;" src="{% static 'mealhub/media/mealHubText.png' %}" alt="mealh hub text">
 			<h4 style="text-align:center">A P2P home cooked meal exchange platform</h4>
 		</div>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -35,6 +38,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <a class="navbar-brand" href ="#">
+          <img class="navImg" src="{% static 'mealhub/media/mealhubLogo.png' %}" alt="mealh hub logo">
+        </a>
           <a class="navbar-brand" href="{% url "home" %}">MealHub</a>
         </div>
       <div id="navbar" class="collapse navbar-collapse">
