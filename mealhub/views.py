@@ -197,6 +197,7 @@ def UserHubView(request):
     else:
         return HttpResponseRedirect(reverse('edit'))
 
+@login_required
 def meals(request, username, mealname):
     meals = Meal.objects.order_by('-date_posted')
     meal = [x for x in meals if x.user.username.replace('.','') == username and x.mealname.replace(' ','').replace("'", "") == mealname]
@@ -231,7 +232,7 @@ def meals(request, username, mealname):
     else:
         review_form = CreateReviewForm()
         return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form, 'reviews': reviews, 'ingredients': ingredients})
-
+@login_required
 def meal_requests(request, username, meal_request_name):
     meal_requests = MealRequest.objects.order_by('-date_requested')
     meal_request = [x for x in meal_requests if x.user.username.replace('.','') == username and x.mealRequestName.replace(' ','').replace("'","") == meal_request_name]
