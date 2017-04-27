@@ -194,6 +194,7 @@ body footer {
 }
 .MealFeedHome li img{
   position: relative;
+  border-radius: 10px;
   border: 1px solid #000000;
   margin-top: 10px;
   width: 50px;
@@ -299,6 +300,7 @@ body footer {
 
 .MealFeed li img{
   position: relative;
+  border-radius: 10px;
   border: 1px solid #000000;
   margin-top: 10px;
   width: 50px;
@@ -480,6 +482,7 @@ body footer {
   left: 43.5%;
 }
 .meal_image {
+  border-radius: 10px;
   border: 1px solid black;
   float: left;
   margin-top: 10%;
