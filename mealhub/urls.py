@@ -39,6 +39,6 @@ urlpatterns = [
     url(r'^messages/', include('postman.urls', namespace='postman')),
 
     # Social-auth URLs
-    url(r'^auth/', include('social_django.urls', namespace='social')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
