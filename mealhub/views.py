@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
@@ -212,7 +212,7 @@ def meals(request, username, mealname):
     all_reviews = Review.objects.order_by('-review_rating')
     reviews = [x for x in all_reviews if x.meal==meal]
     if request.method == 'POST':
-        if request.user.is_authenticated() == False:
+        if request.user.is_authenticated == False:
             review_form = CreateReviewForm()
             messages.error(request, 'You must be logged in!')
             return render(request, 'mealhub/meal.html', {'meal': meal, 'review_form': review_form, 'reviews': reviews, 'ingredients': ingredients})

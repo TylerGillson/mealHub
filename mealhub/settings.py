@@ -1,6 +1,7 @@
 import os
 import dj_database_url
-from django.core.urlresolvers import reverse_lazy
+#from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 
 LOGIN_REDIRECT_URL = reverse_lazy('user_hub')
 LOGIN_URL = reverse_lazy('login')
@@ -42,13 +43,13 @@ INSTALLED_APPS = [
 EASY_MAPS_CENTER = (-41.3, 32)
 EASY_MAPS_USER = ""
 EASY_MAPS_USER_ADDRESS = ""
-EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyDSQDa_Q7WD8hGNvCnKNdv7N75YQTVwzV8'
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyDL1BkBc04l4oCsgLvk593FRYkaG4kl1hI'
 
 
 # mealhub.email@gmail.com SMTP server config:
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mealhub.email@gmail.com'
-EMAIL_HOST_PASSWORD = 'RfkgjZCisCwyc3iLMAMbbLBwH'
+EMAIL_HOST_PASSWORD = 'am31gu0uS!Y'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -62,14 +63,14 @@ POSTMAN_AUTO_MODERATE_AS = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+#    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	'social_django.middleware.SocialAuthExceptionMiddleware',
@@ -97,7 +98,9 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-	'social_core.backends.google.GoogleOAuth2',
+	'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+ 	'social_core.backends.google.GoogleOpenId',  # for Google authentication
+ 	'social_core.backends.google.GoogleOAuth2',  # for Google authentication
 	'social_core.backends.facebook.FacebookOAuth2',
 	'django.contrib.auth.backends.ModelBackend',
 )
@@ -178,8 +181,8 @@ SOCIAL_AUTH_DISCONNECT_PIPELINE = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '691384897711430'
 SOCIAL_AUTH_FACEBOOK_SECRET = '7f4dd70a72e11c223586404eb23660f7'
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '292069991636-ecvq3qbsln7amg983bcus0e3v7s905eg.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'm9ZtAItQWETaFRD8wo-ATFIY'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '759019647601-vtilg76rfkh8uuarttd91mb7jnmldof5.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'LHEQ6tLCn7_kXx_UH30cAX7S'
 SOCIAL_AUTH_LOGIN_ERROR_URL = 'edit'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'edit'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False

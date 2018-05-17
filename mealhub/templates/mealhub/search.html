@@ -183,7 +183,7 @@
 
       <!--Chef Feed -->
       {% if request.user.profile.user_type == "C" %}
-      <h1 style ="border-radius: 10px; border: 1px solid #000000">Meals Requests in My Area</h1>
+      <h1>Meals Requests in My Area</h1>
       <div class="RequestFeed">
       {% if meal_request %}
 
@@ -201,7 +201,7 @@
 
       <!--Mouth Feed -->
       {% if request.user.profile.user_type == "M" %}
-      <h1 style ="border-radius: 10px; border: 1px solid #000000">Meals in My Area</h1>
+      <h1>Meals in My Area</h1>
         <div class="MealFeed">
       {% if meal %}
       <ul>

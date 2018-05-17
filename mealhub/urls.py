@@ -36,9 +36,9 @@ urlpatterns = [
     url(r'^home/$', views.home, name='home'),
 
     # Postman URLs:
-    url(r'^messages/', include('postman.urls', namespace='postman', app_name='postman')),
+    url(r'^messages/', include('postman.urls', namespace='postman')),
 
     # Social-auth URLs
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    url(r'^auth/', include('social_django.urls', namespace='social')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

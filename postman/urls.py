@@ -86,6 +86,7 @@ Refer to documentation.
     ...View.as_view(formatters=(format_subject, format_body)), name='view'),
 
 """
+
 from __future__ import unicode_literals
 
 from django.conf import settings
@@ -100,6 +101,7 @@ from .views import (InboxView, SentView, ArchivesView, TrashView,
         WriteView, ReplyView, MessageView, ConversationView,
         ArchiveView, DeleteView, UndeleteView, MarkReadView, MarkUnreadView)
 
+app_name = 'postman'
 
 urlpatterns = [
     # Translators: keep consistency of the <option> parameter with the translation for 'm'

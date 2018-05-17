@@ -38,7 +38,7 @@
           <ul class="nav navbar-nav">
 		  {% if request.user.is_authenticated %}
            {% if user.profile.user_type == "C" %}
-           <li class="active"><a href="{% url "user_hub" %}">Chef Hub</a></li>
+           <li><a href="{% url "user_hub" %}">Chef Hub</a></li>
            {% endif %}
            {% if user.profile.user_type == "M" %}
            <li><a href="{% url "user_hub" %}">Mouth Hub</a></li>

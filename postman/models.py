@@ -7,7 +7,8 @@ except ImportError:
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse
+#from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.db.models.query import QuerySet
 from django.utils import six
@@ -267,11 +268,11 @@ class Message(models.Model):
 
     subject = models.CharField(_("subject"), max_length=SUBJECT_MAX_LENGTH)
     body = models.TextField(_("body"), blank=True)
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='sent_messages', null=True, blank=True, verbose_name=_("sender"))
-    recipient = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='received_messages', null=True, blank=True, verbose_name=_("recipient"))
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='sent_messages', null=True, blank=True, verbose_name=_("sender"), on_delete=models.DO_NOTHING)
+    recipient = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='received_messages', null=True, blank=True, verbose_name=_("recipient"), on_delete=models.DO_NOTHING)
     email = models.EmailField(_("visitor"), blank=True)  # instead of either sender or recipient, for an AnonymousUser
-    parent = models.ForeignKey('self', related_name='next_messages', null=True, blank=True, verbose_name=_("parent message"))
-    thread = models.ForeignKey('self', related_name='child_messages', null=True, blank=True, verbose_name=_("root message"))
+    parent = models.ForeignKey('self', related_name='next_messages', null=True, blank=True, verbose_name=_("parent message"), on_delete=models.DO_NOTHING)
+    thread = models.ForeignKey('self', related_name='child_messages', null=True, blank=True, verbose_name=_("root message"), on_delete=models.DO_NOTHING)
     sent_at = models.DateTimeField(_("sent at"), default=now)
     read_at = models.DateTimeField(_("read at"), null=True, blank=True)
     replied_at = models.DateTimeField(_("replied at"), null=True, blank=True)
@@ -282,7 +283,7 @@ class Message(models.Model):
     # moderation fields
     moderation_status = models.CharField(_("status"), max_length=1, choices=STATUS_CHOICES, default=STATUS_PENDING)
     moderation_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='moderated_messages',
-        null=True, blank=True, verbose_name=_("moderator"))
+        null=True, blank=True, verbose_name=_("moderator"), on_delete=models.DO_NOTHING)
     moderation_date = models.DateTimeField(_("moderated at"), null=True, blank=True)
     moderation_reason = models.CharField(_("rejection reason"), max_length=120, blank=True)
 

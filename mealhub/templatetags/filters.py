@@ -33,17 +33,17 @@ def times(number):
     return range(number)
 
 from django.conf import settings
-@register.assignment_tag
+@register.simple_tag
 def user():
     user = settings.EASY_MAPS_USER
     return user
 
-@register.assignment_tag
+@register.simple_tag
 def user_address():
     user_address = settings.EASY_MAPS_USER_ADDRESS
     return user_address
 
-@register.assignment_tag
+@register.simple_tag
 def meal_addrs():
     meals = Meal.objects.order_by('-id')
     profiles = Profile.objects.all()
@@ -63,7 +63,7 @@ def meal_addrs():
             users.append(x[0])
     return newMealAddrs
 
-@register.assignment_tag
+@register.simple_tag
 def meal_request_addrs():
     meal_requests = MealRequest.objects.order_by('-id')
     profiles = Profile.objects.all()
